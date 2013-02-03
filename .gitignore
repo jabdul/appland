@@ -54,9 +54,9 @@
 
 *.cache
 
-.settings
+*.settings
 
-.project	# Eclipse
+*.project	# Eclipse
 
 
 
@@ -105,5 +105,5 @@ Thumbs.db
 # Directories &  files #
 
 ################
-
+src-test/qunit/
 
