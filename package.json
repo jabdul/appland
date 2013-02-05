@@ -1,0 +1,33 @@
+{
+  "name": "appland",
+  "version": "0.1.0",
+  "description": "A frontend scaffold complete with MVC arcitecture, logging, test framework, and popular libraries.",
+  "keywords": [
+    "scaffold",
+    "MVC",
+    "QUnit",
+    "log4javascript",
+    "SASS",
+    "Compass"
+  ],
+  "homepage": "https://github.com/jabdul/appland/wiki",
+  "bugs": {
+    "url": "https://github.com/jabdul/appland/issues",
+    "email": "james.abdul@craftturf.com"
+  },
+  "author": "James Abdul <james.abdul@craftturf.com> (http://www.craftturf.com/)",
+  "main": "src/index",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jabdul/appland.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17",
+    "grunt-junit": "0.1.x"
+  },
+  "scripts": {},
+  "os": [
+    "win32",
+    "linux"
+  ]
+}

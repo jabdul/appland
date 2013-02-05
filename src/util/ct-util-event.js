@@ -17,11 +17,11 @@ var CT = CT || {}; CT.Util = CT.Util || {};
  * @copyright Copyright (c) 2012, Craft Turf Ltd
  * @author Nicholas Zakas
  * @author James Abdul (james.abdul@craftturf.com)
- * @example var btn = document.getElementById(â€œmyBtnâ€�);
+ * @example var btn = document.getElementById(el-id);
  *			var handler = function(){
- *							alert(â€œClickedâ€�);
+ *							alert(btn);
  *			};
- * 			CT.Util.Event.addHandler(btn, â€œclickâ€�, handler);
+ * CT.Util.Event.addHandler(btn, event, handler);
  */
 CT.Util.Event = {
 
@@ -36,7 +36,7 @@ CT.Util.Event = {
 	 * @param string type Event type
 	 * @param object handler Event handler (listener/observer)
 	 * @return null
-	 * @example CT.Util.Event.addHandler(btn, â€œclickâ€�, handler);
+	 * @example CT.Util.Event.addHandler(btn, click, handler);
 	 */
     addHandler: function(element, type, handler){
         if (element.addEventListener){
@@ -101,7 +101,7 @@ CT.Util.Event = {
 	 * @param string type Event type
 	 * @param object handler Event handler (listener/observer)
 	 * @return null
-	 * @example CT.Util.Event.removeHandler(btn, â€œclickâ€�, handler);
+	 * @example CT.Util.Event.removeHandler(btn, click, handler);
 	 */
     removeHandler: function(element, type, handler){
         if (element.removeEventListener){

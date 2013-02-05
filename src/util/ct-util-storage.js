@@ -53,7 +53,7 @@ CT.Util.Storage.SubCookie = {
             result = {};
 
         if (cookieStart > -1){
-            var cookieEnd = document.cookie.indexOf(";", cookieStart)
+            var cookieEnd = document.cookie.indexOf(";", cookieStart);
             if (cookieEnd == -1){
                 cookieEnd = document.cookie.length;
             }
@@ -68,11 +68,9 @@ CT.Util.Storage.SubCookie = {
                     result[decodeURIComponent(parts[0])] =
                         decodeURIComponent(parts[1]);
                 }
-
                 return result;
             }
         }
-
         return null;
     },
 
@@ -89,8 +87,7 @@ CT.Util.Storage.SubCookie = {
      * @param string domain (optional) Domain that the cookie is restricted to
      * @param string secure (optional) HTTPS only?
      * @return object/null
-     * @example CT.Util.Storage.SubCookie.set("data", "author", "James", 
-     * 											new Date("February 1, 2010"));
+     * @example CT.Util.Storage.SubCookie.set("data", "author", "James", new Date("February 1, 2010"));
      */
 	set: function (name, subName, value, expires, path, domain, secure) {
         var subcookies = this.getAll(name) || {};
@@ -110,14 +107,12 @@ CT.Util.Storage.SubCookie = {
      * @param string domain (optional) Domain that the cookie is restricted to
      * @param string secure (optional) HTTPS only?
      * @return object/null
-     * @example CT.Util.Storage.SubCookie.setAll("data", 
-     * 									{author, "James"book: "Professional JavaScript"}, 
-     * 									new Date("February 1, 2010"));
+     * @example CT.Util.Storage.SubCookie.setAll("data", {author, "James"book: "Professional JavaScript"}, Date("February 1, 2010"));
      */
     setAll: function(name, subcookies, expires, path, domain, secure){
 
         var cookieText = encodeURIComponent(name) + "=";
-        var subcookieParts = new Array();
+        var subcookieParts = [];
 
         for (var subName in subcookies){
             if (subName.length > 0 && subcookies.hasOwnProperty(subName)){
@@ -142,7 +137,7 @@ CT.Util.Storage.SubCookie = {
             }
 
 			if (secure) {
-			    cookieText += "; secure";
+				cookieText += "; secure";
 			}
 		} else {
 			cookieText += "; expires=" + (new Date(0)).toGMTString();
@@ -230,15 +225,15 @@ CT.Util.Storage.WebStorage = {
      * @example var str = CT.Util.Storage.WebStorage.getLocalStorage();
      */
 	getLocalStorage: function(){
-	    if (typeof localStorage == 'object'){
-	        return localStorage;
-	    } else if (typeof globalStorage == 'object'){
-	        return globalStorage[location.host];
-	    } else {
-	        throw new Error('Local storage not available.');
-	    }
+		if (typeof localStorage == 'object'){
+			return localStorage;
+		} else if (typeof globalStorage == 'object'){
+			return globalStorage[location.host];
+		} else {
+			throw new Error('Local storage not available.');
+		}
 	},
-	
+
 	/**
 	 * Clear all stored values
 	 * 
@@ -248,12 +243,12 @@ CT.Util.Storage.WebStorage = {
 	 */
 	clearAll: function() {	
 		if (typeof localStorage == 'object'){
-	        localStorage.clear();
-	        return true;
-	    } else if (typeof globalStorage == 'object'){
-	        globalStorage.clear();
-	        return true;
-	    }
-	    return false;
+			localStorage.clear();
+			return true;
+		} else if (typeof globalStorage == 'object'){
+			globalStorage.clear();
+			return true;
+		}
+		return false;
 	}
 };

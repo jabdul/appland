@@ -78,7 +78,7 @@ CT.Util.Funcs.textCoundown = function (txtField,counterField,limit) {
 	} else {
 		counterField.value = limit - txtField.value.length;
 	}
-}
+};
 
 /**
  * Fetch Query Parameters
@@ -108,7 +108,7 @@ CT.Util.Funcs.getQueryStringArgs = function (){
 		}
 	}
 	return args;
-}
+};
 
 /**
  * Dynamically Load Styles
@@ -127,7 +127,7 @@ CT.Util.Funcs.loadStyles = function(url, pos){
     link.href = url;
     head = document.getElementsByTagName("head")[0];
 	head.insertBefore(link, head.childNodes[pos]);
-}
+};
 
 /**
  * Dynamically Add Text at Cursor in TextArea
@@ -142,11 +142,12 @@ CT.Util.Funcs.insertAtCaret = function ( areaId, text ) {
 	var txtarea = document.getElementById(areaId);
 	var scrollPos = txtarea.scrollTop;
 	var strPos = 0;
+	var range  = null;
 	var br = ((txtarea.selectionStart || txtarea.selectionStart == '0') ? 
 		"ff" : (document.selection ? "ie" : false ) );
 	if (br == "ie") { 
 		txtarea.focus();
-		var range = document.selection.createRange();
+		range = document.selection.createRange();
 		range.moveStart ('character', -txtarea.value.length);
 		strPos = range.text.length;
 	}
@@ -158,7 +159,7 @@ CT.Util.Funcs.insertAtCaret = function ( areaId, text ) {
 	strPos = strPos + text.length;
 	if (br == "ie") { 
 		txtarea.focus();
-		var range = document.selection.createRange();
+		range = document.selection.createRange();
 		range.moveStart ('character', -txtarea.value.length);
 		range.moveStart ('character', strPos);
 		range.moveEnd ('character', 0);
@@ -170,7 +171,7 @@ CT.Util.Funcs.insertAtCaret = function ( areaId, text ) {
 		txtarea.focus();
 	}
 	txtarea.scrollTop = scrollPos;
-}
+};
 
 /**
  * Format a Float
@@ -184,7 +185,7 @@ CT.Util.Funcs.insertAtCaret = function ( areaId, text ) {
 CT.Util.Funcs.formatFloat = function (value, precision) {
     var power = Math.pow(10, precision || 0);
     return String( (Math.round(value * power) / power).toFixed(precision) );
-}
+};
 
 /**
  * Return Frame Window's Name
@@ -199,14 +200,13 @@ CT.Util.Funcs.formatFloat = function (value, precision) {
  * @see http://softwareas.com/cross-domain-communication-with-iframes
  */
 CT.Util.Funcs.getFrameByName = function (name, url) {
-  for (var i = 0; i < frames.length; i++) {
+  for (var i = 0, len = frames.length; i < len; i++) {
     if (frames[i].name == name) {
-    	//frames[i].location = url;
 		return frames[i];
-    }  	
+    }
   }
   return null;
-}
+};
 
 /**
  * Send Datetime Format
@@ -219,8 +219,8 @@ CT.Util.Funcs.getFrameByName = function (name, url) {
 CT.Util.Funcs.formatToDateTime = function(dateTime) {
 	var d = null, t = null;
 	// Split timestamp into [ Y, M, D, h, m, s ]
-	t = dateTime.split(/[- :]/);
+	t = dateTime.split(/[\- :]/);
 	// Wed Apr 04 2012 22:09:00 GMT+0100 (BST)
 	d = new Date(Date.UTC(t[0], t[1]-1, t[2], t[3]-1, t[4], t[5]));
 	return d;
-}
+};
