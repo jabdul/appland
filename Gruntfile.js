@@ -2,28 +2,32 @@ module.exports = function(grunt) {
 	
   var CONFIG_UTIL_DEST = "_build/";
   var CONFIG_UTIL_SRC = "src/util/";
+  var CONFIG_LINT_FILES = [
+      'grunt.js', 'package.json',
+      'src/**/*.js', 'src/**/*.json',
+      'src-test/test/**/*.js'
+      ];
 
   // Project configuration.
   grunt.initConfig({
   	pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: '<config:jshint.all>',
-        tasks: 'jshint:all'
+        files: CONFIG_LINT_FILES,
+        tasks: ['jshint'],
+        options: {
+          interrupt: true
+        }
       }
     },
     jshint: {
-      all: [
-      'grunt.js', 'package.json',
-      'src/**/*.js',
-      'src-test/test/**/*.js'
-      ],
+      all: CONFIG_LINT_FILES,
       options: {
         browser: true
       }
     },
     qunit: {
-      all: ['src-test/test/**/*-test.html']
+      all: ['src-test/test/**/test-*.html']
     },
     qunit_junit: {
       options: {
@@ -31,6 +35,9 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
       util_all: {
 		files: [
           {src: [CONFIG_UTIL_SRC + '*.js'],
@@ -60,5 +67,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   // Tasks...
   grunt.registerTask('default', ['jshint', 'qunit_junit', 'qunit:all', 'uglify:util_dynamic', 'uglify:util_all']);
-  grunt.registerTask('watch', ['watch']);
+  grunt.registerTask('hint', ['jshint']);
 };
