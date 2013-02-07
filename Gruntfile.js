@@ -1,16 +1,16 @@
 module.exports = function(grunt) {
 	
-  var CONFIG_UTIL_DEST = "_build/";
-  var CONFIG_UTIL_SRC = "src/util/";
+  var CONFIG_DEST_UTIL = "_build/src/_util/";
+  var CONFIG_SRC_UTIL = "src/_util/";
   var CONFIG_LINT_FILES = [
-      'grunt.js', 'package.json',
+      'Gruntfile.js', 'package.json',
       'src/**/*.js', 'src/**/*.json',
       'src-test/test/**/*.js'
       ];
 
   // Project configuration.
   grunt.initConfig({
-  	pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
         files: CONFIG_LINT_FILES,
@@ -38,10 +38,10 @@ module.exports = function(grunt) {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-      util_all: {
+      util_all: {                                 // Concatenate util files into a single file.
 		files: [
-          {src: [CONFIG_UTIL_SRC + '*.js'],
-           dest: CONFIG_UTIL_DEST + 'testing/js/ct-util-all.min.js'
+          {src: [CONFIG_SRC_UTIL + '*.js'],
+           dest: CONFIG_DEST_UTIL + 'ct-util-all.min.js'
           }
         ]
       },
@@ -49,10 +49,10 @@ module.exports = function(grunt) {
 		files: [
           {
             expand: true,                          // Enable dynamic expansion.
-            cwd: CONFIG_UTIL_SRC,                  // Src matches are relative to this path.
+            cwd: CONFIG_SRC_UTIL,                  // Src matches are relative to this path.
             src: ['*.js'],                         // Actual pattern(s) to match.
-            dest: CONFIG_UTIL_DEST + 'testing/js', // Destination path prefix.
-            ext: '-util.min.js'                     // Dest filepaths will have this extension.
+            dest: CONFIG_DEST_UTIL,                // Destination path prefix.
+            ext: '-util.min.js'                    // Dest filepaths will have this extension.
           }
         ]
       }

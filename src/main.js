@@ -1,35 +1,26 @@
-require(["util/ct-util-event.js"], function(util) {
-    //This function is called when scripts/helper/util.js is loaded.
-    //If util.js calls define(), then this function is not fired until
-    //util's dependencies have loaded, and the util argument will hold
-    //the module value for "helper/util".
+define(
+  ['_util/ct-util-event',
+  '_util/ct-util-funcs',
+  '_util/ct-util-storage'
+  ],
+function (EventManager, Func, Storage) {
+  /**
+   * App's Configuration and Bootstrapping
+   *
+   * Prepare the App's configuration from static data.
+   * 
+   * @category App
+   * @package Config
+   * @copyright Copyright (c) 2013, Craft Turf Ltd
+   * @author James Abdul (james.abdul@craftturf.com)
+   */
+  function Init () {
+    
+  }
+    
+  Init.prototype = {
+    constructor: Init
+  };
+
+  return Init;
 });
-
-var App = App || {};
-App.Model = App.Model || {};
-App.Controller = App.Controller || {};
-
-
-/**
- * App's Configuration and Bootstrapping
- *
- * Prepare the App's configuration from static data.
- * 
- * @category App
- * @package Config
- * @copyright Copyright (c) 2013, Craft Turf Ltd
- * @author James Abdul (james.abdul@craftturf.com)
- */
-App.Config = (function() {
-
-	function init() {
-		
-	}
-	
-	return {
-		
-        initConfig: function() {
-			init();
-        }
-   };
-})();

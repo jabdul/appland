@@ -1,22 +1,10 @@
-$(document).ready(function () {
-	/** 
-	 * MaxMin Controller
-	 * 
-	 * Using Module pattern. 
-	 */
-	App.Controller.MaxMin = (function() {
+require(['lib/requirejs/domReady!', 'module-maxmin/model/maxmin'], function (doc, maxmin) {
+  
+  function init() {
+    
+  }
 
-		function init() {
-			
-		}  
+  function setEventDelegation() {
+  }
 
-		return {
-
-			initConfig: function() {
-				init();
-			}
-		};
-	})();
-	
-	App.Controller.MaxMin.initConfig();
 });
