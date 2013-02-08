@@ -1,1 +1,1 @@
-typeof require!="undefined"&&require(["lib/requirejs/domReady!","main","lib/jquery/jquery","module-maxmin/model/maxmin"],function(e,t,n,r){function i(){}function s(){}alert(n)});
+require(["../common"],function(e){require(["lib/requirejs/domReady!","main","jquery","module-maxmin/model/maxmin"],function(e,t,n,r){function i(){}function s(){}console.log(n("#maxmin-title")),console.log(e.getElementById("maxmin-title"))})});

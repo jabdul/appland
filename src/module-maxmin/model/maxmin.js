@@ -1,5 +1,7 @@
-if (typeof define === 'function' && define.amd) {
-  define(function () {
+if (typeof define !== 'function' && !define.amd) {
+  throw 'RequireJs script loader is required.';
+}
+define(function () {
   /**
    * MaxMin
    * 
@@ -52,9 +54,6 @@ if (typeof define === 'function' && define.amd) {
       return this._min;
     }
   };
-
+  
   return MaxMin;
-  });
-} else {
-  throw 'RequireJs script loader is required.';
-}
+});

@@ -1,12 +1,13 @@
-if (typeof require !== 'undefined') {
-  require(
-  ['lib/requirejs/domReady!',
+require(['../common'], function (common) {
+  require([
+  'lib/requirejs/domReady!',
   'main',
-  'lib/jquery/jquery',
+  'jquery',
   'module-maxmin/model/maxmin'
-  ], 
+  ],
   function (doc, app, $, maxmin) {
-    alert($);
+    console.log($('#maxmin-title'));
+    console.log(doc.getElementById('maxmin-title'));
   
     function init() {
       
@@ -15,4 +16,4 @@ if (typeof require !== 'undefined') {
     function setEventDelegation() {
     }
   });
-}
+});
