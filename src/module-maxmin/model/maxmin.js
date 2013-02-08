@@ -1,4 +1,5 @@
-define(function () {
+if (typeof define === 'function' && define.amd) {
+  define(function () {
   /**
    * MaxMin
    * 
@@ -53,4 +54,7 @@ define(function () {
   };
 
   return MaxMin;
-});
+  });
+} else {
+  throw 'RequireJs script loader is required.';
+}

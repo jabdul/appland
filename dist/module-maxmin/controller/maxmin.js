@@ -1,0 +1,1 @@
+typeof require!="undefined"&&require(["lib/requirejs/domReady!","main","lib/jquery/jquery","module-maxmin/model/maxmin"],function(e,t,n,r){function i(){}function s(){}alert(n)});
