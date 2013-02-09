@@ -4,8 +4,8 @@ module.exports = function(grunt) {
   var CONFIG_SRC_UTIL = "src/_util/";
   var CONFIG_LINT_FILES = [
       'Gruntfile.js', 'package.json',
-      'src/**/*.js', 'src/**/*.json',
-      'src-test/test/**/*.js'
+      'src/**/*.js', 'src/**/*.json', '!src/lib/**/*.js', '!src/log/*.js',
+      'src-test/test/**/*.js', '!src-test/test/require.config.js'
       ];
 
   // Project configuration.
@@ -23,7 +23,10 @@ module.exports = function(grunt) {
     jshint: {
       all: CONFIG_LINT_FILES,
       options: {
-        browser: true
+        browser: true,
+        globals: {
+          jQuery: false
+        }
       }
     },
     qunit: {
