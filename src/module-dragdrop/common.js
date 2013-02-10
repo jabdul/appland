@@ -7,7 +7,7 @@ requirejs.config({
   paths: {
     'jquery': 'lib/jquery/jquery-1.9.1.min',
     'underscore': 'lib/underscore-amd/underscore',
-    'backbone': 'lib/backbone-amd/backbone',
-    'domReady': 'lib/requirejs/domReady'
+    'domReady': 'lib/requirejs/domReady',
+    'bootstrap': 'lib/bootstrap-amd/main'
   }
 });

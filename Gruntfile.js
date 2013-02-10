@@ -4,7 +4,7 @@ module.exports = function(grunt) {
   var CONFIG_SRC_UTIL = "src/_util/";
   var CONFIG_LINT_FILES = [
       'Gruntfile.js', 'package.json',
-      'src/**/*.js', 'src/**/*.json', '!src/lib/**/*.js', '!src/log/*.js',
+      'src/**/*.js', 'src/**/*.json', '!src/lib/**/*.js', '!src/lib/**/*.json', '!src/log/*.js',
       'src-test/test/**/*.js', '!src-test/test/require.config.js'
       ];
 
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       util_all: {                                 // Concatenate util files into a single file.
 		files: [
           {src: [CONFIG_SRC_UTIL + '*.js'],
-           dest: CONFIG_DEST_UTIL + 'ct-util-all.min.js'
+           dest: CONFIG_DEST_UTIL + 'util-all.min.js'
           }
         ]
       },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
             cwd: CONFIG_SRC_UTIL,                  // Src matches are relative to this path.
             src: ['*.js'],                         // Actual pattern(s) to match.
             dest: CONFIG_DEST_UTIL,                // Destination path prefix.
-            ext: '-util.min.js'                    // Dest filepaths will have this extension.
+            ext: '.min.js'                    // Dest filepaths will have this extension.
           }
         ]
       }

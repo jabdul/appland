@@ -34,5 +34,8 @@
   "os": [
     "win32",
     "linux"
-  ]
+  ],
+  "dependencies": {
+    "jamjs": ""
+  }
 }

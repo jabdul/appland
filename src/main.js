@@ -2,28 +2,33 @@ if (typeof define !== 'function' && ! define.amd) {
   throw 'RequireJs script loader is required.';
 }
 define(
-['_util/ct-util-event',
-'_util/ct-util-funcs',
-'_util/ct-util-storage'
+['_util/event',
+'_util/func',
+'_util/storage-cookie',
+'_util/storage-local'
 ],
-function (EventManager, Func, Storage) {
+function (EventManager, Func, CookieManager, LocalStorageManager) {
   /**
    * App's Configuration and Bootstrapping
    *
    * Prepare the App's configuration from static data.
    * 
-   * @category App
-   * @package Config
+   * @category Base
+   * @package Base
    * @copyright Copyright (c) 2013, Craft Turf Ltd
    * @author James Abdul (james.abdul@craftturf.com)
    */
-  function Init () {
+  function Base () {
     
   }
     
-  Init.prototype = {
-    constructor: Init
+  Base.prototype = {
+    constructor: Base,
+    EventManager: EventManager,
+    Func: Func,
+    CookieManager: CookieManager,
+    LocalStorageManager: LocalStorageManager
   };
 
-  return Init;
+  return Base;
 });

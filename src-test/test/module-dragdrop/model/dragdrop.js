@@ -1,5 +1,5 @@
 require(['../../require.config'], function (config) {
-  require(['../../../../src/module-maxmin/model/maxmin'], function (MaxMin) {
+  require(['../../../../src/module-dragdrop/model/dragdrop'], function (MaxMin) {
     //("maxmin");
 
     test("testMaxMin - Empty constructor parameter", function() {
