@@ -1,6 +1,3 @@
-if (typeof define !== 'function' && !define.amd) {
-  throw 'RequireJs script loader is required.';
-}
 define(function () {
   /**
    * MaxMin

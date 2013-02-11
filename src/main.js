@@ -3,11 +3,12 @@ if (typeof define !== 'function' && ! define.amd) {
 }
 define(
 ['_util/event',
+'_util/event-target',
 '_util/func',
 '_util/storage-cookie',
 '_util/storage-local'
 ],
-function (EventManager, Func, CookieManager, LocalStorageManager) {
+function (EventManager, EventTarget, Func, CookieManager, LocalStorageManager) {
   /**
    * App's Configuration and Bootstrapping
    *
@@ -21,10 +22,11 @@ function (EventManager, Func, CookieManager, LocalStorageManager) {
   function Base () {
     
   }
-    
+
   Base.prototype = {
     constructor: Base,
     EventManager: EventManager,
+    EventTarget: EventTarget,
     Func: Func,
     CookieManager: CookieManager,
     LocalStorageManager: LocalStorageManager

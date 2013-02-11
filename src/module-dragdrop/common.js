@@ -8,6 +8,7 @@ requirejs.config({
     'jquery': 'lib/jquery/jquery-1.9.1.min',
     'underscore': 'lib/underscore-amd/underscore',
     'domReady': 'lib/requirejs/domReady',
-    'bootstrap': 'lib/bootstrap-amd/main'
+    'bootstrap': 'lib/bootstrap-amd/main',
+    'main': 'main'
   }
 });
