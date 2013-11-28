@@ -2,13 +2,11 @@ require(['module.config.js'], function () {
   require([
       'jquery',
       'sinon',
-      '../src-test/module-dragdrop/index',
-      '../src-test/module-maxmin/index'],
+      '../src-test/module-jacks-or-better/index'],
     function (
       $,
       sinon,
-      moduleDragDrop,
-      moduleMaxMin) {
+      moduleJacksOrBetter) {
 
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;
@@ -25,8 +23,7 @@ require(['module.config.js'], function () {
     var specs = [],
         TESTS_DIR = '../src-test/',
         testSuites = [
-          moduleDragDrop,
-          moduleMaxMin
+          moduleJacksOrBetter
         ];
 
     loadTestSuites(testSuites);
