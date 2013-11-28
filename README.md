@@ -1,4 +1,4 @@
 appland
 =======
 
-An experimental space for JavaScript related applications
+A frontend scaffold complete with MVC arcitecture, logging, test framework, and popular libraries.

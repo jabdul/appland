@@ -102,5 +102,4 @@ Thumbs.db
 #src-test/qunit/
 src-test/result/*
 !src-test/result/README.md
-dist/
-#node_modules/
+#dist/
