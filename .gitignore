@@ -99,7 +99,8 @@ Thumbs.db
 # Directories &  files #
 
 ################
-src-test/qunit/
+#src-test/qunit/
 src-test/result/*
 !src-test/result/README.md
-node_modules/
+dist/
+#node_modules/

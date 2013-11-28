@@ -23,14 +23,11 @@ function (EventManager, EventTarget, Func, CookieManager, LocalStorageManager) {
     
   }
 
-  Base.prototype = {
-    constructor: Base,
+  return {
     EventManager: EventManager,
     EventTarget: EventTarget,
     Func: Func,
     CookieManager: CookieManager,
     LocalStorageManager: LocalStorageManager
   };
-
-  return Base;
 });

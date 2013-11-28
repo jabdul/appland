@@ -6,23 +6,23 @@ require(['../common'], function (common) {
   'bootstrap',
   'module-dragdrop/model/dragdrop'
   ],
-  function (doc, main, $, DragDrop) {
-    var App = new main();
+  function (doc, App, $, bs, DragDrop) {
     
     function init() {
       setEventDelegation();
     }
-  
+  //console.log(App);
     function setEventDelegation() {
-      DragDrop.addHandler("dragstart", function(event) {
+      var dd = new DragDrop();
+      App.EventManager.addHandler("dragstart", function(event) {
         var status = doc.getElementById("status");
         status.innerHTML = "Started dragging " + event.target.id;
       });
-      DragDrop.addHandler("drag", function(event) {
+      App.EventManager.addHandler("drag", function(event) {
         var status = doc.getElementById("status");
         status.innerHTML = "<br />Dragged " + event.target.id + " to (" + event.x + "," + event.y + ")";
       });
-      DragDrop.addHandler("dragend", function(event) {
+      App.EventManager.addHandler("dragend", function(event) {
         var status = doc.getElementById("status");
         status.innerHTML = "<br />Dropped " + event.target.id + " at (" + event.x + "," + event.y + ")";
       });

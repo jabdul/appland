@@ -1,6 +1,6 @@
 require(['../../require.config'], function (config) {
   require(['../../../../src/module-maxmin/model/maxmin'], function (MaxMin) {
-    //("maxmin");
+    module("MaxMin", {});
 
     test("testMaxMin - Empty constructor parameter", function() {
       expect(1);
