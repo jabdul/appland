@@ -99,7 +99,5 @@ Thumbs.db
 # Directories &  files #
 
 ################
-#src-test/qunit/
-src-test/result/*
-!src-test/result/README.md
-#dist/
+dist/
+src/assets/.sass-cache/
