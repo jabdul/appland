@@ -28,7 +28,8 @@
     "grunt-contrib-watch": "~0.2.0rc7",
     "grunt-contrib-copy": "~0.3.2",
     "bower": "~1.2.7",
-    "testem": "~0.5.12"
+    "testem": "~0.5.12",
+    "bootstrap-amd": "~1.0.3"
   },
   "scripts": {},
   "os": [
