@@ -1,8 +1,9 @@
 define([
   'module-jacks-or-better/app',
-  'lib/requirejs/domReady!'
+  'lib/requirejs/domReady!',
+  'jquery'
 ],
-function (App, Doc) {
+function (App, Doc, $) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
