@@ -1,9 +1,13 @@
 define([
   'module-jacks-or-better/app',
   'lib/requirejs/domReady!',
-  'jquery'
+  'jquery',
+  'bootstrap',
+  'lib/requirejs/hbs!module-jacks-or-better/view/tmpl/topnav',
+  'lib/requirejs/hbs!module-jacks-or-better/view/tmpl/main',
+  'lib/requirejs/hbs!module-jacks-or-better/view/tmpl/footer'
 ],
-function (App, Doc, $) {
+function (App, Doc, $, Bootstrap, TopNavTmpl, MainTmpl, FooterTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
@@ -16,7 +20,19 @@ function (App, Doc, $) {
      * @returns {undefined}
      */
     function init() {
+      renderView();
       delegateEvents();
+    }
+    /**
+     * Renders the view templates.
+     * @returns {undefined}
+     */
+    function renderView() {
+      $(appContainerEl).append(
+        TopNavTmpl(null) +
+        MainTmpl(null) +
+        FooterTmpl(null)
+      );
     }
     /**
      * Event delegation.

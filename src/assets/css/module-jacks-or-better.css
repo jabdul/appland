@@ -8637,3 +8637,35 @@ td.visible-print {
 /**
  *   Jacks Or Better
  */
+/* line 4, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+body {
+  padding-top: 70px;
+}
+
+/* line 8, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+.thumbnail img {
+  width: 100%;
+}
+
+/* line 12, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+.ratings {
+  color: #d17581;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 18, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+.thumbnail {
+  padding: 0;
+}
+
+/* line 22, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+.thumbnail .caption-full {
+  padding: 9px;
+  color: #333;
+}
+
+/* line 27, ../sass/module-jacks-or-better/_jacks-or-better.scss */
+footer {
+  margin: 50px 0;
+}

@@ -8,6 +8,7 @@ requirejs.config({
   },
   paths: {
     'jquery': 'core/jquery-loader', /* jQuery Version 1.9.1 */
+    'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/hbs/hbs',
     'handlebars': 'lib/handlebars/handlebars',
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
