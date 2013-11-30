@@ -1,17 +1,22 @@
 requirejs.config({
   baseUrl: '../../',
   waitSeconds: 14,
-  shim: {
-    'Log4javascript': {
-      exports: 'log4javascript'
-    }
-  },
   paths: {
-    'jquery': 'core/jquery-loader', /* jQuery Version 1.9.1 */
+    'jquery': 'core/jquery-loader', /* See file for version. */
     'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/hbs/hbs',
     'handlebars': 'lib/handlebars/handlebars',
+    'json': 'lib/requirejs/json',
+    'underscore': 'lib/underscore-amd/underscore',
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
+  },
+  shim: {
+    'underscore': {
+        exports: '_'
+    },
+    'Log4javascript' :  {
+      exports :  'log4javascript'
+    }
   },
   hbs: {
     disableI18n: true,        // This disables the i18n helper and

@@ -5,11 +5,10 @@ define([], function () {
      * Name of test suite (containing folder).
      * @type {string}
      */
-    var TEST_SUITE = 'module-jacks-or-better';
+    var TEST_SUITE = 'module-{MODULE-NAME}';
     /**
      * Path to fixtures for this test suite.
      */
-    //jasmine.getFixtures().fixturesPath = TEST_SUITE + '/fixtures';
 
     /**
      * Load test cases.
@@ -18,7 +17,7 @@ define([], function () {
     function loadTestCases() {
       var dir = TEST_SUITE + '/';
       return [
-        //dir + 'index-controller'
+        dir + 'welcome'
       ];
     }
 

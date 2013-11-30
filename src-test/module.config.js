@@ -1,27 +1,18 @@
 requirejs.config({
   baseUrl: '../src/',
-  waitSeconds: 30,
-
+  waitSeconds: 14,
   paths: {
-    'jquery': 'lib/jquery-1-9-1/jquery', /* jQuery Version 1.9.1 */
-    'jqueryui': 'lib/jquery-ui-1.10.1.custom/development-bundle/jqueryui',
+    'jquery': 'core/jquery-loader', /* See file for version. */
+    'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/hbs/hbs',
     'handlebars': 'lib/handlebars/handlebars',
     'json': 'lib/requirejs/json',
-    'sinon': 'lib/sinon/sinon-1.6.0',
     'underscore': 'lib/underscore-amd/underscore',
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
     'underscore': {
         exports: '_'
-    },
-    'jcrop': {
-      deps: ['jquery'],
-      exports: 'jcrop'
-    },
-    'jqueryui': {
-      deps: ['jquery']
     },
     'Log4javascript' :  {
       exports :  'log4javascript'
@@ -36,9 +27,9 @@ requirejs.config({
     // helpers (false by default)
 
     helperPathCallback:       // Callback to determine the path to look for helpers
-        function (name) {       // ('/template/helpers/'+name by default)
-            return 'core/helpers/' + name;
-        },
+      function (name) {       // ('/template/helpers/'+name by default)
+          return 'core/helpers/' + name;
+      },
 
     templateExtension: "tmpl",// Set the extension automatically appended to templates
     // ('hbs' by default)

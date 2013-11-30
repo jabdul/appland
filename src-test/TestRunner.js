@@ -1,12 +1,10 @@
 require(['module.config.js'], function () {
   require([
       'jquery',
-      'sinon',
-      '../src-test/module-jacks-or-better/index'],
+      '../src-test/module-appland/index'],
     function (
       $,
-      sinon,
-      moduleJacksOrBetter) {
+      moduleAppland) {
 
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;
@@ -23,7 +21,7 @@ require(['module.config.js'], function () {
     var specs = [],
         TESTS_DIR = '../src-test/',
         testSuites = [
-          moduleJacksOrBetter
+          moduleAppland
         ];
 
     loadTestSuites(testSuites);
