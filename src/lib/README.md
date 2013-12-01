@@ -2,9 +2,9 @@
 
 This section contains important notes about modifications made to well-known libraries in order to prepare them for integration into Appland.
 
-### Bootstrap
+### Bootstrap ###
 
-###### Install
+###### Install ######
 
 	# Installing the official Bootstrap library...
 	$ node_modules/bower/bin/bower install bootstrap --save-dev
@@ -16,7 +16,7 @@ This section contains important notes about modifications made to well-known lib
 	$ node_modules/bootstrap-amd/bootstrap-amd.js  src/lib/bootstrap/ 
 
 
-###### Usage
+###### Usage ######
 
 	requirejs.config({
 	    paths: {
@@ -30,7 +30,7 @@ This section contains important notes about modifications made to well-known lib
 	    //some code
 	});
  
-###### Compile CSS
+###### Compile CSS ######
 
 	$ cd src/lib/bootstrap
 

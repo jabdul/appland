@@ -120,8 +120,8 @@ function (AppConfig, Func, Cookie, Log4j) {
       
       // Enable all log levels for the "MyApp.Components"
       // logger and all its descendants 
-      // (including "Wgsn.Modules.Module1" and
-      // "Wgsn.Modules.Module2" ...)
+      // (including "Apl.Modules.Module1" and
+      // "Apl.Modules.Module2" ...)
       Log4j.getLogger("Wgsn.Modules").setLevel(Log4j.Level.ALL);
       
       // Enable or disable logging.

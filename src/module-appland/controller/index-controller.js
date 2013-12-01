@@ -1,9 +1,9 @@
 define([
-  'module-{MODULE-NAME}/app',
+  'module-appland/app',
   'lib/requirejs/domReady!',
-  'lib/requirejs/hbs!module-{MODULE-NAME}/view/tmpl/navbar',
-  'lib/requirejs/hbs!module-{MODULE-NAME}/view/tmpl/jumbotron',
-  'lib/requirejs/hbs!module-{MODULE-NAME}/view/tmpl/content'
+  'lib/requirejs/hbs!module-appland/view/tmpl/navbar',
+  'lib/requirejs/hbs!module-appland/view/tmpl/jumbotron',
+  'lib/requirejs/hbs!module-appland/view/tmpl/content'
 ],
 function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
   function IndexController() {
@@ -11,7 +11,7 @@ function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
      * App's DOM Container Element. 
      * @type {Object}
      */
-    var appContainerEl = Doc.getElementById('{MODULE-NAMESPACE-PREFIX}-content');
+    var appContainerEl = Doc.getElementById('apl-content');
     /**
      * Script initialiser.
      * Executes a set of actions at start.
@@ -27,9 +27,9 @@ function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
      */
     function renderView() {
       var templates = [
-        NavBarTmpl(null),
-        JumboTronTmpl(null),
-        ContentTmpl(null)
+          NavBarTmpl(null),
+          JumboTronTmpl(null),
+          ContentTmpl(null)
       ];
       appContainerEl.innerHTML = templates.join('\n');
     }
@@ -38,7 +38,7 @@ function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
      * @returns {undefined}
      */
     function delegateEvents() {
-     /* $(Doc)
+      /*$(Doc)
         .on("click.apl.job",
           '#wgsn-promo-intro-close', function (e) {
           e.preventDefault();

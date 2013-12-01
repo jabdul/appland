@@ -1,8 +1,8 @@
 define({
   "root": {
-    "module-{MODULE-NAME}": {
+    "module-appland": {
       "projectName": 'Project Name',
-      "nameSpaces":['{MODULE-NAMESPACE-PREFIX}-'],
+      "nameSpaces":['apl-'],
       "labels": [
         {"LABEL_0": "WELCOME TO THE NEW ADVANCED SEARCH FROM WGSN"},
         {"LABEL_1": "close"},
