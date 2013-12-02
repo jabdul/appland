@@ -39,3 +39,5 @@ This section contains important notes about modifications made to well-known lib
 	$ grunt dist
 
 ...then go to `dist/css` and copy required files over to `src/assets/sass/lib` directory.
+
+[<< Home](https://github.com/jabdul/appland/tree/master "Home")

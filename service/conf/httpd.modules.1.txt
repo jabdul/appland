@@ -1,0 +1,44 @@
+#
+# Dynamic Shared Object (DSO) Support
+#
+# To be able to use the functionality of a module which was built as a DSO you
+# have to place corresponding `LoadModule' lines at this location so the
+# directives contained in it are actually available _before_ they are used.
+# Statically compiled modules (those listed by `httpd -l') do not need
+# to be loaded here.
+#
+# Example:
+# LoadModule foo_module modules/mod_foo.so
+#
+LoadModule actions_module modules/mod_actions.so
+LoadModule alias_module modules/mod_alias.so
+LoadModule asis_module modules/mod_asis.so
+LoadModule auth_basic_module modules/mod_auth_basic.so
+LoadModule authn_default_module modules/mod_authn_default.so
+LoadModule authn_file_module modules/mod_authn_file.so
+LoadModule authz_default_module modules/mod_authz_default.so
+LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+LoadModule authz_host_module modules/mod_authz_host.so
+LoadModule authz_user_module modules/mod_authz_user.so
+LoadModule autoindex_module modules/mod_autoindex.so
+LoadModule cgi_module modules/mod_cgi.so
+LoadModule deflate_module modules/mod_deflate.so
+LoadModule dir_module modules/mod_dir.so
+LoadModule env_module modules/mod_env.so
+LoadModule headers_module modules/mod_headers.so
+LoadModule include_module modules/mod_include.so
+LoadModule isapi_module modules/mod_isapi.so
+LoadModule log_config_module modules/mod_log_config.so
+LoadModule mime_module modules/mod_mime.so
+LoadModule negotiation_module modules/mod_negotiation.so
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+LoadModule rewrite_module modules/mod_rewrite.so
+LoadModule setenvif_module modules/mod_setenvif.so
+LoadModule status_module modules/mod_status.so
+LoadModule vhost_alias_module modules/mod_vhost_alias.so
+LoadModule php5_module "c:/wamp/bin/php/php5.3.13/php5apache2_2.dll"
+
+
+# Virtual hosts
+Include conf/extra/httpd-vhosts.conf

@@ -1,0 +1,76 @@
+NameVirtualHost *:9010
+Listen *:9010
+NameVirtualHost *:9011
+Listen *:9011
+NameVirtualHost *:9012
+Listen *:9012
+
+## Appland - Client ##
+<VirtualHost *:9010>
+    ServerAdmin admin@myemail.com
+    DocumentRoot "C:/path/to/appland/src/"
+    ServerName appland
+    SetEnv APPLICATION_ENV "development"
+
+    <Directory "C:/path/to/appland/src/">
+        Options All MultiViews
+        AllowOverride all
+        Order Allow,Deny
+		Allow from all
+
+        # Compress these files on response to requests...
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+    </Directory>
+</VirtualHost>
+
+## Appland - Web Services ##
+<VirtualHost *:9011>
+    ServerAdmin admin@myemail.com
+    DocumentRoot "C:/path/to/appland/service/"
+    ServerName appland.service
+    SetEnv APPLICATION_ENV "development"
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+    </IfModule>
+
+    <Directory "C:/path/to/appland/service/">
+        Options All MultiViews
+        AllowOverride all
+        Order Allow,Deny
+		Allow from all
+    </Directory>
+</VirtualHost>
+
+### Appland - Distribution ###
+<VirtualHost *:9012>
+    ServerAdmin admin@myemail.com
+    DocumentRoot "C:/path/to/appland/dist/"
+    ServerName appland.build
+    SetEnv APPLICATION_ENV "development"
+    <Directory "C:/path/to/appland/dist/">
+        Options All MultiViews
+        AllowOverride all
+        Order Allow,Deny
+		Allow from all
+
+        # Compress these files on response to requests...
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+    </Directory>
+</VirtualHost>
