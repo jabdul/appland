@@ -4,9 +4,9 @@ define(function (require) {
   var angular = require('angular');
   var services = require('./services/services');
   var controllers = require('./controllers/controllers');
-  //var directives = require('./directives/directives');
+  var directives = require('./directives/directives');
 
-  var app = angular.module('articles', ['services', 'controllers'/*, 'directives'*/, 'ngRoute']);
+  var app = angular.module('articles', ['services', 'controllers', 'directives', 'ngRoute']);
 
   app.init = function () {
     angular.bootstrap(document, ['articles']);
