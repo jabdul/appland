@@ -77,7 +77,7 @@ Find and replace this text...
 
 
 #### Congratulations!!! ####
-You are now ready to fire up your server. Start or restart you Apache server and go to `http://localhost:9010/` in your browser. There you will find your administrative area for managing and monitoring your modules.
+You are now ready to fire up your server. Start or restart your Apache server and go to `http://localhost:9010/` in your browser. There you will find your administrative area for managing and monitoring your modules.
 
 ###### Next steps ######
 
