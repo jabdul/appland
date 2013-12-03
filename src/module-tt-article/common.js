@@ -9,9 +9,6 @@ requirejs.config({
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
-    'angular': {
-      exports: 'angular'
-    },
     'Log4javascript' :  {
       exports :  'log4javascript'
     }
