@@ -1,11 +1,11 @@
 define(
 [
   'lib/requirejs/i18n!nls/conf',
-  'core/func',
+  'core/util',
   'core/storage-cookie',
   'log4javascript'],
 
-function (AppConfig, Func, Cookie, Log4j) {
+function (AppConfig, Util, Cookie, Log4j) {
 
   function App() {
     /**
@@ -24,7 +24,7 @@ function (AppConfig, Func, Cookie, Log4j) {
      * @type {object}
      * @private
      */
-    var func = Func;
+    var util = Util;
     /**
      * Environment.
      * DEVELOPMENT | TESTING | PRODUCTION
@@ -134,10 +134,10 @@ function (AppConfig, Func, Cookie, Log4j) {
     function setEnv() {
       var host = document.location.host;
       switch (true) {
-        case /(^127\.0\.0\.[0-9]|^localhost):900[0-9]/.test(host):
+        case /(^127\.0\.0\.[0-9]|^localhost):901[0-9]/.test(host):
           ENV = 'DEVELOPMENT';
           break;
-        case /(^localhost)|(^frln2sweb25)|(^dvln2dapp28)|(^frln2pweb15)|(^dev)|(^test)|(^poc)/.test(host):
+        case /(^localhost)/.test(host):
           ENV = 'TESTING';
           break;
         default:
@@ -150,7 +150,7 @@ function (AppConfig, Func, Cookie, Log4j) {
     init();
 
     var publicMethods = {
-      Func: func,
+      Util: util,
       Cookie: cookie,
       /**
        * Modify App's configuration properties.
@@ -352,8 +352,7 @@ function (AppConfig, Func, Cookie, Log4j) {
         ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
-        ga.src = ('https:' == document.location.protocol
-                  ? 'https://ssl'
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl'
                   : 'http://www') + '.google-analytics.com/ga.js';
         s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);

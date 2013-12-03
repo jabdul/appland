@@ -5,7 +5,7 @@ module.exports = function(grunt) {
         'src/**/*.js', 'src/**/*.json',
         '!src/lib/**/*.js', '!src/lib/**/*.json',
         'src-test/**/*.js', '!src-test/lib/**/*.js',
-        '.skel/**/*.js', '.skel/**/*.json'
+        '.skel/**/*.js', '.skel/**/*.json', '!.skel/_build/**/*.js'
       ];
 
   // Project configuration.
@@ -27,11 +27,14 @@ module.exports = function(grunt) {
         globals: {
           jQuery: false
         }
+      },
+      ignore_warning: {
+        options: {
+        }
       }
     }
   });
   // Load the plugins
-  grunt.loadNpmTasks('grunt-qunit-junit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');

@@ -1,10 +1,10 @@
 require(['module.config.js'], function () {
   require([
-      'jquery'
-      ,'../src-test/module-appland/index'],
-    function (
-      $
-      ,moduleAppland) {
+      'jquery',
+      '../src-test/module-appland/index'
+  ], function (
+      $,
+      moduleAppland) {
 
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;

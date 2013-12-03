@@ -27,7 +27,7 @@ define(function () {
      * Information is tied to 'origin'(scheme, host, port).
      * LocalStorage is supported in these browsers:
      * IE	Firefox		Safari	Chrome	Opera	IPhone	Android
-     * 8+	3.5			  4.0+	  4.0+	  10.5+	2.0+	  2.0+
+     * 8+ 3.5       4.0+    4.0+    10.5+ 2.0+    2.0+
      *
      * @return object
      * @exception e

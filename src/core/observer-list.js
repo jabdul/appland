@@ -28,15 +28,13 @@ define(function () {
     },
     /**
      * Empty collection of Observers.
-     * @param {null}
-     * @returns {null}
+     * @returns {undefined}
      */
     Empty: function () {
       this.observerList = [];
     },
     /**
      * Number of items (Observers) in collection.
-     * @param {null}
      * @returns {number} Number of items.
      */
     Count: function () {
@@ -91,7 +89,7 @@ define(function () {
     /**
      * Remove Observer from collection.Either at the beginning or end of list.
      * @param {number} Index position of Observer.
-     * @returns {null}
+     * @returns {undefined}
      */
     RemoveAt: function (index) {
       if( index === 0 ){

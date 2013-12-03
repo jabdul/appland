@@ -12,11 +12,11 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j) {
 
   // Setup logger
   // The getLogger string argument must be prefixed with Apl.Modules.
-  ModuleConfig['module-appland']['Log']
-      = Log4j.getLogger( 'Apl.Modules.Appland' );
+  ModuleConfig['module-appland'].Log =
+    Log4j.getLogger( 'Apl.Modules.Appland' );
   // Enable / disable logging
   App.setLogging({
-      'setEnabled': AppConfig['App']['Logging']['setEnabled']
+      'setEnabled': AppConfig.App.Logging.setEnabled
   });
 
 	App.setModuleConfig({

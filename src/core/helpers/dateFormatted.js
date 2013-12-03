@@ -19,7 +19,7 @@ define([
               throw new Error("Not a date!");
           }
       } else {
-        throw new Error("No date was supplied for helper")
+        throw new Error("No date was supplied for helper");
       }
 
   }
