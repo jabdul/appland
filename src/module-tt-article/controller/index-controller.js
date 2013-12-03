@@ -22,7 +22,7 @@ define([
        * @returns {undefined}
        */
       function init() {
-        renderView(moduleConfig.labels[0]['LABEL_0']);
+        renderView(moduleConfig.labels[0].LABEL_0);
         delegateEvents();
       }
       /**
@@ -43,7 +43,7 @@ define([
           .on("click.tt.articles",
            '#tt-articles-articles', function (e) {
 
-              renderView(moduleConfig.labels[1]['LABEL_1']);
+              renderView(moduleConfig.labels[1].LABEL_1);
               var $articles = $(appContainerEl).find('.tt-articles-container');
 
               if ($articles.length) {
@@ -58,7 +58,7 @@ define([
           .on("click.tt.articles",
             '#tt-articles-home', function (e) {
               $(appContainerEl).find('.tt-articles-container').hide();
-              renderView(moduleConfig.labels[0]['LABEL_0']);
+              renderView(moduleConfig.labels[0].LABEL_0);
               e.preventDefault();
           })
           .on("click.tt.articles",
@@ -74,7 +74,7 @@ define([
               $toggle.text('show more');
             }
 
-            $tags.each(function( i, el ) {
+            $tags.each(function( i, el) {
               $(el).toggleClass('tt-articles-tag-show');
             });
             e.preventDefault();

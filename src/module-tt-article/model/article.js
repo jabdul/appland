@@ -101,8 +101,8 @@ define([
        * @returns {boolean}
        */
       isMoreTags: function () {
-        return !!(( App.getDataType(this.tags) == "[object Array]"
-            && this.tags.length > this.maxDefaultTags));
+        return !!(( App.getDataType(this.tags) == "[object Array]" &&
+          this.tags.length > this.maxDefaultTags));
       },
       /**
        * Sets maximum default tags to display.
