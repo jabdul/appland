@@ -73,7 +73,7 @@ Find and replace this text...
 
 	C:/path/to/
 
-...with the path to your appland project.
+...with the path to your `Appland` project.
 
 
 #### Congratulations!!! ####
