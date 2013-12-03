@@ -19,7 +19,8 @@ define({
           }
         }
       },
-      "maxDefaultTags": 2
+      "maxDefaultTags": 2,
+      "activeArticles": 6
     }
   },
   "zh-cn": true

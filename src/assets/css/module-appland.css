@@ -8638,6 +8638,21 @@ td.visible-print {
  *   Responsive system.
  * @see http://getbootstrap.com/css/#grid
  */
+/* line 8, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-tags li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 2px;
+}
+/* line 13, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-tags .tt-articles-tag-more {
+  display: none;
+}
+/* line 16, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-tags .tt-articles-tag-show.tt-articles-tag-more {
+  display: inline-block;
+}
+
 /**
  *   less than 768px
  * 

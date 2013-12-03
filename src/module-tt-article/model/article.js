@@ -24,7 +24,7 @@ define([
        * @type {boolean}
        * @private
        */
-      this.isActive = Boolean(o.isActive) || false;
+      this.isActive = !!(o.isActive);
       /**
        * Image url.
        * @type {string}
@@ -76,7 +76,7 @@ define([
        * @returns {boolean}
        */
       isItemActive: function () {
-        return !!(this.isActive);
+        return this.isActive;
       },
       /**
        * Prepares more or less tags.

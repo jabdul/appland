@@ -2,6 +2,22 @@
  *   Responsive system.
  * @see http://getbootstrap.com/css/#grid
  */
+#tt-articles-content {
+
+  .tt-articles-tags {
+    li {
+      display: inline-block;
+      list-style-type: none;
+      margin-right: 2px;
+    }
+    .tt-articles-tag-more {
+      display:none;
+    }
+    .tt-articles-tag-show.tt-articles-tag-more {
+      display: inline-block;
+    }
+  }
+}
 @import "mobile/mobile";
 @import "tablet/tablet";
 @import "desktop/desktop";

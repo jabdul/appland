@@ -2,7 +2,7 @@ define([
   'module-tt-article/app',
   'lib/requirejs/domReady!',
   'jquery',
-  'module-tt-article/factory/article-factory',
+  'module-tt-article/factory/article-factory'
 ],
   function (App, Doc, $, ArticleFactory) {
     function IndexController() {
@@ -40,7 +40,7 @@ define([
        */
       function delegateEvents() {
         $(Doc)
-         .on("click.tt.articles",
+          .on("click.tt.articles",
            '#tt-articles-articles', function (e) {
 
               renderView(moduleConfig.labels[1]['LABEL_1']);
@@ -54,17 +54,29 @@ define([
               var Articles = new ArticleFactory([]);
               Articles.findArticles();
               e.preventDefault();
-         })
-         .on("click.tt.articles",
+          })
+          .on("click.tt.articles",
             '#tt-articles-home', function (e) {
               $(appContainerEl).find('.tt-articles-container').hide();
               renderView(moduleConfig.labels[0]['LABEL_0']);
               e.preventDefault();
-         })
+          })
           .on("click.tt.articles",
           '#tt-articles-more', function (e) {
-            $(appContainerEl).find('.tt-articles-container').hide();
-            renderView(moduleConfig.labels[0]['LABEL_0']);
+            var $tags = $(this).parent()
+                          .find('.tt-articles-tags')
+                          .children('li.tt-articles-tag-more'),
+                $toggle = $(this).parent().find('#tt-articles-more');
+
+            if ($toggle.text() == 'show more') {
+              $toggle.text('show less');
+            } else {
+              $toggle.text('show more');
+            }
+
+            $tags.each(function( i, el ) {
+              $(el).toggleClass('tt-articles-tag-show');
+            });
             e.preventDefault();
           });
       }

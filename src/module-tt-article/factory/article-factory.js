@@ -50,15 +50,13 @@ define([
       /**
        * Generates HTML markup of Info Mode items.
        * @param {boolean} addContainer
-       * @param {number} batchSize Number os items in a batch.
-       * @param {number} numCompletedBatches The number of batch requests to server.
-       *                This starts from zero.
-       * @param {number} totalItemsInQueue Total number of items in the queue.
+       * @param {number} maxActive Items Number os items to display.
        * @returns {boolean} FALSE if no items were generated, TRUE otherwise.
        */
-      generateHtml: function (addContainer) {
+      generateHtml: function (addContainer, maxActiveItems) {
         var i = 0,
-            item = null;
+            item = null,
+            activeItems = 0;
 
         this.itemsCount = this.items.length;
 
@@ -68,8 +66,16 @@ define([
 
         for (; i < this.itemsCount; i++)  {
           item = new Article(this.items[i]);
+          if (item.isItemActive()) {
+            activeItems++;
+          }
           item.setMaxDefaultTags(this.moduleConfig.maxDefaultTags);
-          this.view[i] = item.generateHtml();
+          if (activeItems <= maxActiveItems) {
+            this.view[i] = item.generateHtml();
+          }
+          if (activeItems === maxActiveItems) {
+            break;
+          }
           this.itemsList[i] = item;
         }
 
@@ -171,7 +177,7 @@ define([
        */
       renderViewMarkup: function (data) {
         this.setItems(data);
-        this.generateHtml(true);
+        this.generateHtml(true, this.moduleConfig.activeArticles);
         $('#tt-articles-content').append( this.getView(true) );
       }
     };

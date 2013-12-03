@@ -4,12 +4,12 @@
     <p>{{ARTICLE_DESCRIPTION}}</p>
 
     {{#if TAGS}}
-        <ul>
+        <ul class="tt-articles-tags">
             {{#each LESS_TAGS}}
-                <li class="tt-articles-tag">{{this}}</li>
+                <li>{{this}}</li>
             {{/each}}
             {{#each MORE_TAGS}}
-                <li class="tt-articles-more-tag">{{this}}</li>
+                <li class="tt-articles-tag-more">{{this}}</li>
             {{/each}}
         </ul>
 
