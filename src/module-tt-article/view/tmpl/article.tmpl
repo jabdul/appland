@@ -1,9 +1,21 @@
-<div>
-    <img src="[image-url]" alt="[article-title]" />
-    <h4>[article-title]</h4>
-    <p>[article-description]</p>
-    <ul>
-        <li>[tag]</li>
-    </ul>
-    <a href="#">show more</a>
+<div id="tt-articles-article-{{ID}}">
+    <img src="{{IMAGE_URL}}" alt="{{ARTICLE_TITLE}}" />
+    <h4>{{ARTICLE_TITLE}}</h4>
+    <p>{{ARTICLE_DESCRIPTION}}</p>
+
+    {{#if TAGS}}
+        <ul>
+            {{#each LESS_TAGS}}
+                <li class="tt-articles-tag">{{this}}</li>
+            {{/each}}
+            {{#each MORE_TAGS}}
+                <li class="tt-articles-more-tag">{{this}}</li>
+            {{/each}}
+        </ul>
+
+        {{#if SHOW_MORE_TAGS}}
+            <a href="#" id="tt-articles-more">show more</a>
+        {{/if}}
+    {{/if}}
+
 </div>

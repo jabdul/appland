@@ -1,14 +1,25 @@
 define({
   "root": {
     "module-tt-article": {
-      "projectName": 'Articles',
+      "projectName": 'Talk Talk Articles',
       "nameSpaces":['tt-articles-'],
       "labels": [
-        {"LABEL_0": "WELCOME TO THE NEW ADVANCED SEARCH FROM WGSN"},
-        {"LABEL_1": "close"},
-        {"LABEL_2": "EXPLORE OVER 5M UNIQUE IMAGES"}
+        {"LABEL_0": "Welcome"},
+        {"LABEL_1": "Articles"}
       ],
-      "pathToAssets": "../"
+      "pathToAssets": "../",
+      "services": {
+        "findArticles": {
+          "resource": "",
+          "path": "/raw.php?",
+          'isLocal': false,
+          "httpRequestMethod": "GET",
+          "params": {
+            "i": "bfUB0TPQ"
+          }
+        }
+      },
+      "maxDefaultTags": 2
     }
   },
   "zh-cn": true

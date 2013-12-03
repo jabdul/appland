@@ -6,18 +6,11 @@ requirejs.config({
     'hbs': 'lib/hbs/hbs',
     'handlebars': 'lib/handlebars/handlebars',
     'json': 'lib/requirejs/json',
-    'angular': 'lib/angular/angular',
-    'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed',
-    'angular-route': 'lib/angular-route/angular-route'
-    /*'app': 'module-tt-article/controller/index-controller',
-    'routes': 'module-tt-article/route/routes' */
+    'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
     'angular': {
       exports: 'angular'
-    },
-    'angular-route': {
-      deps: ['angular']
     },
     'Log4javascript' :  {
       exports :  'log4javascript'
@@ -44,22 +37,8 @@ requirejs.config({
 });
 
 require([
-  'module-tt-article/controller/index-controller',
-  'angular-route'
+  'module-tt-article/controller/index-controller'
 ],
-  function (IndexController, angularRoute) {
-   IndexController.init();
+  function (IndexController) {
+    IndexController.init();
   });
-/*
-define([
-  'require',
-  'angular',
-  'app',
-  'routes'
-], function (require, ng) {
-  'use strict';
-
-  require(['lib/requirejs/domReady!'], function (document) {
-    ng.bootstrap(document, ['app']);
-  });
-}); */

@@ -1,55 +1,79 @@
-define(function (require) {
-  'use strict';
+define([
+  'module-tt-article/app',
+  'lib/requirejs/domReady!',
+  'jquery',
+  'module-tt-article/factory/article-factory',
+],
+  function (App, Doc, $, ArticleFactory) {
+    function IndexController() {
+      /**
+       * App's DOM Container Element.
+       * @type {Object}
+       */
+      var appContainerEl = $('#tt-articles-content');
+      /**
+       * Module's configuration.
+       * @type {Object}
+       */
+      var moduleConfig = App.getModuleConfig('module-tt-article');
+      /**
+       * Script initialiser.
+       * Executes a set of actions at start.
+       * @returns {undefined}
+       */
+      function init() {
+        renderView(moduleConfig.labels[0]['LABEL_0']);
+        delegateEvents();
+      }
+      /**
+       * Renders the view templates.
+       * @param {string} title
+       * @returns {undefined}
+       */
+      function renderView(title) {
+        $(appContainerEl).find('.tt-articles-title')
+          .text(title);
+      }
+      /**
+       * Event delegation.
+       * @returns {undefined}
+       */
+      function delegateEvents() {
+        $(Doc)
+         .on("click.tt.articles",
+           '#tt-articles-articles', function (e) {
 
-  var angular = require('angular');
-  var services = require('./services/services');
-  var controllers = require('./controllers/controllers');
-  var directives = require('./directives/directives');
+              renderView(moduleConfig.labels[1]['LABEL_1']);
+              var $articles = $(appContainerEl).find('.tt-articles-container');
 
-  var app = angular.module('articles', ['services', 'controllers', 'directives', 'ngRoute']);
+              if ($articles.length) {
+                $articles.show();
+                return;
+              }
 
-  app.init = function () {
-    angular.bootstrap(document, ['articles']);
-  };
+              var Articles = new ArticleFactory([]);
+              Articles.findArticles();
+              e.preventDefault();
+         })
+         .on("click.tt.articles",
+            '#tt-articles-home', function (e) {
+              $(appContainerEl).find('.tt-articles-container').hide();
+              renderView(moduleConfig.labels[0]['LABEL_0']);
+              e.preventDefault();
+         })
+          .on("click.tt.articles",
+          '#tt-articles-more', function (e) {
+            $(appContainerEl).find('.tt-articles-container').hide();
+            renderView(moduleConfig.labels[0]['LABEL_0']);
+            e.preventDefault();
+          });
+      }
 
-  app.config(['$routeProvider', '$locationProvider', '$httpProvider',
-    function ($routeProvider, $locationProvider, $httpProvider) {
-      //$httpProvider.responseInterceptors.push('httpInterceptor');
+      var publicMethods = {
+        init: init
+      };
 
-      $routeProvider
-        .when('/', { templateUrl: '../view/tmpl/article.tmpl', controller: 'homepageController' })
-        .when('/articles', { templateUrl: '../view/tmpl/article.tmpl', controller: 'articlesController' })
-        .otherwise({ redirectTo: '/' });
-
-      $locationProvider.html5Mode(true);
+      return publicMethods;
     }
-  ]);
-
-  app.run(function ($window/*, auth, user*/) {
-    /*auth.setAuthorizationHeaders();
-    user.initialize();*/
+    return IndexController();
   });
-
-  return app;
-});
-
-
-/*define([
-  'angular',
-  'angular-route',
-  'controllers/index',
-  'directives/index',
-  'filters/index',
-  'services/index'
-], function (ng) {
-  'use strict';
-
-  return ng.module('app', [
-    'app.controllers',
-    'app.directives',
-    'app.filters',
-    'app.services',
-    'ngRoute'
-  ]);
-}); */
-
