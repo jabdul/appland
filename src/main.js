@@ -1,11 +1,9 @@
-define(
-[
+define([
   'lib/requirejs/i18n!nls/conf',
   'core/util',
-  'core/storage-cookie',
-  'log4javascript'],
-
-function (AppConfig, Util, Cookie, Log4j) {
+  'log4javascript'
+],
+function (AppConfig, Util, Log4j) {
 
   function App() {
     /**
@@ -14,11 +12,6 @@ function (AppConfig, Util, Cookie, Log4j) {
      * @private
      */
     var connection = null;
-    /**
-     * Cookie manager
-     * @type {object}
-     */
-    var cookie = Cookie;
     /**
      * Function Helpers.
      * @type {object}
@@ -151,7 +144,6 @@ function (AppConfig, Util, Cookie, Log4j) {
 
     var publicMethods = {
       Util: util,
-      Cookie: cookie,
       /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject

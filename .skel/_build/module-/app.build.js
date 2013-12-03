@@ -29,7 +29,7 @@
         'underscore',
         'json',
         'core/connect',
-        'core/func',
+        'core/util',
         'main'
       ]
     },
