@@ -450,18 +450,56 @@ table {
  *   Responsive system.
  * @see http://getbootstrap.com/css/#grid
  */
-/* line 8, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-tags li {
+/* line 5, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content {
+  width: 960px;
+}
+/* line 7, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content ul.tt-articles-menu {
+  float: left;
+  width: 300px;
+  clear: both;
+}
+/* line 11, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content ul.tt-articles-menu li {
+  display: inline-block;
+  list-style-type: none;
+  margin-right: 10px;
+}
+/* line 17, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content h1 {
+  float: right;
+  width: 600px;
+  clear: both;
+  text-align: center;
+}
+/* line 23, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container {
+  float: right;
+  width: 650px;
+}
+/* line 27, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container .tt-articles-items {
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #d3d3d3;
+  padding-bottom: 10px;
+}
+/* line 33, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container .tt-articles-tags {
+  padding-left: 0;
+}
+/* line 35, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container .tt-articles-tags li {
   display: inline-block;
   list-style-type: none;
   margin-right: 2px;
 }
-/* line 13, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-tags .tt-articles-tag-more {
+/* line 40, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container .tt-articles-tags .tt-articles-tag-more {
   display: none;
 }
-/* line 16, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-tags .tt-articles-tag-show.tt-articles-tag-more {
+/* line 43, ../sass/module-tt-article/_tt-article.scss */
+#tt-articles-content .tt-articles-container .tt-articles-tags .tt-articles-tag-show.tt-articles-tag-more {
   display: inline-block;
 }
 

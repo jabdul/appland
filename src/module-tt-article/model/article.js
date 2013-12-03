@@ -24,7 +24,7 @@ define([
        * @type {boolean}
        * @private
        */
-      this.isActive = !!(o.isActive);
+      this.isActive = o.isActive || false;
       /**
        * Image url.
        * @type {string}
