@@ -32,12 +32,18 @@ define([
       });
 
       it("checks the initialised properties", function () {
-        expect(that.Article.id).toBe(that.testArticles[that.testArticleId].id);
-        expect(that.Article.isActive).toBe(that.testArticles[that.testArticleId].isActive);
-        expect(that.Article.image).toBe(that.testArticles[that.testArticleId].image);
-        expect(that.Article.title).toBe(that.testArticles[that.testArticleId].title);
-        expect(that.Article.description).toBe(that.testArticles[that.testArticleId].description);
-        expect(that.Article.tags).toEqual(that.testArticles[that.testArticleId].tags);
+        expect(that.Article.id).
+          toBe(that.testArticles[that.testArticleId].id);
+        expect(that.Article.isActive).
+          toBe(that.testArticles[that.testArticleId].isActive);
+        expect(that.Article.image).
+          toBe(that.testArticles[that.testArticleId].image);
+        expect(that.Article.title).
+          toBe(that.testArticles[that.testArticleId].title);
+        expect(that.Article.description).
+          toBe(that.testArticles[that.testArticleId].description);
+        expect(that.Article.tags).
+          toEqual(that.testArticles[that.testArticleId].tags);
       });
 
       it("is active", function () {
@@ -45,7 +51,8 @@ define([
       });
 
       it("is to show no more than specified number of tags by default", function () {
-        expect(that.Article.maxDefaultTags).toEqual(that.mainConf.maxDefaultTags);
+        expect(that.Article.maxDefaultTags).
+          toEqual(that.mainConf.maxDefaultTags);
       });
 
       it("prepares default tags", function () {
