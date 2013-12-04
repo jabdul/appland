@@ -7,11 +7,11 @@ define([
 ],
   function (App, $, Article, ArticlesOpenTmpl, ArticlesCloseTmpl) {
     /**
-     * Image Viewer mode factory.
-     * The creator of mode instance items.
-     * @param {Array.<object>} items Ordered list of WGSN images data.
+     * Articles' factory.
+     * The creator of article instance items.
+     * @param {Array.<object>} items Ordered list of Articles' data.
      * @constructor
-     * @returns {null}
+     * @returns {undefined}
      */
     function ArticleFactory (items) {
       /**
@@ -50,7 +50,7 @@ define([
       /**
        * Generates HTML markup of Info Mode items.
        * @param {boolean} addContainer
-       * @param {number} maxActive Items Number os items to display.
+       * @param {number} maxActiveItems Number os items to display.
        * @returns {boolean} FALSE if no items were generated, TRUE otherwise.
        */
       generateHtml: function (addContainer, maxActiveItems) {

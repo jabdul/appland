@@ -1,9 +1,8 @@
 define([
   'module-tt-article/app',
-  'lib/requirejs/hbs!module-tt-article/view/tmpl/article',
   'lib/requirejs/hbs!module-tt-article/view/tmpl/article'
 ],
-  function (App, ArticleTmpl, TagTmpl) {
+  function (App, ArticleTmpl) {
     /**
      * Article.
      * @constructor
@@ -106,7 +105,8 @@ define([
       },
       /**
        * Sets maximum default tags to display.
-       * @returns {number}
+       * @param {number} max
+       * @returns {undefined}
        */
       setMaxDefaultTags: function (max) {
         this.maxDefaultTags = max;
