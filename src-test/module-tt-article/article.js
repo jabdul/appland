@@ -1,9 +1,10 @@
 define([
   'module-tt-article/app',
   'module-tt-article/model/article',
-  'lib/requirejs/hbs!module-tt-article/view/tmpl/article'
+  'lib/requirejs/hbs!module-tt-article/view/tmpl/article',
+  'lib/requirejs/text!module-tt-article/data/mock-articles.json'
 ],
-  function (App, ArticleObj, ArticleTmpl) {
+  function (App, ArticleObj, ArticleTmpl, mockArticlesJson) {
     /**
      * Article's test suite.
      */
@@ -14,17 +15,18 @@ define([
       that.$container = $('.tt-articles-items');
       that.App = App;
       that.mainConf = App.getModuleConfig('module-tt-article');
-      that.testArticles = [{
+      /*that.testArticles = [{
         id: 2,
         isActive: true,
         image: "http://placehold.it/72x80",
         title: "reprehenderit ad eiusmod",
         description: "Exercitation aliqua minim proident adipisicing incididunt cupidatat laboris nisi. Mollit consectetur magna amet cupidatat adipisicing dolor fugiat. Deserunt aliqua anim eiusmod elit fugiat culpa ea. Est irure exercitation enim occaecat Lorem pariatur. Nulla reprehenderit magna ad nulla sint velit laborum aliquip aliquip minim ut. Et irure laborum magna excepteur tempor. ",
         tags: ["ea","aute","ea","aliqua","do"]
-      }];
+      }];*/
+      that.testArticles = $.parseJSON(mockArticlesJson).articles;
 
       beforeEach(function () {
-        that.Article = new ArticleObj(that.testArticles[0]);
+        that.Article = new ArticleObj(that.testArticles[2]);
         that.Article.setMaxDefaultTags(that.mainConf.maxDefaultTags);
       });
 
@@ -37,12 +39,12 @@ define([
       });
 
       it("checks the initialised properties", function () {
-        expect(that.Article.id).toBe(that.testArticles[0].id);
-        expect(that.Article.isActive).toBe(that.testArticles[0].isActive);
-        expect(that.Article.image).toBe(that.testArticles[0].image);
-        expect(that.Article.title).toBe(that.testArticles[0].title);
-        expect(that.Article.description).toBe(that.testArticles[0].description);
-        expect(that.Article.tags).toEqual(that.testArticles[0].tags);
+        expect(that.Article.id).toBe(that.testArticles[2].id);
+        expect(that.Article.isActive).toBe(that.testArticles[2].isActive);
+        expect(that.Article.image).toBe(that.testArticles[2].image);
+        expect(that.Article.title).toBe(that.testArticles[2].title);
+        expect(that.Article.description).toBe(that.testArticles[2].description);
+        expect(that.Article.tags).toEqual(that.testArticles[2].tags);
       });
 
       it("is active", function () {
@@ -67,7 +69,7 @@ define([
         spyOn(that.Article, 'setTagsMaxToShow');
         spyOn(that.Article, 'isMoreTags');
         expect($(that.Article.generateHtml())).
-          toHaveId("tt-articles-article-" + that.testArticles[0].id);
+          toHaveId("tt-articles-article-" + that.testArticles[2].id);
         expect(that.Article.setTagsMaxToShow).toHaveBeenCalled();
         expect(that.Article.isMoreTags).toHaveBeenCalled();
       });
