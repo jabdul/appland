@@ -1,10 +1,12 @@
 require(['module.config.js'], function () {
   require([
-      'jquery',
-      '../src-test/module-appland/index'
+    'jquery',
+    '../src-test/module-appland/index',
+    '../src-test/module-tt-article/index'
   ], function (
       $,
-      moduleAppland) {
+      moduleAppland,
+      moduleTtArticle) {
 
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;
@@ -21,7 +23,8 @@ require(['module.config.js'], function () {
     var specs = [],
         TESTS_DIR = '../src-test/',
         testSuites = [
-          moduleAppland
+          moduleAppland,
+          moduleTtArticle
         ];
 
     loadTestSuites(testSuites);

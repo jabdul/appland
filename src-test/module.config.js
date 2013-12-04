@@ -2,7 +2,7 @@ requirejs.config({
   baseUrl: '../src/',
   waitSeconds: 14,
   paths: {
-    'jquery': 'core/jquery-loader', /* See file for version. */
+    'jquery': 'lib/jquery-1-9-1/jquery', /* jQuery Version 1.9.1 */
     'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/hbs/hbs',
     'handlebars': 'lib/handlebars/handlebars',

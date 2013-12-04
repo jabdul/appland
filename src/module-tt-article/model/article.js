@@ -60,16 +60,15 @@ define([
        * @private
        */
       this.moreTags = [];
-      /**
-       * Maximum default tag to show.
-       * @type {number}
-       * @private
-       */
-      this.maxDefaultTags = 0;
     }
 
     Article.prototype = {
       constructor: Article,
+      /**
+       * Maximum default tag to show.
+       * @type {number}
+       */
+      maxDefaultTags: 0,
       /**
        * Returns item's status.
        * @returns {boolean}

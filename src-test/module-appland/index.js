@@ -7,7 +7,6 @@ define([], function () {
      */
     var TEST_SUITE = 'module-appland';
 
-
     /**
      * Load test cases.
      * @returns {Array}
