@@ -15,14 +15,6 @@ define([
       that.$container = $('.tt-articles-items');
       that.App = App;
       that.mainConf = App.getModuleConfig('module-tt-article');
-      /*that.testArticles = [{
-        id: 2,
-        isActive: true,
-        image: "http://placehold.it/72x80",
-        title: "reprehenderit ad eiusmod",
-        description: "Exercitation aliqua minim proident adipisicing incididunt cupidatat laboris nisi. Mollit consectetur magna amet cupidatat adipisicing dolor fugiat. Deserunt aliqua anim eiusmod elit fugiat culpa ea. Est irure exercitation enim occaecat Lorem pariatur. Nulla reprehenderit magna ad nulla sint velit laborum aliquip aliquip minim ut. Et irure laborum magna excepteur tempor. ",
-        tags: ["ea","aute","ea","aliqua","do"]
-      }];*/
       that.testArticles = $.parseJSON(mockArticlesJson).articles;
 
       beforeEach(function () {
