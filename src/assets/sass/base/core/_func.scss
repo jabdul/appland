@@ -1,0 +1,10 @@
+/**
+ * Pixels to Ems
+ *
+ * Convert pixels to ems.
+ * @param number $px Value in pixels.
+ * @param number $m Multiplier used to for calibration.
+ */
+@function apl-func-px-to-em($px, $m) {
+  @return ($px * $apl-var-px-to-em) * $m + em;
+}

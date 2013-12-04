@@ -1,1 +1,112 @@
 @import 'compass/css3';
+
+/**
+ * Message and alert boxes
+ * @see http://ghettocooler.net/2005/11/13/image-floats-without-the-text-wrap/
+ * @see http://css.dzone.com/news/css-message-boxes-different-me
+ * @see http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/default.html
+ * @see http://www.iconarchive.com/show/delikate-icons-by-kyo-tux/Info-icon.html
+ */
+@mixin apl-mixin-msg-status-error (
+$showIcon: true,
+$setShadow: false,
+$setRadius: false) {
+
+  font-size: 11px;
+  border: 1px solid;
+  margin: 0;
+  padding:15px 10px 15px 40px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  background-color: #fcc1b9;
+  color:#dd7368;
+  background-image: url($img72 + 'gif/icon-error-24.gif');
+  span {
+    padding-left: 0;
+    padding-top: 5px;
+    div {
+      //display: inline-block;
+      width: inherit;
+    }
+  }
+  @if $showIcon == false {
+    background-image: none;
+    padding: 5px;
+    span {
+      padding: 0;
+    }
+  }
+  @if $setShadow == true {
+  //single-box-shadow($color, $hoff, $voff, $blur, $spread, $inset)
+    @include single-box-shadow(#981b1f, 1px, 3px, 8px, 1px, false);
+  }
+  @if $setRadius == true {
+    @include border-radius(3px, 3px);
+  }
+}
+/**
+ * Info alert
+ */
+@mixin apl-mixin-msg-status-info (
+$showIcon: true,
+$setShadow: false,
+$setRadius: false) {
+
+  @include apl-mixin-msg-status-error($showIcon);
+  background-color: #f7f8f9;
+  color:#2c4f62;
+
+  @if $showIcon == true {
+    background-image: url($img72 + 'gif/icon-info-24.gif');
+  }
+  @if $setShadow == true {
+    @include single-box-shadow(#2c4f62, 1px, 3px, 8px, 1px, false);
+  }
+  @if $setRadius == true {
+    @include border-radius(3px, 3px);
+  }
+}
+/**
+ * Warning alert
+ */
+@mixin apl-mixin-msg-status-warning (
+$showIcon: true,
+$setShadow: false,
+$setRadius: false) {
+
+  @include apl-mixin-msg-status-error($showIcon);
+  background-color: #f8f8f8;
+  color:#98701b;
+
+  @if $showIcon == true {
+    background-image: url($img72 + 'gif/icon-warn-24.gif');
+  }
+  @if $setShadow == true {
+    @include single-box-shadow(#98701b, 1px, 3px, 8px, 1px, false);
+  }
+  @if $setRadius == true {
+    @include border-radius(3px, 3px);
+  }
+}
+/**
+ * Success alert
+ */
+@mixin apl-mixin-msg-status-success (
+$showIcon: true,
+$setShadow: false,
+$setRadius: false) {
+
+  @include apl-mixin-msg-status-error($showIcon);
+  background-color: #f5f7f5;
+  color:#2f622c;
+
+  @if $showIcon == true {
+    background-image: url($img72 + 'gif/icon-success-24.gif');
+  }
+  @if $setShadow == true {
+    @include single-box-shadow(#2f622c, 1px, 3px, 8px, 1px, false);
+  }
+  @if $setRadius == true {
+    @include border-radius(3px, 3px);
+  }
+}
