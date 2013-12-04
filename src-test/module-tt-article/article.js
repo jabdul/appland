@@ -16,9 +16,10 @@ define([
       that.App = App;
       that.mainConf = App.getModuleConfig('module-tt-article');
       that.testArticles = $.parseJSON(mockArticlesJson).articles;
+      that.testArticleId = 2;
 
       beforeEach(function () {
-        that.Article = new ArticleObj(that.testArticles[2]);
+        that.Article = new ArticleObj(that.testArticles[that.testArticleId]);
         that.Article.setMaxDefaultTags(that.mainConf.maxDefaultTags);
       });
 
@@ -31,12 +32,12 @@ define([
       });
 
       it("checks the initialised properties", function () {
-        expect(that.Article.id).toBe(that.testArticles[2].id);
-        expect(that.Article.isActive).toBe(that.testArticles[2].isActive);
-        expect(that.Article.image).toBe(that.testArticles[2].image);
-        expect(that.Article.title).toBe(that.testArticles[2].title);
-        expect(that.Article.description).toBe(that.testArticles[2].description);
-        expect(that.Article.tags).toEqual(that.testArticles[2].tags);
+        expect(that.Article.id).toBe(that.testArticles[that.testArticleId].id);
+        expect(that.Article.isActive).toBe(that.testArticles[that.testArticleId].isActive);
+        expect(that.Article.image).toBe(that.testArticles[that.testArticleId].image);
+        expect(that.Article.title).toBe(that.testArticles[that.testArticleId].title);
+        expect(that.Article.description).toBe(that.testArticles[that.testArticleId].description);
+        expect(that.Article.tags).toEqual(that.testArticles[that.testArticleId].tags);
       });
 
       it("is active", function () {
@@ -61,7 +62,7 @@ define([
         spyOn(that.Article, 'setTagsMaxToShow');
         spyOn(that.Article, 'isMoreTags');
         expect($(that.Article.generateHtml())).
-          toHaveId("tt-articles-article-" + that.testArticles[2].id);
+          toHaveId("tt-articles-article-" + that.testArticles[that.testArticleId].id);
         expect(that.Article.setTagsMaxToShow).toHaveBeenCalled();
         expect(that.Article.isMoreTags).toHaveBeenCalled();
       });
