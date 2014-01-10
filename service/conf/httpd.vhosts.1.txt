@@ -4,8 +4,10 @@ NameVirtualHost *:9011
 Listen *:9011
 NameVirtualHost *:9012
 Listen *:9012
+NameVirtualHost *:9013
+Listen *:9013
 
-## Appland - Client ##
+## Appland - UI ##
 <VirtualHost *:9010>
     ServerAdmin admin@myemail.com
     DocumentRoot "C:/path/to/appland/src/"
@@ -16,7 +18,33 @@ Listen *:9012
         Options All MultiViews
         AllowOverride all
         Order Allow,Deny
-		Allow from all
+		    Allow from all
+
+        # Compress these files on response to requests...
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+    </Directory>
+</VirtualHost>
+
+## Appland - Test ##
+<VirtualHost *:9011>
+    ServerAdmin admin@myemail.com
+    DocumentRoot "C:/path/to/appland/"
+    ServerName appland.test
+    SetEnv APPLICATION_ENV "testing"
+
+    <Directory "C:/path/to/appland/">
+        Options All MultiViews
+        AllowOverride all
+        Order Allow,Deny
+		    Allow from all
 
         # Compress these files on response to requests...
         AddOutputFilterByType DEFLATE text/plain
@@ -32,7 +60,7 @@ Listen *:9012
 </VirtualHost>
 
 ## Appland - Web Services ##
-<VirtualHost *:9011>
+<VirtualHost *:9012>
     ServerAdmin admin@myemail.com
     DocumentRoot "C:/path/to/appland/service/"
     ServerName appland.service
@@ -51,16 +79,16 @@ Listen *:9012
 </VirtualHost>
 
 ### Appland - Distribution ###
-<VirtualHost *:9012>
+<VirtualHost *:9013>
     ServerAdmin admin@myemail.com
     DocumentRoot "C:/path/to/appland/dist/"
     ServerName appland.build
-    SetEnv APPLICATION_ENV "development"
+    SetEnv APPLICATION_ENV "production"
     <Directory "C:/path/to/appland/dist/">
         Options All MultiViews
         AllowOverride all
         Order Allow,Deny
-		Allow from all
+		    Allow from all
 
         # Compress these files on response to requests...
         AddOutputFilterByType DEFLATE text/plain

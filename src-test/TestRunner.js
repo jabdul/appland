@@ -1,7 +1,7 @@
 require(['module.config.js'], function () {
   require([
-      'jquery',
-      '../src-test/module-appland/index'
+    'jquery',
+    '../src-test/module-appland/index'
   ], function (
       $,
       moduleAppland) {

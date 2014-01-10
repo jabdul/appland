@@ -32,6 +32,10 @@ Download and install these items on your system before installing Appland. Non-e
 ### Getting started with Appland ###
 Once the system requirements have been met, clone the `Appland` project to a local directory of choice.
 
+	# Install Appland...
+	$ cd /path/to/appland
+	$ git clone git@github.com:jabdul/appland.git 
+
 Go to the root of `path/to/appland` directory.
 
 ###### Install the following Node modules from your command line... ######
@@ -85,10 +89,10 @@ You are now ready to fire up your server. Start or restart your Apache server an
 * Get an overview of Appland's [Modular MVC Development Architecture][2].
 
 	
-[1]: https://github.com/jabdul/appland/tree/master/.skel			"Scaffold"
-[2]: https://github.com/jabdul/appland/tree/master/src				"MVC"
-[3]: https://github.com/jabdul/appland/tree/master/src-test			"Unit Testing"
-[4]: https://github.com/jabdul/appland/tree/master/_build			"Build"
-[5]: https://github.com/jabdul/appland/tree/master/service			"REST"
-[6]: https://github.com/jabdul/appland/tree/master/src/lib			"Library"
-[7]: https://github.com/jabdul/appland/tree/master/src/assets/sass	"SASS"
+[1]: https://github.com/jabdul/appland/tree/master/src/module-appland "Scaffold"
+[2]: https://github.com/jabdul/appland/tree/master/src "MVC"
+[3]: https://github.com/jabdul/appland/tree/master/src-test "UnitTesting"
+[4]: https://github.com/jabdul/appland/tree/master/_build "Build"
+[5]: https://github.com/jabdul/appland/tree/master/service "REST"
+[6]: https://github.com/jabdul/appland/tree/master/src/lib "Library"
+[7]: https://github.com/jabdul/appland/tree/master/src/assets/sass "SASS"

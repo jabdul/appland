@@ -57,6 +57,7 @@
 *.settings
 
 *.project	# Eclipse
+.project
 
 
 
@@ -100,8 +101,9 @@ Thumbs.db
 # Directories &  files #
 
 ################
-node_modules/
-dist/
-src/assets/.sass-cache/
+node_modules
+dist
+!dist/README.md
+src/assets/.sass-cache
 service/conf/httpd.conf.*
 service/conf/httpd-vhosts.conf.*
