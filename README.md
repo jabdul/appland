@@ -89,7 +89,7 @@ You are now ready to fire up your server. Start or restart your Apache server an
 * Get an overview of Appland's [Modular MVC Development Architecture][2].
 
 	
-[1]: https://github.com/jabdul/appland/tree/master/.skel "Scaffold"
+[1]: https://github.com/jabdul/appland/tree/master/src/module-appland "Scaffold"
 [2]: https://github.com/jabdul/appland/tree/master/src "MVC"
 [3]: https://github.com/jabdul/appland/tree/master/src-test "UnitTesting"
 [4]: https://github.com/jabdul/appland/tree/master/_build "Build"
