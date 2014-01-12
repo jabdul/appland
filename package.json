@@ -13,7 +13,7 @@
     "SASS",
     "Compass"
   ],
-  "homepage": "https://github.com/jabdul/appland/wiki",
+  "homepage": "git@github.com:jabdul/appland.git",
   "bugs": {
     "url": "https://github.com/jabdul/appland/issues",
     "email": "james.abdul@craftturf.com"
@@ -25,13 +25,9 @@
     "url": "git@github.com:jabdul/appland.git"
   },
   "devDependencies": {
-    "grunt": "~0.4.0rc7",
-    "grunt-contrib-jshint": "~0.1.0",
-    "grunt-contrib-uglify": "~0.1.1rc6",
-    "grunt-contrib-watch": "~0.2.0rc7",
-    "grunt-contrib-copy": "~0.3.2",
-    "bower": "~1.2.7",
-    "testem": "~0.5.12",
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-watch": "~0.5.3",
     "bootstrap-amd": "~1.0.3"
   },
   "scripts": {},
@@ -40,7 +36,5 @@
     "linux",
     "mac"
   ],
-  "dependencies": {
-    "jamjs": ""
-  }
+  "dependencies": {}
 }
