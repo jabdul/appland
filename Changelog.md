@@ -1,7 +1,7 @@
 ## Changelog ##
 
-### appland-0.1.0-alpha ###
-* First release.
+### appland-0.3.0-alpha ###
+* Added module-specific test harness. Jasmine tests can now run on a per module basis.
 
 ### appland-0.2.0-alpha ###
 * Completed integration testing with `'apln'` command line node tool.
