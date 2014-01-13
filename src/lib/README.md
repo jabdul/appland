@@ -2,7 +2,7 @@
 
 This section contains important notes about modifications made to well-known libraries in order to prepare them for integration into Appland.
 
-### Bootstrap ###
+### Twitter Bootstrap ###
 
 ###### Install ######
 

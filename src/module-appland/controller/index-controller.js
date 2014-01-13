@@ -1,11 +1,9 @@
 define([
   'module-appland/app',
   'lib/requirejs/domReady!',
-  'lib/requirejs/hbs!module-appland/view/tmpl/navbar',
-  'lib/requirejs/hbs!module-appland/view/tmpl/jumbotron',
-  'lib/requirejs/hbs!module-appland/view/tmpl/content'
+  'lib/requirejs/hbs!module-appland/view/tmpl/simple-sidebar'
 ],
-function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
+function (App, Doc, SimpleSidebarTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
@@ -27,9 +25,7 @@ function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
      */
     function renderView() {
       var templates = [
-          NavBarTmpl(null),
-          JumboTronTmpl(null),
-          ContentTmpl(null)
+        SimpleSidebarTmpl(null)
       ];
       appContainerEl.innerHTML = templates.join('\n');
     }

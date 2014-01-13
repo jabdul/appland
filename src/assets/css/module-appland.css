@@ -1,5 +1,5 @@
 /**
- * Standard include WGSN files.
+ * Standard include files.
  */
 /**
  * Pixels to Ems
@@ -25,7 +25,7 @@
  * Success alert
  */
 /**
- * Third-party libraries shared across WGSN.
+ * Third-party libraries.
  */
 /*
  * Bootstrap v3.0.2 by @fat and @mdo
@@ -8631,78 +8631,161 @@ td.visible-print {
     display: none !important;
   }
 }
+/* line 1, ../sass/lib/bootstrap/_simple-sidebar.scss */
+#wrapper {
+  padding-left: 250px;
+  transition: all 0.4s ease 0s;
+}
+
+/* line 6, ../sass/lib/bootstrap/_simple-sidebar.scss */
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+/* line 18, ../sass/lib/bootstrap/_simple-sidebar.scss */
+#page-content-wrapper {
+  width: 100%;
+}
+
+/* line 22, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 31, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+
+/* line 36, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav li a {
+  color: #999999;
+  display: block;
+  text-decoration: none;
+}
+
+/* line 42, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* line 49, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+/* line 53, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+
+/* line 59, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+/* line 63, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+/* line 68, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.content-header {
+  height: 65px;
+  line-height: 65px;
+}
+
+/* line 73, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.content-header h1 {
+  margin: 0;
+  margin-left: 20px;
+  line-height: 65px;
+  display: inline-block;
+}
+
+/* line 80, ../sass/lib/bootstrap/_simple-sidebar.scss */
+#menu-toggle {
+  display: none;
+}
+
+/* line 84, ../sass/lib/bootstrap/_simple-sidebar.scss */
+.inset {
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  /* line 90, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  #wrapper {
+    padding-left: 0;
+  }
+
+  /* line 94, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  #sidebar-wrapper {
+    left: 0;
+  }
+
+  /* line 98, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  #wrapper.active {
+    position: relative;
+    left: 250px;
+  }
+
+  /* line 103, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  #wrapper.active #sidebar-wrapper {
+    left: 250px;
+    width: 250px;
+    transition: all 0.4s ease 0s;
+  }
+
+  /* line 109, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  #menu-toggle {
+    display: inline-block;
+  }
+
+  /* line 113, ../sass/lib/bootstrap/_simple-sidebar.scss */
+  .inset {
+    padding: 15px;
+  }
+}
 /**
  * Module specific style.
  */
 /**
- *   Responsive system.
+ * Responsive system with device breakpoints.
  * @see http://getbootstrap.com/css/#grid
  */
-/* line 5, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content {
-  width: 960px;
-}
-/* line 7, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content ul.tt-articles-menu {
-  float: left;
-  width: 300px;
-  clear: both;
-}
-/* line 11, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content ul.tt-articles-menu li {
-  display: inline-block;
-  list-style-type: none;
-  margin-right: 10px;
-}
-/* line 17, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content h1 {
-  float: right;
-  width: 600px;
-  clear: both;
-  text-align: center;
-}
-/* line 23, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container {
-  float: right;
-  width: 650px;
-}
-/* line 27, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container .tt-articles-items {
-  margin-bottom: 20px;
-  border-bottom: 1px dashed #d3d3d3;
-  padding-bottom: 10px;
-}
-/* line 33, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container .tt-articles-tags {
-  padding-left: 0;
-}
-/* line 35, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container .tt-articles-tags li {
-  display: inline-block;
-  list-style-type: none;
-  margin-right: 2px;
-}
-/* line 40, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container .tt-articles-tags .tt-articles-tag-more {
-  display: none;
-}
-/* line 43, ../sass/module-tt-article/_tt-article.scss */
-#tt-articles-content .tt-articles-container .tt-articles-tags .tt-articles-tag-show.tt-articles-tag-more {
-  display: inline-block;
-}
-
 /**
- *   less than 768px
+ * Less than 768px
  * 
- * No media query needed. This should be the default
+ * No media query needed. This is the default
  * starting point for mobile-first development.
  */
 /**
- *   768px and up
+ * @768px and up
  */
 /**
- *   992px and up
+ * @992px and up
  */
 /**
- *   1200px and up
+ * @1200px and up
  */
