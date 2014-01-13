@@ -8771,21 +8771,21 @@ td.visible-print {
  * Module specific style.
  */
 /**
- *   Responsive system.
+ * Responsive system with device breakpoints.
  * @see http://getbootstrap.com/css/#grid
  */
 /**
- *   less than 768px
+ * Less than 768px
  * 
- * No media query needed. This should be the default
+ * No media query needed. This is the default
  * starting point for mobile-first development.
  */
 /**
- *   768px and up
+ * @768px and up
  */
 /**
- *   992px and up
+ * @992px and up
  */
 /**
- *   1200px and up
+ * @1200px and up
  */
