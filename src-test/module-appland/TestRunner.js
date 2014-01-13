@@ -1,7 +1,7 @@
-require(['modules.config.js'], function () {
+require(['module.config.js'], function () {
   require([
     'jquery',
-    '../src-test/module-appland/index'
+    '../../src-test/module-appland/index'
   ], function (
       $,
       moduleAppland) {
@@ -19,7 +19,7 @@ require(['modules.config.js'], function () {
 
     // Setup test suites
     var specs = [],
-        TESTS_DIR = '../src-test/',
+        TESTS_DIR = '../../src-test/',
         testSuites = [
           moduleAppland
         ];
