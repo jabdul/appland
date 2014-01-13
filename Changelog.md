@@ -1,5 +1,8 @@
 ## Changelog ##
 
+### appland-0.3.0-alpha ###
+* Added module-specific test harness. Jasmine tests can now run on a per module basis.
+
 ### appland-0.2.0-alpha ###
 * Completed integration testing with `'apln'` command line node tool.
 * `'apln'` can be used to `create` a scaffold and `remove` modules.
