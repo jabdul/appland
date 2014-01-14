@@ -8,9 +8,20 @@ requirejs.config({
     'handlebars': 'lib/handlebars/handlebars',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
+    "signals": "lib/js-signals/dist/signals",
+    "crossroads": "lib/crossroads/dist/crossroads",
+    "hasher": "lib/hasher/dist/js/hasher",
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
+    'crossroads': {
+      //These script dependencies should be loaded before loading
+      //crossroads.js
+      deps: ['hasher','signals'],
+      //Once loaded, use the global 'crossroads' as the
+      //module value.
+      exports: 'crossroads'
+    },
     'underscore': {
         exports: '_'
     },
