@@ -1,0 +1,16 @@
+/**
+ * Standard include files.
+ */
+@import "base/core/core";
+@import "base/palette/apl";
+@import "base/util";
+/**
+ * Third-party libraries.
+ */
+//@import "lib/jqueryui/themes/smoothness/jquery.ui.core"; 
+@import "lib/bootstrap/bootstrap";
+@import "lib/bootstrap/jumbotron-narrow";
+/**
+ * Module specific style.
+ */
+@import "module-demo-web-app/demo-web-app";
