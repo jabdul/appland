@@ -19,18 +19,37 @@ function (App, Doc, $, ArticleCollection, welcomeTmpl) {
     var moduleConfig = App.getModuleConfig('module-demo-web-app');
     /**
      * Script initialiser.
-     * Executes a set of actions at start.
+     * Module's single point entry.
      */
     function init() {
-      renderView();
+      render(setRoutes);
       delegateEvents();
     }
     /**
      * Renders the view templates.
+     * @param {function} callBack to execute.
      */
-    function renderView() {
+    function render(callBack) {
       var templates = [welcomeTmpl(null)];
       appContainerEl.innerHTML = templates.join('\n');
+
+      if (App.getDataType(callBack) == '[object Function]') {
+        callBack();
+      }
+    }
+
+    /**
+     * Set App Routes
+     */
+    function setRoutes() {
+      // String pattern or Regular Expression that
+      // should be used to match against requests.
+      App.Route.addRoute('{/}', function(section){
+        // For each route that matches, execute as follows:
+        //console.log(section);
+      });
+      // Updates location.hash of the current page.
+      App.Hash.setHash('home');
     }
     /**
      * Event delegation.
@@ -40,7 +59,7 @@ function (App, Doc, $, ArticleCollection, welcomeTmpl) {
         .on("click.tt.articles",
         '#tt-articles-articles', function (e) {
 
-          renderView(moduleConfig.labels[1].LABEL_1);
+          render(moduleConfig.labels[1].LABEL_1);
           var $articles = $(appContainerEl).find('.tt-articles-container');
 
           if ($articles.length) {
@@ -55,7 +74,7 @@ function (App, Doc, $, ArticleCollection, welcomeTmpl) {
         .on("click.tt.articles",
         '#tt-articles-home', function (e) {
           $(appContainerEl).find('.tt-articles-container').hide();
-          renderView(moduleConfig.labels[0].LABEL_0);
+          render(moduleConfig.labels[0].LABEL_0);
           e.preventDefault();
         })
         .on("click.tt.articles",
