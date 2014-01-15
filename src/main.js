@@ -163,21 +163,6 @@ function (AppConfig, Util, Router, Log4j) {
        */
       Hash: router.get('hasher'),
       /**
-       * Route parser for a list of HTML anchor tags.
-       * @param {Array.<Element>} nodeList of items to bind to.
-       */
-      parseRoutes: function (nodeList) {
-        var self = this,
-            len = nodeList.length,
-            i = 0;
-        for(; i < len; i++) {
-          nodeList[i].onclick=function(e){
-            e.preventDefault();
-            self.Route.parse('/' + this.href.split('/').pop());
-          }
-        }
-      },
-      /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.

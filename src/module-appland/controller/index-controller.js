@@ -17,34 +17,29 @@ function (App, Doc, $, SimpleSidebarTmpl) {
      * @returns {undefined}
      */
     function init() {
-      renderView();
+      renderView(setRoutes);
       delegateEvents();
-      setRoutes();
     }
     function setRoutes() {
-      // Collection of links to parse as routes.
-      var navs = appContainerEl.find('ul.sidebar-nav>li>a');
       // String pattern or Regular Expression that
       // should be used to match against requests.
       App.Route.addRoute('{/}', function(section){
         // For each route that matches, execute as follows:
-        console.log(section);
+        //console.log(section);
       });
-      // Add the list to routes collection.
-      App.parseRoutes(navs);
-      // Parse the current page.
-      App.Route.parse('dashboard');
+      // Updates location.hash of the current page.
       App.Hash.setHash('dashboard');
     }
     /**
      * Renders the view templates.
      * @returns {undefined}
      */
-    function renderView() {
+    function renderView(callBack) {
       var templates = [
         SimpleSidebarTmpl(null)
       ];
       appContainerEl.html(templates.join('\n'));
+      callBack();
     }
     /**
      * Event delegation.
