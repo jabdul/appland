@@ -37,7 +37,6 @@ function (App, Doc, $, ArticleCollection, welcomeTmpl) {
         callBack();
       }
     }
-
     /**
      * Set App Routes
      */
