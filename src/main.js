@@ -1,9 +1,10 @@
 define([
   'lib/requirejs/i18n!nls/conf',
   'core/util',
+  'core/router',
   'log4javascript'
 ],
-function (AppConfig, Util, Log4j) {
+function (AppConfig, Util, Router, Log4j) {
 
   function App() {
     /**
@@ -13,18 +14,18 @@ function (AppConfig, Util, Log4j) {
      */
     var connection = null;
     /**
-     * Function Helpers.
-     * @type {object}
-     * @private
-     */
-    var util = Util;
-    /**
      * Environment.
      * DEVELOPMENT | TESTING | PRODUCTION
      * @type {string}
      * @private
      */
     var ENV = '';
+    /**
+     * Crossroads library.
+     * @type {object}
+     * @private
+     */
+    var router = new Router();
     /**
      * Log4javascript console appender.
      * @type {Object}
@@ -143,7 +144,24 @@ function (AppConfig, Util, Log4j) {
     init();
 
     var publicMethods = {
-      Util: util,
+      /**
+       * Function Helpers.
+       * @type {object}
+       * @export
+       */
+      Util: Util,
+      /**
+       * Crossroads library.
+       * @type {object}
+       * @export
+       */
+      Route: router.get('crossroads'),
+      /**
+       * Hasher library.
+       * @type {object}
+       * @export
+       */
+      Hash: router.get('hasher'),
       /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject
