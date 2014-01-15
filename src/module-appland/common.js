@@ -5,7 +5,6 @@ requirejs.config({
     'jquery': 'core/jquery-loader', /* See file for version. */
     'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/require-handlebars-plugin/hbs',
-    'handlebars': 'lib/require-handlebars-plugin/hbs/handlebars',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
     "signals": "lib/js-signals/dist/signals",

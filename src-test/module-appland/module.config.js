@@ -4,8 +4,7 @@ requirejs.config({
   paths: {
     'jquery': 'lib/jquery-1-9-1/jquery', /* jQuery Version 1.9.1 */
     'bootstrap': 'lib/bootstrap/bootstrap',
-    'hbs': 'lib/hbs/hbs',
-    'handlebars': 'lib/handlebars/handlebars',
+    'hbs': 'lib/require-handlebars-plugin/hbs',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
     "signals": "lib/js-signals/dist/signals",
@@ -30,20 +29,26 @@ requirejs.config({
     }
   },
   hbs: {
-    disableI18n: true,        // This disables the i18n helper and
+    disableI18n: true,    // This disables the i18n helper and
     // doesn't require the json i18n files (e.g. en_us.json)
     // (false by default)
 
-    disableHelpers: false,    // When true, won't look for and try to automatically load
+    disableHelpers: true, // When true, won't look for and try to automatically load
     // helpers (false by default)
+
+    i18n: false,          // false by default
+
+    helpers: true,        // true by default
 
     helperPathCallback:       // Callback to determine the path to look for helpers
       function (name) {       // ('/template/helpers/'+name by default)
-          return 'core/helpers/' + name;
+        return 'core/helpers/' + name;
       },
 
-    templateExtension: "tmpl",// Set the extension automatically appended to templates
+    templateExtension: "tmpl",  // Set the extension automatically appended to templates
     // ('hbs' by default)
+
+    partialsUrl: 'module-appland/view/tmpl', // base url for loading partials.
 
     compileOptions: {}        // options object which is passed to Handlebars compiler
   }
