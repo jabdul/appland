@@ -2,7 +2,7 @@ define([
   'module-appland/app',
   'lib/requirejs/domReady!',
   'jquery',
-  'lib/requirejs/hbs!module-appland/view/tmpl/simple-sidebar'
+  'hbs!module-appland/view/tmpl/simple-sidebar'
 ],
 function (App, Doc, $, SimpleSidebarTmpl) {
   function IndexController() {
