@@ -1,6 +1,6 @@
 define([
   'module-demo-web-app/app',
-  'lib/requirejs/hbs!module-demo-web-app/view/tmpl/article'
+  'hbs!module-demo-web-app/view/tmpl/article'
 ],
   function (App, ArticleTmpl) {
     /**

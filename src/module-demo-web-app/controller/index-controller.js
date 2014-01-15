@@ -3,7 +3,7 @@ define([
   'lib/requirejs/domReady!',
   'jquery',
   'module-demo-web-app/collection/article',
-  'lib/requirejs/hbs!module-demo-web-app/view/tmpl/welcome'
+  'hbs!module-demo-web-app/view/tmpl/welcome'
 ],
 function (App, Doc, $, ArticleCollection, welcomeTmpl) {
   function IndexController() {
