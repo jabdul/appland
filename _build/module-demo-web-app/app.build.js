@@ -9,6 +9,15 @@
     'module-demo-web-app/common': '../dist/module-demo-web-app/common',
     'module-demo-web-app/controller/index-controller': '../dist/module-demo-web-app/controller/index-controller'
   },
+  pragmasOnSave: {
+    //removes Handlebars.Parser code (used to compile template strings) set
+    //it to `false` if you need to parse template strings even after build
+    excludeHbsParser : true,
+    // kills the entire plugin set once it's built.
+    excludeHbs: true,
+    // removes i18n precompiler, handlebars and json2
+    excludeAfterBuild: true
+  },
   modules: [
     //First set up the common build layer.
     {
@@ -21,12 +30,14 @@
         'jquery',
         'lib/requirejs/domReady',
         'lib/requirejs/text',
-        'lib/requirejs/hbs',
+        'hbs',
         'lib/requirejs/i18n',
         'bootstrap',
         'log4javascript',
-        'handlebars',
         'underscore',
+        "signals",
+        "crossroads",
+        "hasher",
         'json',
         'core/connect',
         'core/util',
