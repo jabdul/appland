@@ -116,7 +116,7 @@ function (AppConfig, Util, Router, Log4j) {
       // logger and all its descendants 
       // (including "Apl.Modules.Module1" and
       // "Apl.Modules.Module2" ...)
-      Log4j.getLogger("Wgsn.Modules").setLevel(Log4j.Level.ALL);
+      Log4j.getLogger("Apl.Modules").setLevel(Log4j.Level.ALL);
       
       // Enable or disable logging.
       Log4j.setEnabled( isLoggingEnabled );
@@ -170,8 +170,8 @@ function (AppConfig, Util, Router, Log4j) {
       setConfig: function (configObject) {
         // Capture this object's public variables.
         var me = this,
-          prop_ = '',
-          prop;
+            prop_,
+            prop;
 
         if (me.getDataType(configObject) != "[object Object]") {
           return false;
@@ -193,9 +193,9 @@ function (AppConfig, Util, Router, Log4j) {
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setModuleConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-            prop_ = '',
+
+        var me = this, /* Capture this object's public variables. */
+            prop_,
             prop;
 
         if (me.getDataType(configObject) != "[object Object]") {
@@ -211,7 +211,6 @@ function (AppConfig, Util, Router, Log4j) {
       /**
        * Set up AJAX connection.
        * @param {Object.<string>} o The AJAX handler.
-       * @returns {null}
        */
       setConnection: function (o) {
         connection = o;

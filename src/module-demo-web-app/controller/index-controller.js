@@ -3,9 +3,9 @@ define([
   'lib/requirejs/domReady!',
   'jquery',
   'module-demo-web-app/collection/article',
-  'hbs!module-demo-web-app/view/tmpl/welcome'
+  'hbs!module-demo-web-app/view/tmpl/index'
 ],
-function (App, Doc, $, ArticleCollection, welcomeTmpl) {
+function (App, Doc, $, ArticleCollection, IndexTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
@@ -30,7 +30,7 @@ function (App, Doc, $, ArticleCollection, welcomeTmpl) {
      * @param {function} callBack to execute.
      */
     function render(callBack) {
-      var templates = [welcomeTmpl(null)];
+      var templates = [IndexTmpl(null)];
       appContainerEl.innerHTML = templates.join('\n');
 
       if (App.getDataType(callBack) == '[object Function]') {
