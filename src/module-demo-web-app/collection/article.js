@@ -2,8 +2,8 @@ define([
   'module-demo-web-app/app',
   'jquery',
   'module-demo-web-app/model/article',
-  'hbs!module-demo-web-app/view/tmpl/articles-open',
-  'hbs!module-demo-web-app/view/tmpl/articles-close'
+  'hbs!module-demo-web-app/view/tmpl/partial/articles-open',
+  'hbs!module-demo-web-app/view/tmpl/partial/articles-close'
 ],
   function (App, $, Article, ArticlesOpenTmpl, ArticlesCloseTmpl) {
     /**
