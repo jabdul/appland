@@ -29,24 +29,17 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
      * Module's single point entry.
      */
     function init() {
-      App.Routes.extend(Routes);
-      console.log('index');
-
-      var index = Routes.Route.addRoute('index');
-      if (index.match('index')) {
-        Routes.setHash('index'); // Default landing page.
-        HomeView.show(appContainerEl);
-      }
-
       setRoutes();
     }
     /**
      * Set App Routes
      */
     function setRoutes() {
+      App.Routes.extend(Routes);
+      console.log('index');
+
       // String pattern or Regular Expression that
       // should be used to match against requests.
-
       Routes.Route.addRoute('home', function(section){
         // When home section is matched, execute as follows:
         HomeView.show(appContainerEl);
@@ -57,10 +50,19 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
         ArticlesView.show(appContainerEl);
         setSection('articles')
       });
+      /*Routes.Route.addRoute('{/}', function(section){
+        // When home section is matched, execute as follows:
+        HomeView.show(appContainerEl);
+        setSection('index');
+      }); */
       // Updates location.hash of the current page.
       function setSection(section) {
         Routes.setHash(section);
       }
+
+      Routes.Route.addRoute('index');
+      setSection('index'); // Default landing page.
+      HomeView.show(appContainerEl);
     }
 
     var publicMethods = {
