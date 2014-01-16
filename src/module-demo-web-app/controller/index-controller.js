@@ -3,9 +3,11 @@ define([
   'lib/requirejs/domReady!',
   'jquery',
   'module-demo-web-app/collection/article',
-  'hbs!module-demo-web-app/view/tmpl/index'
+  'hbs!module-demo-web-app/view/tmpl/index',
+  'module-demo-web-app/view/home',
+  'module-demo-web-app/view/articles'
 ],
-function (App, Doc, $, ArticleCollection, IndexTmpl) {
+function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
@@ -18,88 +20,47 @@ function (App, Doc, $, ArticleCollection, IndexTmpl) {
      */
     var moduleConfig = App.getModuleConfig('module-demo-web-app');
     /**
+     * Routes Manager.
+     * @type {Object}
+     */
+    var Routes = {};
+    /**
      * Script initialiser.
      * Module's single point entry.
      */
     function init() {
-      render(setRoutes);
-      delegateEvents();
-    }
-    /**
-     * Renders the view templates.
-     * @param {function} callBack to execute.
-     */
-    function render(callBack) {
-      var templates = [IndexTmpl(null)];
-      appContainerEl.innerHTML = templates.join('\n');
+      App.Routes.extend(Routes);
+      console.log('index');
 
-      if (App.Util.getDataType(callBack) == '[object Function]') {
-        callBack();
+      var index = Routes.Route.addRoute('index');
+      if (index.match('index')) {
+        Routes.setHash('index'); // Default landing page.
+        HomeView.show(appContainerEl);
       }
+
+      setRoutes();
     }
     /**
      * Set App Routes
      */
     function setRoutes() {
-      var Routes = {};
       // String pattern or Regular Expression that
       // should be used to match against requests.
-      App.Routes.extend(Routes);
+
       Routes.Route.addRoute('home', function(section){
-        // For each route that matches, execute as follows:
-        //console.log(section, 'home');
+        // When home section is matched, execute as follows:
+        HomeView.show(appContainerEl);
+        setSection('home');
       });
       Routes.Route.addRoute('articles', function(section){
-        // For each route that matches, execute as follows:
-        //console.log(section, 'articles');
+        // When articles section is matched, execute as follows:
+        ArticlesView.show(appContainerEl);
+        setSection('articles')
       });
       // Updates location.hash of the current page.
-      Routes.setHash('home');
-    }
-    /**
-     * Event delegation.
-     */
-    function delegateEvents() {
-      $(Doc)
-        .on("click.tt.articles",
-        '#tt-articles-articles', function (e) {
-
-          render(moduleConfig.labels[1].LABEL_1);
-          var $articles = $(appContainerEl).find('.tt-articles-container');
-
-          if ($articles.length) {
-            $articles.show();
-            return;
-          }
-
-          var Articles = new ArticleCollection([]);
-          Articles.findArticles();
-          e.preventDefault();
-        })
-        .on("click.tt.articles",
-        '#tt-articles-home', function (e) {
-          $(appContainerEl).find('.tt-articles-container').hide();
-          render(moduleConfig.labels[0].LABEL_0);
-          e.preventDefault();
-        })
-        .on("click.tt.articles",
-        '#tt-articles-more', function (e) {
-          var $tags = $(this).parent()
-              .find('.tt-articles-tags')
-              .children('li.tt-articles-tag-more'),
-            $toggle = $(this).parent().find('#tt-articles-more');
-
-          if ($toggle.text() == 'show more') {
-            $toggle.text('show less');
-          } else {
-            $toggle.text('show more');
-          }
-
-          $tags.each(function( i, el) {
-            $(el).toggleClass('tt-articles-tag-show');
-          });
-          e.preventDefault();
-        });
+      function setSection(section) {
+        Routes.setHash(section);
+      }
     }
 
     var publicMethods = {

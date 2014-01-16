@@ -3,9 +3,10 @@ define([
   'core/util',
   'core/router',
   'core/model',
+  'core/view',
   'log4javascript'
 ],
-function (AppConfig, Util, Router, BaseModel, Log4j) {
+function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
 
   function App() {
     /**
@@ -156,6 +157,23 @@ function (AppConfig, Util, Router, BaseModel, Log4j) {
             var superType = new BaseModel();
             Util.extend(subType, superType);
           }
+        }
+      },
+      /**
+       * View creator.
+       * @type {Object}
+       * @private
+       */
+      View: {
+        extend: function (subType){
+          if (typeof subType == 'object') {
+            var superType = new BaseView();
+            Util.mixin(subType, superType);
+            if (Util.getDataType(subType) != "[object Object]") {
+              console.log(subType);
+            }
+          }
+
         }
       },
       /**
