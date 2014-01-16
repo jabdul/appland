@@ -22,13 +22,39 @@ define(function () {
         subType.prototype = prototype; //assign object
       },
       /**
+       * Inheritance - Prototype Inheritance
+       * Inheritance using 'Parasitic combination inheritance' pattern.
+       * @param {object} subType
+       * @param {object} superType
+       * @see http://goo.gl/IKv2eJ
+       */
+      mixin: function (subType, superType) {
+        for (var i in superType) {
+          subType[i] = superType[i];
+        }
+      },
+      /**
+       * Get data type.
+       * This check assumes the native Object has not being overwritten by
+       * developer.
+       * @param {*} d Reference data check.
+       * @returns {string} Native constructor name if it's a reference type.
+       *                    [object Object] Native Object.
+       *                    [object Array] Native Array.
+       *                    [object Function] Native function.
+       *                    [object RegExp] Native regular expression.
+       */
+      getDataType: function (d) {
+        return Object.prototype.toString.call(d);
+      },
+      /**
        * Remove Value(s) from an Array
        * @param {*} needle
        * @param {Array} hayStack
        * @param {*} replace   Default=null
        * @return {Array} hayStack
        */
-      arrayVal: function (needle, hayStack, replace) {
+      removeArrayVal: function (needle, hayStack, replace) {
         for (var i = 0; i < hayStack.length; i++) {
           if (hayStack[i] == needle) {
             hayStack.splice(i, 1);
@@ -81,7 +107,6 @@ define(function () {
        * Dynamically Load Styles
        * @param {string} url
        * @param {number} pos
-       * @return string
        */
       loadStyles: function (url, pos) {
         var link,
@@ -98,8 +123,8 @@ define(function () {
        * @param {string | float} value
        * @param {number} precision
        * @return string
-       * @example App.Util('123.456', 2);
-       * @see http://stackoverflow.com/questions/661562/how-to-format-a-float-in-javascript
+       * @example App.Util.formatFloat('123.456', 2);
+       * @see http://goo.gl/Udm3aV
        */
       formatFloat: function (value, precision) {
         var power = Math.pow(10, precision || 0);
@@ -120,28 +145,6 @@ define(function () {
           return false;
         }
         return true;
-      },
-      /**
-       * Return resource's path from given URL. Any suffix string is
-       * stripped away.
-       * @param {string} resourceUrl Resource URL.
-       * @param {string} fileExt File extension i.e jpg, gif, xls
-       * @param {boolean} withoutDomainName Excluding domain name?
-       * @param {?string} pathStartFrom Path start search from.
-       * @returns {string} Resource path or empty string.
-       */
-      getResourcePath: function (resourceUrl, fileExt, withoutDomainName, pathStartFrom) {
-        var re = new RegExp("^(.*?)\\." + '(jpg|jpeg|eps|psd|ai|tif|png)', "i"),
-          matches = re.exec(resourceUrl);
-        if (withoutDomainName) {
-          var startPos = matches[0].indexOf(pathStartFrom);
-
-          if (startPos > -1) {
-            return matches[0].substring(startPos);
-          }
-          return '';
-        }
-        return matches[0];
       },
       /**
        * Returns attribute value of event's target element if exists.

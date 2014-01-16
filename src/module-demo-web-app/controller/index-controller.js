@@ -33,7 +33,7 @@ function (App, Doc, $, ArticleCollection, IndexTmpl) {
       var templates = [IndexTmpl(null)];
       appContainerEl.innerHTML = templates.join('\n');
 
-      if (App.getDataType(callBack) == '[object Function]') {
+      if (App.Util.getDataType(callBack) == '[object Function]') {
         callBack();
       }
     }
@@ -41,14 +41,20 @@ function (App, Doc, $, ArticleCollection, IndexTmpl) {
      * Set App Routes
      */
     function setRoutes() {
+      var Routes = {};
       // String pattern or Regular Expression that
       // should be used to match against requests.
-      App.Route.addRoute('{/}', function(section){
+      App.Routes.extend(Routes);
+      Routes.Route.addRoute('home', function(section){
         // For each route that matches, execute as follows:
-        //console.log(section);
+        //console.log(section, 'home');
+      });
+      Routes.Route.addRoute('articles', function(section){
+        // For each route that matches, execute as follows:
+        //console.log(section, 'articles');
       });
       // Updates location.hash of the current page.
-      App.Hash.setHash('home');
+      Routes.setHash('home');
     }
     /**
      * Event delegation.

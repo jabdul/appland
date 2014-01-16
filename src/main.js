@@ -2,9 +2,10 @@ define([
   'lib/requirejs/i18n!nls/conf',
   'core/util',
   'core/router',
+  'core/model',
   'log4javascript'
 ],
-function (AppConfig, Util, Router, Log4j) {
+function (AppConfig, Util, Router, BaseModel, Log4j) {
 
   function App() {
     /**
@@ -20,12 +21,6 @@ function (AppConfig, Util, Router, Log4j) {
      * @private
      */
     var ENV = '';
-    /**
-     * Crossroads library.
-     * @type {object}
-     * @private
-     */
-    var router = new Router();
     /**
      * Log4javascript console appender.
      * @type {Object}
@@ -151,29 +146,41 @@ function (AppConfig, Util, Router, Log4j) {
        */
       Util: Util,
       /**
-       * Crossroads library.
-       * @type {object}
-       * @export
+       * Model creator.
+       * @type {Object}
+       * @private
        */
-      Route: router.get('crossroads'),
+      Model: {
+        extend: function (subType){
+          if (Util.getDataType(subType) != "[object Object]") {
+            var superType = new BaseModel();
+            Util.extend(subType, superType);
+          }
+        }
+      },
       /**
-       * Hasher library.
-       * @type {object}
-       * @export
+       * Routes creator.
+       * @type {Object}
+       * @private
        */
-      Hash: router.get('hasher'),
+      Routes: {
+        extend: function (subType){
+          if (typeof subType == 'object') {
+            var superType = new Router();
+            Util.mixin(subType, superType);
+          }
+        }
+      },
       /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-            prop_,
+        var prop_,
             prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
@@ -193,12 +200,10 @@ function (AppConfig, Util, Router, Log4j) {
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setModuleConfig: function (configObject) {
-
-        var me = this, /* Capture this object's public variables. */
-            prop_,
+        var prop_,
             prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
@@ -231,9 +236,7 @@ function (AppConfig, Util, Router, Log4j) {
        * @returns {undefined}
        */
       setLogging: function (o) {
-        var me = this;
-
-        if (me.getDataType(o) != "[object Object]") {
+        if (Util.getDataType(o) != "[object Object]") {
           return;
         }
         if (typeof o.setEnabled === 'boolean') {
@@ -283,20 +286,6 @@ function (AppConfig, Util, Router, Log4j) {
           return config.modules_;
         }
         return false;
-      },
-      /**
-       * Get data type.
-       * This check assumes the native Object has not being overwritten by
-       * developer.
-       * @param {*} d Reference data check.
-       * @returns {string} Native constructor name if it's a reference type.
-       *                    [object Object] Native Object.
-       *                    [object Array] Native Array.
-       *                    [object Function] Native function.
-       *                    [object RegExp] Native regular expression.
-       */
-      getDataType: function (d) {
-        return Object.prototype.toString.call(d);
       },
       /**
        * Return enviroment setting.
