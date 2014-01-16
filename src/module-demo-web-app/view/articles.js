@@ -11,9 +11,9 @@ define([
     App.View.extend(Articles);
     Articles.tmpl = ArticlesTmpl(null);
     Articles.show = function (elm) {
-      var articles = $(elm).find('.marketing');
-      $(elm).find('.jumbotron').remove();
-      articles.innerHTML = this.tmpl;
+      //var articles = $(elm).find('.marketing');
+      //$(elm).find('.jumbotron').remove();
+      elm.innerHTML = this.tmpl;
       console.log(elm);
     };
     

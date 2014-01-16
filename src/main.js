@@ -167,13 +167,12 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
       View: {
         extend: function (subType){
           if (typeof subType == 'object') {
+            var F = function(){};
             var superType = new BaseView();
+            F.prototype = superType.prototype;
+            subType.prototype = new F();
             Util.mixin(subType, superType);
-            if (Util.getDataType(subType) != "[object Object]") {
-              console.log(subType);
-            }
           }
-
         }
       },
       /**
@@ -184,7 +183,10 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
       Routes: {
         extend: function (subType){
           if (typeof subType == 'object') {
+            var F = function(){};
             var superType = new Router();
+            F.prototype = superType.prototype;
+            subType.prototype = new F();
             Util.mixin(subType, superType);
           }
         }

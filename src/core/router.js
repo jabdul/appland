@@ -49,6 +49,7 @@ define([
        * @param {*} fragment to hash
        */
       setHash: function (fragment) {
+        console.log('sethash: '+ fragment);
         this.hasher.setHash(fragment);
       }
     };

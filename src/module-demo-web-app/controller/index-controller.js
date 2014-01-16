@@ -29,26 +29,50 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
      * Module's single point entry.
      */
     function init() {
+      console.log(window.location.hash, window.location.href.indexOf("#"));
+      App.Routes.extend(Routes);
       setRoutes();
+      parseUrl();
+    }
+    /**
+     * Set App Routes
+     */
+    function parseUrl() {
+      switch (window.location.hash) {
+        case '#/home':
+          HomeView.show(appContainerEl);
+          console.log('home found');
+          Routes.setHash('home');
+          break;
+        case '#/articles':
+          ArticlesView.show(appContainerEl);
+          console.log('articles found');
+          Routes.setHash('articles');
+          break;
+        default:
+          HomeView.show(appContainerEl);
+          console.log('index found');
+          Routes.setHash('index'); // Default landing page.
+          break;
+      }
     }
     /**
      * Set App Routes
      */
     function setRoutes() {
-      App.Routes.extend(Routes);
-      console.log('index');
-
       // String pattern or Regular Expression that
       // should be used to match against requests.
       Routes.Route.addRoute('home', function(section){
         // When home section is matched, execute as follows:
+        console.log('route: home');
         HomeView.show(appContainerEl);
-        setSection('home');
+        Routes.setHash('home');
       });
       Routes.Route.addRoute('articles', function(section){
         // When articles section is matched, execute as follows:
+        console.log('route: articles');
         ArticlesView.show(appContainerEl);
-        setSection('articles')
+        Routes.setHash('articles');
       });
       /*Routes.Route.addRoute('{/}', function(section){
         // When home section is matched, execute as follows:
@@ -56,13 +80,10 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
         setSection('index');
       }); */
       // Updates location.hash of the current page.
-      function setSection(section) {
-        Routes.setHash(section);
-      }
-
+     /*
       Routes.Route.addRoute('index');
       setSection('index'); // Default landing page.
-      HomeView.show(appContainerEl);
+      HomeView.show(appContainerEl);   */
     }
 
     var publicMethods = {
