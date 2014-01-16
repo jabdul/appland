@@ -12,7 +12,6 @@ define([
     Home.tmpl = IndexTmpl(null);
     Home.show = function (elm) {
       elm.innerHTML = this.tmpl;
-      console.log(elm);
     };
     
     return Home;

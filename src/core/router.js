@@ -13,12 +13,6 @@ define([
        * @type {*}
        * @see http://goo.gl/r5X1Lg
        */
-      //this.crossroads = CrossRoads;
-      /**
-       * CrossRoads library.
-       * @type {*}
-       * @see http://goo.gl/r5X1Lg
-       */
       this.Route = CrossRoads;
       /**
        * Hasher library
@@ -42,7 +36,6 @@ define([
        * @param {*} fragment to hash
        */
       setHash: function (fragment) {
-        console.log('sethash: '+ fragment);
         this.hasher.setHash(fragment);
       },
       /**
