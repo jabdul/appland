@@ -26,13 +26,6 @@ define([
        * @see http://goo.gl/2otk4Q
        */
       this.hasher = Hasher;
-
-      function parseHash(newHash, oldHash){
-        CrossRoads.parse(newHash);
-      }
-      this.hasher.initialized.add(parseHash); // parse initial hash
-      this.hasher.changed.add(parseHash); //parse hash changes
-      this.hasher.init(); //start listening for history change
     }
 
     Router.prototype = {
@@ -51,6 +44,18 @@ define([
       setHash: function (fragment) {
         console.log('sethash: '+ fragment);
         this.hasher.setHash(fragment);
+      },
+      /**
+       * Initialise and parse hash.
+       */
+      parseHash: function () {
+        var self = this;
+        function parseHash(newHash, oldHash){
+          self.Route.parse(newHash);
+        }
+        this.hasher.initialized.add(parseHash); // parse initial hash
+        this.hasher.changed.add(parseHash); //parse hash changes
+        this.hasher.init(); //start listening for history change
       }
     };
 

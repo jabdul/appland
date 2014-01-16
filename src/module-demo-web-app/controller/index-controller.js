@@ -31,8 +31,8 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
     function init() {
       console.log(window.location.hash, window.location.href.indexOf("#"));
       App.Routes.extend(Routes);
-      setRoutes();
       parseUrl();
+      setRoutes();
     }
     /**
      * Set App Routes
@@ -62,7 +62,7 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
     function setRoutes() {
       // String pattern or Regular Expression that
       // should be used to match against requests.
-      Routes.Route.addRoute('home', function(section){
+     /* Routes.Route.addRoute('home', function(section){
         // When home section is matched, execute as follows:
         console.log('route: home');
         HomeView.show(appContainerEl);
@@ -73,7 +73,23 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
         console.log('route: articles');
         ArticlesView.show(appContainerEl);
         Routes.setHash('articles');
+      }); */
+
+
+      var homeRoute = Routes.Route.addRoute('home');
+      //HomeView.show(appContainerEl);
+      homeRoute.matched.add(function(){
+        HomeView.show(appContainerEl);
+        Routes.setHash('home');
       });
+
+      var articlesRoute = Routes.Route.addRoute('articles');
+      //ArticlesView.show(appContainerEl);
+      articlesRoute.matched.add(function(){
+        ArticlesView.show(appContainerEl);
+        Routes.setHash('articles');
+      });
+      Routes.parseHash();
       /*Routes.Route.addRoute('{/}', function(section){
         // When home section is matched, execute as follows:
         HomeView.show(appContainerEl);
