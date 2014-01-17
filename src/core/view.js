@@ -14,7 +14,7 @@ define(['jquery'],
        * Template
        * @type {*}
        */
-      this.el;
+      this.el = '<div></div>';
     }
 
     View.prototype = {

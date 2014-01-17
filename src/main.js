@@ -153,9 +153,12 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
        */
       Model: {
         extend: function (subType){
-          if (Util.getDataType(subType) != "[object Object]") {
+          if (typeof subType == 'object') {
+            var F = function(){};
             var superType = new BaseModel();
-            Util.extend(subType, superType);
+            F.prototype = superType.prototype;
+            subType.prototype = new F();
+            Util.mixin(subType, superType);
           }
         }
       },

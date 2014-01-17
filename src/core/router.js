@@ -19,7 +19,7 @@ define([
        * @type {*}
        * @see http://goo.gl/2otk4Q
        */
-      this.hasher = Hasher;
+      this.Hasher = Hasher;
     }
 
     Router.prototype = {
@@ -36,7 +36,7 @@ define([
        * @param {*} fragment to hash
        */
       setHash: function (fragment) {
-        this.hasher.setHash(fragment);
+        this.Hasher.setHash(fragment);
       },
       /**
        * Initialise and parse hash.
@@ -46,9 +46,9 @@ define([
         function parseHash(newHash, oldHash){
           self.Route.parse(newHash);
         }
-        this.hasher.initialized.add(parseHash); // parse initial hash
-        this.hasher.changed.add(parseHash); //parse hash changes
-        this.hasher.init(); //start listening for history change
+        this.Hasher.initialized.add(parseHash); // parse initial hash
+        this.Hasher.changed.add(parseHash); //parse hash changes
+        this.Hasher.init(); //start listening for history change
       }
     };
 
