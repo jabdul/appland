@@ -15,23 +15,32 @@ define(function () {
        * Inheritance using 'Parasitic combination inheritance' pattern.
        * @param {object} subType
        * @param {object} superType
+       * @return {object} subType
        */
       extend: function (subType, superType) {
-        var prototype = new Object(superType.prototype); //create prototype object
-        prototype.constructor = subType; //augment object
-        subType.prototype = prototype; //assign object
+        //create prototype object from superType
+        var prototype = new Object(superType.prototype);
+        //augment object's constructor to be that of subType
+        // i.e. it overrides properties of superType
+        prototype.constructor = subType;
+        //assign object to subType's prototype.
+        subType.prototype = prototype;
+        return subType;
       },
       /**
-       * Inheritance - Prototype Inheritance
-       * Inheritance using 'Parasitic combination inheritance' pattern.
+       * Inheritance - Property Inheritance
+       * use of mixin approach to copy the properties of the superType
+       * to the subType.
        * @param {object} subType
        * @param {object} superType
+       * @return {object} subType
        * @see http://goo.gl/IKv2eJ
        */
       mixin: function (subType, superType) {
         for (var i in superType) {
           subType[i] = superType[i];
         }
+        return subType;
       },
       /**
        * Get data type.

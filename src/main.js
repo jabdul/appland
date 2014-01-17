@@ -135,6 +135,25 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
           break;
       }
     }
+    /**
+     * Extend class.
+     * This is a combination of constructor function inheriting from another
+     * constructor function (YUI extend) and a use of mixin approach to copy
+     * the properties of the superType to the subType.
+     * @param subType is the destination pseudo-sublass
+     * @param Source  is the class to inherit from.
+     */
+    function extendMixin (subType, Source){
+      if (typeof subType == 'object') {
+        var F = function(){};
+        var superType = new Source();
+        F.prototype = superType.prototype;
+        subType.prototype = new F();
+        Util.mixin(subType, superType);
+      } else {
+        throw Error('A data type "object" is expected.');
+      }
+    }
 
     // Start the App.
     init();
@@ -153,13 +172,7 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
        */
       Model: {
         extend: function (subType){
-          if (typeof subType == 'object') {
-            var F = function(){};
-            var superType = new BaseModel();
-            F.prototype = superType.prototype;
-            subType.prototype = new F();
-            Util.mixin(subType, superType);
-          }
+          return Util.extend(subType, BaseModel);
         }
       },
       /**
@@ -169,13 +182,7 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
        */
       View: {
         extend: function (subType){
-          if (typeof subType == 'object') {
-            var F = function(){};
-            var superType = new BaseView();
-            F.prototype = superType.prototype;
-            subType.prototype = new F();
-            Util.mixin(subType, superType);
-          }
+          extendMixin(subType, BaseView);
         }
       },
       /**
@@ -185,13 +192,7 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
        */
       Routes: {
         extend: function (subType){
-          if (typeof subType == 'object') {
-            var F = function(){};
-            var superType = new Router();
-            F.prototype = superType.prototype;
-            subType.prototype = new F();
-            Util.mixin(subType, superType);
-          }
+          extendMixin(subType, Router);
         }
       },
       /**

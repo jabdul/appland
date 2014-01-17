@@ -15,11 +15,6 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
      */
     var appContainerEl = Doc.getElementById('demo-web-app-content');
     /**
-     * Module's configuration.
-     * @type {Object}
-     */
-    var moduleConfig = App.getModuleConfig('module-demo-web-app');
-    /**
      * Routes Manager.
      * @type {Object}
      */

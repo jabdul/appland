@@ -1,7 +1,7 @@
 define({
   "root": {
     "module-demo-web-app": {
-      "projectName": "Demo Web App",
+      "projectName": "Demo WebApp",
       "nameSpaces":['demo-web-app-'],
       "labels": [{
         "LABEL_0": "Submit",
@@ -14,9 +14,9 @@ define({
         "LABEL_7": "http://localhost:9010/",
         "LABEL_8": "http://localhost:9011/src-test/module-demo-web-app/TestRunner.html",
         "LABEL_9": "Module: ",
-        "LABEL_10": "This single page Web App.",
-        "LABEL_11": "<p>Documents the process involved in " +
-          "developing, testing, and build using Appland development framework.</p>",
+        "LABEL_10": "A single page WebApp.",
+        "LABEL_11": "Develop a WebApp" +
+          " using Appland; an end-to-end modular development platform.",
         "LABEL_12": "Start your journey",
         "LABEL_13": "./#/articles",
         "LABEL_14": "Search articles",
