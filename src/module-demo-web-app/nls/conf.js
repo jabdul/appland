@@ -10,7 +10,18 @@ define({
         "LABEL_3": "Articles",
         "LABEL_4": "Links",
         "LABEL_5": "Admin",
-        "LABEL_6": "Run tests"
+        "LABEL_6": "Run tests",
+        "LABEL_7": "http://localhost:9010/",
+        "LABEL_8": "http://localhost:9011/src-test/module-demo-web-app/TestRunner.html",
+        "LABEL_9": "Module: ",
+        "LABEL_10": "This single page Web App.",
+        "LABEL_11": "<p>Documents the process involved in " +
+          "developing, testing, and build using Appland development framework.</p>",
+        "LABEL_12": "Start your journey",
+        "LABEL_13": "./#/articles",
+        "LABEL_14": "Search articles",
+        "LABEL_15": "Craft Turf",
+        "LABEL_16": "2014"
       }],
       "labels2": {
         "LABEL_0": "Submit",
