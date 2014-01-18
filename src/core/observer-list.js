@@ -5,7 +5,7 @@ define(function () {
    * @param {null}
    * @constructor
    * @returns {null}
-   * @see http://addyosmani.com/resources/essentialjsdesignpatterns/book/#observerpatternjavascript
+   * @see http://goo.gl/2HiFSQ
    */
   function ObserverList () {
     /**

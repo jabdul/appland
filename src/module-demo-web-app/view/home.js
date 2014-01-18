@@ -10,7 +10,10 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
   var Home = {},
       moduleConfig = App.getModuleConfig('module-demo-web-app');
 
-  //console.log(new Article({id:76}));
+  var article = new Article();
+  console.log(article);
+  console.log(article.id);
+  console.log('fetch: ', article.fetch({}));
 
   App.View.extend(Home);
 

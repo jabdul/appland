@@ -151,7 +151,7 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
         subType.prototype = new F();
         Util.mixin(subType, superType);
       } else {
-        throw Error('A data type "object" is expected.');
+        throw new Error('A data type "object" is expected.');
       }
     }
 
@@ -169,10 +169,28 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
        * Model creator.
        * @type {Object}
        * @private
-       */
+
       Model: {
         extend: function (subType){
           return Util.extend(subType, BaseModel);
+        }
+      },*/
+      Model: {
+        extend: function (prop, proto){
+          var Model = function () {
+                BaseModel.call(this, prop);
+                for (var i in prop) {
+                  this[i] = prop[i];
+                }
+              };
+          // Inherit parent prototype
+          Model = Util.extend(Model, BaseModel);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Model.prototype[j] = proto[j];
+          }
+
+          return Model;
         }
       },
       /**

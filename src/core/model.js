@@ -2,15 +2,17 @@ define([],
   function () {
     /**
      * Model.
+     * @param {{}} o options
      * @constructor
      */
-    function Model() {
+    function Model(o) {
+      o = o || {};
       /**
        * Unique Id.
        * @type {*}
        * @private
        */
-      this.id;
+      this.id = o.id || -1;
     }
 
     Model.prototype = {
@@ -24,7 +26,7 @@ define([],
         if (typeof this[property] !== 'undefined') {
           return this[property];
         }
-        throw Error('Property not found.');
+        throw new Error('Property not found.');
       },
       /**
        * Property setter.
@@ -35,8 +37,9 @@ define([],
       set: function (property, value) {
         if (typeof this[property] !== 'undefined') {
           this[property] = value;
+          return;
         }
-        throw Error('Property not found.');
+        throw new  Error('Property not found.');
       },
       /**
        * Update properties.
@@ -47,7 +50,9 @@ define([],
        * Fetches model's data from server.
        * @param {?object=} options containing name/value pairs.
        */
-      fetch: function (options) {},
+      fetch: function (options) {
+        return this.id;
+      },
       /**
        * Is this model cached?
        * Checks the serialised localStorage object for matching id.
