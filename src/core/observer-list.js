@@ -2,29 +2,29 @@ define(function () {
   /**
    * Observer List.
    * Part of the Design Patterns.
-   * @param {null}
+   * @param {{}} options
    * @constructor
-   * @returns {null}
    * @see http://goo.gl/2HiFSQ
    */
-  function ObserverList () {
+  function ObserverList (options) {
+    options = options || [];
     /**
      * A collection of Observers.
      * @type {Array.<object>}
      * @private
      */
-    this.observerList = [];
+    this.observerList = options.observers || [];
   }
     
   ObserverList.prototype = {
     constructor: ObserverList,
     /**
      * Add Observer to the queue.
-     * @param {object} Observer.
+     * @param {object} o Observer.
      * @returns {Array.<object>} Observer collection including new member.
      */
     Add: function (o) {
-      return this.observerList.push( obj );
+      return this.observerList.push(o);
     },
     /**
      * Empty collection of Observers.
@@ -42,8 +42,8 @@ define(function () {
     },   
     /**
      * Get a particular Observer from collection.
-     * @param {number} Observer to return.
-     * @returns {object} Requested Observer.
+     * @param {number} index of Observer to return.
+     * @returns {*} Requested Observer if exists.
      */
     Get: function (index) {
       if( index > -1 && index < this.observerList.length ){
@@ -52,8 +52,8 @@ define(function () {
     },
     /**
      * Insert an Observer to the beginning or end of collection.
-     * @param {object} Observer.
-     * @param {number} Position to insert Observer.
+     * @param {object} o Observer.
+     * @param {number} index position to insert Observer.
      * @returns {number} Position of Observer in the list.
      */
     Insert: function (o, index) {
@@ -71,16 +71,16 @@ define(function () {
     },
     /**
      * Get the position of Observer in the collection.
-     * @param {object} Observer.
-     * @param {number} Position to start the search from.
+     * @param {object} o Observer.
+     * @param {number} startIndex of Position to start the search from.
      * @returns {number} Position of Observer in the list.
      */
     IndexOf: function (o, startIndex) {
-      var i = startIndex, pointer = -1;
+      var pointer = -1;
 
-      while( i < this.observerList.length ){
-        if( this.observerList[i] === o ){
-          pointer = i;
+      while( startIndex < this.observerList.length ){
+        if( this.observerList[startIndex] === o ){
+          pointer = startIndex;
         }
       }
     
@@ -88,8 +88,7 @@ define(function () {
     },
     /**
      * Remove Observer from collection.Either at the beginning or end of list.
-     * @param {number} Index position of Observer.
-     * @returns {undefined}
+     * @param {number} index position of Observer.
      */
     RemoveAt: function (index) {
       if( index === 0 ){

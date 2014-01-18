@@ -1,12 +1,15 @@
 define([
+  'lib/json2/json2',
   'lib/requirejs/i18n!nls/conf',
   'core/util',
   'core/router',
   'core/model',
   'core/view',
+  'core/collection',
   'log4javascript'
 ],
-function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
+function (JSON, AppConfig, Util, Router, BaseModel,
+          BaseView, BaseCollection, Log4j) {
 
   function App() {
     /**
@@ -191,6 +194,24 @@ function (AppConfig, Util, Router, BaseModel, BaseView, Log4j) {
           }
 
           return Model;
+        }
+      },
+      Collection: {
+        extend: function (prop, proto){
+          var Collection = function () {
+            BaseCollection.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          Collection = Util.extend(Collection, BaseCollection);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Collection.prototype[j] = proto[j];
+          }
+
+          return Collection;
         }
       },
       /**

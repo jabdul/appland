@@ -23,7 +23,7 @@ define([],
        * @return {*}
        */
       get: function (property) {
-        if (typeof this[property] !== 'undefined') {
+        if (Object.prototype.hasOwnProperty.call(this, property)) {
           return this[property];
         }
         throw new Error('Property not found.');
@@ -33,9 +33,10 @@ define([],
        * @param {*} property to modify
        * @param {*} value
        * @return {*}
+       * @see http://goo.gl/DvOrz9
        */
       set: function (property, value) {
-        if (typeof this[property] !== 'undefined') {
+        if (Object.prototype.hasOwnProperty.call(this, property)) {
           this[property] = value;
           return;
         }
@@ -56,7 +57,6 @@ define([],
       /**
        * Is this model cached?
        * Checks the serialised localStorage object for matching id.
-       * @return {boolean}
        */
       isCached: function () {}
     };

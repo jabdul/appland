@@ -10,13 +10,25 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
   var Home = {},
       moduleConfig = App.getModuleConfig('module-demo-web-app');
 
-  var article = new Article();
+  /*var article = new Article();
   console.log(article);
   console.log(article.id);
-  console.log('fetch: ', article.fetch({}));
+  console.log('fetch: ', article.fetch({}));  */
 
+  /**
+   * Holds a collection of Articles.
+   * @type {ArticleCollection}
+   */
+  var articleCollection = new ArticleCollection();
+  console.log(articleCollection);
+  articleCollection.findAll().toList();
+  //console.log(article.id);
+  //console.log('fetch: ', article.fetch({}));
+
+  /**
+   * Presentation
+   */
   App.View.extend(Home);
-
   Home.tmpl = IndexTmpl({
     labels: moduleConfig.labels,
     articlesTeasers: [{}]
