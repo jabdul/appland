@@ -28,7 +28,7 @@ define(['jquery'],
       this.port = o.port || null;
       /**
        * The AJAX configuration and setup.
-       * @type {{data: string, path: string, cbSuccess: function(Object, string),
+       * @type {{data: string, path: string, success: function(Object, string),
        *        dataType: string, async: boolean, type: string, isLocal: string}}
        * @private
        */
@@ -48,26 +48,28 @@ define(['jquery'],
         this.requestConfig = {
           data: (typeof o.data === 'undefined') ? null : o.data,
           path: o.path,
-          cbSuccess: o.cbSuccess || function (data, textStatus) {
-          },
           dataType: o.dataType || 'json',
           async: o.async || true,
           type: o.type || 'get',
           isLocal: o.isLocal || false,
           cache: o.cache || true,
-          error: o.error || function (jqXHR, textStatus, errorThrown) {
-
-            /*          console.log(o.path);
-             console.log(
-             'error(' + jqXHR + ', ' + textStatus + ', ' + errorThrown + ')'
-             );*/
-          },
-          complete: o.complete || function (jqXHR, textStatus) {
-          },
+          success: o.success ||
+            function (data, textStatus) {},
+          error: o.error ||
+            function (jqXHR, textStatus, errorThrown) {},
+          complete: o.complete ||
+            function (jqXHR, textStatus) {},
           statusCode: o.statusCode || {
-            200: function () {
-            }
-          }
+            200: function () {}
+          },
+          done: o.done ||
+            function (data, textStatus, jqXHR) {},
+          fail: o.fail ||
+            function (data, textStatus, errorThrown) {},
+          always: o.always  ||
+            function (data, textStatus, jqXHROrErrorThrown) {},
+          then: o.then  ||
+            function (dataOrjqXHR, textStatus, jqXHROrErrorThrown) {}
         };
 
         if (this.requestConfig.dataType) {
@@ -88,11 +90,15 @@ define(['jquery'],
           data: this.requestConfig.data,
           cache: this.requestConfig.cache,
           async: this.requestConfig.async,
-          success: this.requestConfig.cbSuccess,
+          success: this.requestConfig.success,
           error: this.requestConfig.error,
           complete: this.requestConfig.complete,
           statusCode: this.requestConfig.statusCode
-        });
+        })
+        .done(this.requestConfig.done)
+        .fail(this.requestConfig.fail)
+        .always(this.requestConfig.always)
+        .then(this.requestConfig.then);
       },
       /**
        * HTML type request.
@@ -108,7 +114,7 @@ define(['jquery'],
           data: this.requestConfig.data,
           cache: this.requestConfig.cache,
           async: this.requestConfig.async,
-          success: this.requestConfig.cbSuccess,
+          success: this.requestConfig.success,
           error: this.requestConfig.error,
           complete: this.requestConfig.complete,
           statusCode: this.requestConfig.statusCode

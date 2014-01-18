@@ -66,15 +66,31 @@ define(['core/observer-list'],
           }
           this._observerList.Add(m);
         }
-
-        return this;
+         return this.toList();
       },
       /**
        * Returns a list of stringyfied items.
-       * @return {array.<{}>}
+       * @return {array.<{}>=}
        */
       toList: function () {
+        var len = this._observerList.Count(),
+            i = 0,
+            item = null,
+            items = [];
 
+        for (; i < len; i++) {
+          item = this._observerList.Get(i);
+          items.push(this.toJSON(item));
+        }
+        console.log(items);
+        return items;
+      },
+      /**
+       * Returns the serialised form of this object.
+       * @returns {object} obj to stringify
+       */
+      toJSON: function (obj) {
+        return JSON.stringify(obj);
       },
       /**
        * Find item by id.
@@ -89,8 +105,12 @@ define(['core/observer-list'],
        */
       findAll: function () {
         this.fetch();
-        return this;
-      }
+      },
+      /**
+       * Fetches model's data from server.
+       * @param {*=} id
+       */
+      fetch: function (id) {}
     };
 
     return Collection;

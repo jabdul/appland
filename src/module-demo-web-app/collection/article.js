@@ -1,7 +1,7 @@
 define([
   'module-demo-web-app/app',
   'jquery',
-  'module-demo-web-app/model/article',
+  'module-demo-web-app/model/article'
 ],
 function (App, $, Article) {
 
@@ -31,7 +31,7 @@ function (App, $, Article) {
         path: '/module-demo-web-app/data/mock-articles.json',
         isLocal: true,
         type: request.httpRequestMethod,
-        cbSuccess: function (data, textStatus) {
+        done: function (data, textStatus) {
           // In case of null response...
           if ( data.articles === null ) {
             console.log('No info available');
@@ -39,7 +39,7 @@ function (App, $, Article) {
             self.setItems(data.articles);
           }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
+        fail: function (jqXHR, textStatus, errorThrown) {
           throw new Error("Service ERROR: Could not fetch articles.");
         }
       });

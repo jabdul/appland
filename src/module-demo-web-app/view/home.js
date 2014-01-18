@@ -21,7 +21,7 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
    */
   var articleCollection = new ArticleCollection();
   console.log(articleCollection);
-  articleCollection.findAll().toList();
+  console.log(articleCollection.findAll());
   //console.log(article.id);
   //console.log('fetch: ', article.fetch({}));
 

@@ -48,17 +48,14 @@ define([],
        */
       update: function (options) {},
       /**
-       * Fetches model's data from server.
-       * @param {?object=} options containing name/value pairs.
-       */
-      fetch: function (options) {
-        return this.id;
-      },
-      /**
        * Is this model cached?
        * Checks the serialised localStorage object for matching id.
        */
-      isCached: function () {}
+      isCached: function () {},
+      /**
+       * Fetches model's data from server.
+       */
+      fetch: function () {}
     };
 
     return Model;
