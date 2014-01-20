@@ -7,42 +7,32 @@ define([
 ],
 function (App, $, ArticleCollection, Article, IndexTmpl) {
 
-  var Home = {},
+  var Home,
       moduleConfig = App.getModuleConfig('module-demo-web-app');
 
-  /*var article = new Article();
-  console.log(article);
-  console.log(article.id);
-  console.log('fetch: ', article.fetch({}));  */
+  Home = App.View.extend({
+    /* Default constructor properties */
+    tmpl: IndexTmpl
+  },
+  { /* Prototype properties and methods */
+    show: function (appEl) {
+      appEl.innerHTML = this.tmpl({
+        labels: moduleConfig.labels,
+        articlesTeasers: this.findArticles()
+      });
+    },
+    findArticles: function() {
+      var articleCollection = new ArticleCollection();
 
-  /**
-   * Holds a collection of Articles.
-   * @type {ArticleCollection}
-   */
-  var articleCollection = new ArticleCollection();
-  //console.log(articleCollection);
-  //console.log(this);
-  articleCollection
-    .findAll()
-    .listenOn('fetched', function(event){
-      console.log('items', event.items);
-    });
-  //console.log();
-  //console.log(article.id);
-  //console.log('fetch: ', article.fetch({}));
-
-  /**
-   * Presentation
-   */
-  App.View.extend(Home);
-  Home.tmpl = IndexTmpl({
-    labels: moduleConfig.labels,
-    articlesTeasers: [{}]
+      articleCollection
+        .findAll()
+        .listenOn('fetched', function(event){
+          console.log('items', event.items);
+      });
+    }
   });
 
-  Home.show = function (elm) {
-    elm.innerHTML = this.tmpl;
-  };
+  //console.log(Home);
 
   return Home;
 });

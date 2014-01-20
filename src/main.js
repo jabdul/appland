@@ -226,10 +226,28 @@ function (JSON, AppConfig, Util, Router, BaseModel,
        * View creator.
        * @type {Object}
        * @private
-       */
+
       View: {
         extend: function (subType){
           extendMixin(subType, BaseView);
+        }
+      },*/
+      View: {
+        extend: function (prop, proto){
+          var View = function () {
+            BaseView.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          View = Util.extend(View, BaseView);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            View.prototype[j] = proto[j];
+          }
+
+          return View;
         }
       },
       /**

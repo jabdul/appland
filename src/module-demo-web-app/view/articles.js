@@ -6,24 +6,23 @@ define([
 ],
 function (App, $, ArticleCollection, ArticlesTmpl) {
 
-  var Articles = {},
+  var ArticlesView,
       moduleConfig = App.getModuleConfig('module-demo-web-app');
-      /*data = {}*/
 
-  App.View.extend(Articles);
+  ArticlesView = App.View.extend({
+      /* Default constructor properties */
+      tmpl: ArticlesTmpl
+    },
+    { /* Prototype properties and methods */
+      show: function (appEl) {
+        appEl.innerHTML = this.tmpl({
+          labels: moduleConfig.labels,
+          articlesTeasers: [{}]
+        });
+      }
+    });
 
-  //data = moduleConfig.labels3;
-  //data['teasers'] = moduleConfig.labels;
-  //data['labels3'] = moduleConfig.labels3;
+  //console.log(ArticlesView);
 
-  Articles.tmpl = ArticlesTmpl({
-    labels: moduleConfig.labels,
-    articlesList: [{}]
-  });
-
-  Articles.show = function (elm) {
-    elm.innerHTML = this.tmpl;
-  };
-
-  return Articles;
+  return ArticlesView;
 });

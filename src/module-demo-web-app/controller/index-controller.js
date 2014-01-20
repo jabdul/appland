@@ -34,16 +34,13 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
     function parseUrl() {
       switch (window.location.hash) {
         case '#/home':
-          HomeView.show(appContainerEl);
-          Routes.setHash('home');
+          home('home');
           break;
         case '#/articles':
-          ArticlesView.show(appContainerEl);
-          Routes.setHash('articles');
+          articles();
           break;
         default:
-          HomeView.show(appContainerEl);
-          Routes.setHash('index'); // Default landing page.
+          home('index');
           break;
       }
     }
@@ -56,16 +53,26 @@ function (App, Doc, $, ArticleCollection, IndexTmpl, HomeView, ArticlesView) {
       // Homepage
       var homeRoute = Routes.Route.addRoute('home');
       homeRoute.matched.add(function(){
-        HomeView.show(appContainerEl);
-        Routes.setHash('home');
+        home('home');
       });
       // Articles listing page
       var articlesRoute = Routes.Route.addRoute('articles');
       articlesRoute.matched.add(function(){
-        ArticlesView.show(appContainerEl);
-        Routes.setHash('articles');
+        articles();
       });
       Routes.parseHash();
+    }
+
+    function home(hash){
+      var home = new HomeView();
+      home.show(appContainerEl);
+      Routes.setHash(hash);
+    }
+
+    function articles(){
+      var articles = new ArticlesView();
+      articles.show(appContainerEl);
+      Routes.setHash('articles');
     }
 
     var publicMethods = {
