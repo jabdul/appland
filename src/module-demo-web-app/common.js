@@ -55,8 +55,9 @@ requirejs.config({
 });
 
 require([
-  'module-demo-web-app/controller/index-controller'
+  'module-demo-web-app/routes'
 ],
-  function (IndexController) {
-    IndexController.init();
+  function (Routes) {
+    var routes = new Routes();
+    routes.init();
   });

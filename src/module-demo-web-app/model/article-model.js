@@ -1,12 +1,11 @@
 define([
-  'module-demo-web-app/app',
-  'hbs!module-demo-web-app/view/tmpl/article'
+  'module-demo-web-app/app'
 ],
-function (App, ArticleTmpl) {
+function (App) {
 
-  var Article;
+  var ArticleModel;
 
-  Article = App.Model.extend({
+  ArticleModel = App.Model.extend({
     /* Default constructor properties */
     isActive: false,
     image: '',
@@ -51,5 +50,5 @@ function (App, ArticleTmpl) {
 
   //console.log(Article);
 
-  return Article;
+  return ArticleModel;
 });

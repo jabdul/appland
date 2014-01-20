@@ -1,18 +1,18 @@
 define([
   'module-demo-web-app/app',
   'jquery',
-  'module-demo-web-app/collection/article',
-  'module-demo-web-app/model/article',
-  'hbs!module-demo-web-app/view/tmpl/index'
+  'module-demo-web-app/collection/article-collection',
+  'module-demo-web-app/model/article-model',
+  'hbs!module-demo-web-app/view/tmpl/home'
 ],
-function (App, $, ArticleCollection, Article, IndexTmpl) {
+function (App, $, ArticleCollection, Article, HomeTmpl) {
 
-  var Home,
+  var HomeView,
       moduleConfig = App.getModuleConfig('module-demo-web-app');
 
-  Home = App.View.extend({
+  HomeView = App.View.extend({
     /* Default constructor properties */
-    tmpl: IndexTmpl
+    tmpl: HomeTmpl
   },
   { /* Prototype properties and methods */
     show: function (appEl) {
@@ -26,13 +26,14 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
 
       articleCollection
         .findAll()
-        .listenOn('fetched', function(event){
-          console.log('items', event.items);
-      });
+        .listenOn('fetched', this.whenFetched(event));
+    },
+    whenFetched: function (event) {
+      console.log('items', event);
     }
   });
 
   //console.log(Home);
 
-  return Home;
+  return HomeView;
 });

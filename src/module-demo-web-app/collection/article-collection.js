@@ -1,16 +1,16 @@
 define([
   'module-demo-web-app/app',
   'jquery',
-  'module-demo-web-app/model/article'
+  'module-demo-web-app/model/article-model'
 ],
-function (App, $, Article) {
+function (App, $, ArticleModel) {
 
   var Articles;
 
   Articles = App.Collection.extend({
     /* Default properties */
     config: App.getModuleConfig('module-demo-web-app'),
-    model: Article
+    model: ArticleModel
   },
   { /* Prototype properties and methods */
     fetch: function () {
