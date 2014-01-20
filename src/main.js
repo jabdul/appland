@@ -6,10 +6,11 @@ define([
   'core/model',
   'core/view',
   'core/collection',
+  'core/event-target',
   'log4javascript'
 ],
 function (JSON, AppConfig, Util, Router, BaseModel,
-          BaseView, BaseCollection, Log4j) {
+          BaseView, BaseCollection, EventTarget, Log4j) {
 
   function App() {
     /**
@@ -198,6 +199,7 @@ function (JSON, AppConfig, Util, Router, BaseModel,
       },
       Collection: {
         extend: function (prop, proto){
+          var privs = ['_handlers'];
           var Collection = function () {
             BaseCollection.call(this, prop);
             for (var i in prop) {
@@ -209,6 +211,12 @@ function (JSON, AppConfig, Util, Router, BaseModel,
           // Override prototype where applicable.
           for (var j in proto) {
             Collection.prototype[j] = proto[j];
+          }
+          // Inherit EvenTarget prototypes.
+          var EvT = new EventTarget();
+          for (var k in EvT) {
+            if (privs.indexOf(k) > -1) continue;
+            Collection.prototype[k] = EvT[k];
           }
 
           return Collection;

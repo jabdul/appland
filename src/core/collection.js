@@ -1,11 +1,12 @@
-define(['core/observer-list'],
-  function (ObserverList) {
+define(['core/observer-list', 'core/event-target', 'core/util'],
+  function (ObserverList, EventTarget, Util) {
     /**
      * Collection.
      * @param {{}} o options
      * @constructor
      */
     function Collection(o) {
+      EventTarget.call(this);
       o = o || {};
       /**
        * Model.
@@ -24,6 +25,8 @@ define(['core/observer-list'],
        */
       this._observerList = new ObserverList();
     }
+
+    Util.extend(Collection, EventTarget);
 
     Collection.prototype = {
       constructor: Collection,
@@ -66,11 +69,13 @@ define(['core/observer-list'],
           }
           this._observerList.Add(m);
         }
-         return this.toList();
+
+        this._fire({type: 'fetched', items: items});
+        console.log('fired');
       },
       /**
        * Returns a list of stringyfied items.
-       * @return {array.<{}>=}
+       * @return {Array.<{}>}
        */
       toList: function () {
         var len = this._observerList.Count(),
@@ -82,12 +87,12 @@ define(['core/observer-list'],
           item = this._observerList.Get(i);
           items.push(this.toJSON(item));
         }
-        console.log(items);
-        return items;
+        //console.log(items);
+        return items.length? items: [{}];
       },
       /**
        * Returns the serialised form of this object.
-       * @returns {object} obj to stringify
+       * @returns {Object} obj to stringify
        */
       toJSON: function (obj) {
         return JSON.stringify(obj);
@@ -105,6 +110,7 @@ define(['core/observer-list'],
        */
       findAll: function () {
         this.fetch();
+        return this;
       },
       /**
        * Fetches model's data from server.

@@ -21,7 +21,13 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
    */
   var articleCollection = new ArticleCollection();
   console.log(articleCollection);
-  console.log(articleCollection.findAll());
+  console.log(this);
+  articleCollection
+    .findAll()
+    .listenOn('fetched', function(event){
+      console.log('items', event.items);
+    });
+  //console.log();
   //console.log(article.id);
   //console.log('fetch: ', article.fetch({}));
 
