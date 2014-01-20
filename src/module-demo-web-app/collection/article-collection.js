@@ -5,9 +5,7 @@ define([
 ],
 function (App, $, ArticleModel) {
 
-  var Articles;
-
-  Articles = App.Collection.extend({
+  return App.Collection.extend({
     /* Default properties */
     config: App.getModuleConfig('module-demo-web-app'),
     model: ArticleModel
@@ -45,8 +43,4 @@ function (App, $, ArticleModel) {
       });
     }
   });
-
-  //console.log(Articles);
-
-  return Articles;
 });

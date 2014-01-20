@@ -3,9 +3,7 @@ define([
 ],
 function (App) {
 
-  var ArticleModel;
-
-  ArticleModel = App.Model.extend({
+  return App.Model.extend({
     /* Default constructor properties */
     isActive: false,
     image: '',
@@ -47,8 +45,4 @@ function (App) {
       this.maxDefaultTags = max;
     }
   });
-
-  //console.log(Article);
-
-  return ArticleModel;
 });

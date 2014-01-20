@@ -2,22 +2,16 @@ define([
   'module-demo-web-app/app',
   'lib/requirejs/domReady!',
   'jquery',
-  'module-demo-web-app/view/home-view',
-  'module-demo-web-app/view/articles-view'
+  'module-demo-web-app/controller/index-controller',
+  'module-demo-web-app/controller/home-controller',
+  'module-demo-web-app/controller/articles-controller'
 ],
-function (App, Doc, $, HomeView, ArticlesView) {
-  /**
-   * App's DOM Container Element.
-   * @type {Object}
-   */
-  var appContainerEl = Doc.getElementById('demo-web-app-content');
+function (App, Doc, $,IndexController, HomeController, ArticlesController) {
   /**
    * Routes Manager.
    * @type {Object}
    */
-  var Routes;
-
-  Routes = App.Routes.extend({
+  return App.Routes.extend({
     /* Default constructor properties */
   },
   { /* Prototype properties and methods */
@@ -28,13 +22,13 @@ function (App, Doc, $, HomeView, ArticlesView) {
     parseUrl: function () {
       switch (window.location.hash) {
         case '#/home':
-          this.home('home');
+          this.home();
           break;
         case '#/articles':
           this.articles();
           break;
         default:
-          this.home('index');
+          this.index();
           break;
       }
     },
@@ -43,7 +37,7 @@ function (App, Doc, $, HomeView, ArticlesView) {
       // Homepage
       var homeRoute = this.Route.addRoute('home');
       homeRoute.matched.add(function(){
-        self.home('home');
+        self.home();
       });
       // Articles listing page
       var articlesRoute = this.Route.addRoute('articles');
@@ -52,17 +46,21 @@ function (App, Doc, $, HomeView, ArticlesView) {
       });
       this.parseHash();
     },
-    home: function(hash) {
-      var home = new HomeView();
-      home.show(appContainerEl);
-      this.setHash(hash);
+    index: function() {
+      var index = new IndexController();
+      index.init();
+      this.setHash('index');
+    },
+    home: function() {
+      var home = new HomeController();
+      home.init();
+      this.setHash('home');
     },
     articles: function() {
-      var articles = new ArticlesView();
-      articles.show(appContainerEl);
+      var articles = new ArticlesController();
+      articles.init();
       this.setHash('articles');
     }
   });
 
-  return Routes;
 });

@@ -3,13 +3,13 @@ define([
   'lib/requirejs/domReady!',
   'module-demo-web-app/view/home-view'
 ],
-  function (App, Doc, HomeView) {
+function (App, Doc, HomeView) {
   /**
-   * IndexController Manager.
+   * HomeController Manager.
    * @type {Object}
    */
   return App.Controller.extend({
-    /* Default constructor properties */
+  /* Default constructor properties */
   },
   { /* Prototype properties and methods */
     init: function() {

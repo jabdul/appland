@@ -6,23 +6,16 @@ define([
 ],
 function (App, $, ArticleCollection, ArticlesTmpl) {
 
-  var ArticlesView,
-      moduleConfig = App.getModuleConfig('module-demo-web-app');
-
-  ArticlesView = App.View.extend({
-      /* Default constructor properties */
-      tmpl: ArticlesTmpl
-    },
-    { /* Prototype properties and methods */
-      show: function (appEl) {
-        appEl.innerHTML = this.tmpl({
-          labels: moduleConfig.labels,
-          articlesTeasers: [{}]
-        });
-      }
-    });
-
-  //console.log(ArticlesView);
-
-  return ArticlesView;
+  return App.View.extend({
+    /* Default constructor properties */
+    tmpl: ArticlesTmpl,
+    el: 'body'
+  },
+  { /* Prototype properties and methods */
+    show: function (appEl) {
+      appEl.innerHTML = this.tmpl({
+        labels: App.getModuleConfig('module-demo-web-app').labels
+      });
+    }
+  });
 });

@@ -4,12 +4,13 @@ define([
   'core/util',
   'core/router',
   'core/model',
+  'core/controller',
   'core/view',
   'core/collection',
   'core/event-target',
   'log4javascript'
 ],
-function (JSON, AppConfig, Util, Router, BaseModel,
+function (JSON, AppConfig, Util, Router, BaseModel,  BaseController,
           BaseView, BaseCollection, EventTarget, Log4j) {
 
   function App() {
@@ -172,13 +173,8 @@ function (JSON, AppConfig, Util, Router, BaseModel,
       /**
        * Model creator.
        * @type {Object}
-       * @private
-
-      Model: {
-        extend: function (subType){
-          return Util.extend(subType, BaseModel);
-        }
-      },*/
+       * @export
+       */
       Model: {
         extend: function (prop, proto){
           var Model = function () {
@@ -197,6 +193,33 @@ function (JSON, AppConfig, Util, Router, BaseModel,
           return Model;
         }
       },
+      /**
+       * Controller creator.
+       * @type {Object}
+       * @export
+       */
+      Controller: {
+        extend: function (prop, proto){
+          var Controller = function () {
+            BaseController.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          Controller = Util.extend(Controller, BaseController);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Controller.prototype[j] = proto[j];
+          }
+
+          return Controller;
+        }
+      },
+      /**
+       * Collection creator.
+       * @type {Object}
+       */
       Collection: {
         extend: function (prop, proto){
           var privs = ['_handlers'];
@@ -225,13 +248,7 @@ function (JSON, AppConfig, Util, Router, BaseModel,
       /**
        * View creator.
        * @type {Object}
-       * @private
-
-      View: {
-        extend: function (subType){
-          extendMixin(subType, BaseView);
-        }
-      },*/
+       */
       View: {
         extend: function (prop, proto){
           var View = function () {
@@ -253,13 +270,7 @@ function (JSON, AppConfig, Util, Router, BaseModel,
       /**
        * Routes creator.
        * @type {Object}
-       * @private
-
-      Routes: {
-        extend: function (subType){
-          extendMixin(subType, Router);
-        }
-      },*/
+       */
       Routes: {
         extend: function (prop, proto){
           var Routes = function () {
