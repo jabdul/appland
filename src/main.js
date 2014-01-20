@@ -201,11 +201,11 @@ function (JSON, AppConfig, Util, Router, BaseModel,
         extend: function (prop, proto){
           var privs = ['_handlers'];
           var Collection = function () {
-            BaseCollection.call(this, prop);
-            for (var i in prop) {
-              this[i] = prop[i];
-            }
-          };
+                BaseCollection.call(this, prop);
+                for (var i in prop) {
+                  this[i] = prop[i];
+                }
+              };
           // Inherit parent prototype
           Collection = Util.extend(Collection, BaseCollection);
           // Override prototype where applicable.

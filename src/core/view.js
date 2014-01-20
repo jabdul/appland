@@ -25,7 +25,7 @@ define(['jquery'],
        * @return {*}
        */
       get: function (property) {
-        if (typeof this[property] !== 'undefined') {
+        if (Object.prototype.hasOwnProperty.call(this, property)) {
           return this[property];
         }
         throw Error('Property not found.');
@@ -37,7 +37,7 @@ define(['jquery'],
        * @return {*}
        */
       set: function (property, value) {
-        if (typeof this[property] !== 'undefined') {
+        if (Object.prototype.hasOwnProperty.call(this, property)) {
           this[property] = value;
         }
         throw Error('Property not found.');

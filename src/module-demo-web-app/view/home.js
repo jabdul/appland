@@ -20,8 +20,8 @@ function (App, $, ArticleCollection, Article, IndexTmpl) {
    * @type {ArticleCollection}
    */
   var articleCollection = new ArticleCollection();
-  console.log(articleCollection);
-  console.log(this);
+  //console.log(articleCollection);
+  //console.log(this);
   articleCollection
     .findAll()
     .listenOn('fetched', function(event){

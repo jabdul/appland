@@ -7,7 +7,7 @@ function (App, ArticleTmpl) {
   var Article;
 
   Article = App.Model.extend({
-    /* Default properties */
+    /* Default constructor properties */
     isActive: false,
     image: '',
     title: '',

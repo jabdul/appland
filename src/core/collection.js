@@ -71,7 +71,7 @@ define(['core/observer-list', 'core/event-target', 'core/util'],
         }
 
         this._fire({type: 'fetched', items: items});
-        console.log('fired');
+        //console.log('fired');
       },
       /**
        * Returns a list of stringyfied items.

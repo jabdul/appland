@@ -46,7 +46,7 @@ function (App, $, Article) {
     }
   });
 
-  console.log(Articles);
+  //console.log(Articles);
 
   return Articles;
 });
