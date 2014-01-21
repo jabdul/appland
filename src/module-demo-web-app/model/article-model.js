@@ -2,7 +2,10 @@ define([
   'module-demo-web-app/app'
 ],
 function (App) {
-
+  /**
+   * ArticleModel.
+   * @type {Object}
+   */
   return App.Model.extend({
     /* Default constructor properties */
     isActive: false,

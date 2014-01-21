@@ -5,7 +5,10 @@ define([
   'hbs!module-demo-web-app/view/tmpl/articles'
 ],
 function (App, $, ArticleCollection, ArticlesTmpl) {
-
+  /**
+   * ArticlesView Manager.
+   * @type {Object}
+   */
   return App.View.extend({
     /* Default constructor properties */
     tmpl: ArticlesTmpl,

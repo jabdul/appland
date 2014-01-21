@@ -5,7 +5,10 @@ define([
   'hbs!module-demo-web-app/view/tmpl/home'
 ],
 function (App, $, ArticleCollection, HomeTmpl) {
-
+  /**
+   * HomeView Manager.
+   * @type {Object}
+   */
   return App.View.extend({
     /* Default constructor properties */
     tmpl: HomeTmpl,
@@ -23,9 +26,10 @@ function (App, $, ArticleCollection, HomeTmpl) {
 
       articleCollection
         .findAll()
-        .listenOn('fetched', function (event) {
-          console.log('items', event);
-        });
+        .listenOn('fetched', this.whenFetched(event));
+    },
+    whenFetched: function (event) {
+      console.log('items', event);
     }
   });
 });

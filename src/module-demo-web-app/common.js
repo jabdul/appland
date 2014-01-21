@@ -59,5 +59,6 @@ require([
 ],
   function (Routes) {
     var routes = new Routes();
+    console.log(routes);
     routes.init();
   });

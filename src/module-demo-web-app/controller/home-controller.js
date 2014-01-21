@@ -9,7 +9,7 @@ function (App, Doc, HomeView) {
    * @type {Object}
    */
   return App.Controller.extend({
-  /* Default constructor properties */
+    /* Default constructor properties */
   },
   { /* Prototype properties and methods */
     init: function() {

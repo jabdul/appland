@@ -3,13 +3,13 @@ define([
   'lib/requirejs/domReady!',
   'module-demo-web-app/view/articles-view'
 ],
-  function (App, Doc, ArticlesView) {
+function (App, Doc, ArticlesView) {
   /**
    * ArticlesController Manager.
    * @type {Object}
    */
   return App.Controller.extend({
-  /* Default constructor properties */
+    /* Default constructor properties */
   },
   { /* Prototype properties and methods */
     init: function() {

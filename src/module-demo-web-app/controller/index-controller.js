@@ -3,7 +3,7 @@ define([
   'lib/requirejs/domReady!',
   'module-demo-web-app/view/home-view'
 ],
-  function (App, Doc, HomeView) {
+function (App, Doc, HomeView) {
   /**
    * IndexController Manager.
    * @type {Object}

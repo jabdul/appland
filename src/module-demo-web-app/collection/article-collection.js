@@ -4,7 +4,10 @@ define([
   'module-demo-web-app/model/article-model'
 ],
 function (App, $, ArticleModel) {
-
+  /**
+   * ArticleCollection Manager.
+   * @type {Object}
+   */
   return App.Collection.extend({
     /* Default properties */
     config: App.getModuleConfig('module-demo-web-app'),
@@ -22,9 +25,9 @@ function (App, $, ArticleModel) {
       // type: request.httpRequestMethod
 
       /** Development (mock) setup **/
-      // path: '/module-demo-web-app/data/mock-articles.json'
-      // isLocal: true
-      // type: 'GET'
+        // path: '/module-demo-web-app/data/mock-articles.json'
+        // isLocal: true
+        // type: 'GET'
       App.connect('json', {
         path: '/module-demo-web-app/data/mock-articles.json',
         isLocal: true,
