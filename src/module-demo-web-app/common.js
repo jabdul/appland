@@ -58,7 +58,8 @@ require([
   'module-demo-web-app/routes'
 ],
   function (Routes) {
-    //var routes = new Routes();
+    var routes = new Routes();
+    routes.init();
     //console.log(routes);
-    Routes.init();
+    //Routes.init();
   });
