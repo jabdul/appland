@@ -1,22 +1,22 @@
 define([
   'module-demo-web-app/app',
-  'lib/requirejs/domReady!',
+  'jquery',
   'module-demo-web-app/view/home-view'
 ],
-function (App, Doc, HomeView) {
+function (App, $, HomeView) {
   /**
    * HomeController Manager.
    * @type {Object}
    */
   return App.Controller.extend({
     /* Default constructor properties */
+    view: new HomeView()
   },
   { /* Prototype properties and methods */
     init: function() {
-      var home = new HomeView();
-      //console.log(home);
-      home.show(Doc.getElementById('demo-web-app-content'));
-      console.log(home.findArticles());
+      //console.log('home');
+      this.view.show($('#demo-web-app-content'));
+      console.log(this.view.findArticles());
     }
   });
 });

@@ -7,67 +7,85 @@ define([
   'module-demo-web-app/controller/articles-controller'
 ],
 function (App, Doc, $, IndexController, HomeController, ArticlesController) {
-  /**
-   * Routes Manager.
-   * @type {Object}
-   */
-  //function Routes() {
-    //return  function () {
-      return App.Routes.extend({
-          /* Default constructor properties */
-        },
-        { /* Prototype properties and methods */
-          init: function() {
-            this.parseUrl();
-            this.setRoutes();
-          },
-          parseUrl: function () {
-            switch (window.location.hash) {
-              case '#/home':
-                this.home();
-                break;
-              case '#/articles':
-                this.articles();
-                break;
-              default:
-                this.index();
-                break;
-            }
-          },
-          setRoutes: function() {
-            var self = this;
-            // Homepage
-            var homeRoute = this.Route.addRoute('home');
-            homeRoute.matched.add(function(){
-              self.home();
-            });
-            // Articles listing page
-            var articlesRoute = this.Route.addRoute('articles');
-            articlesRoute.matched.add(function(){
-              self.articles();
-            });
-            this.parseHash();
-          },
-          index: function() {
-            var index = new IndexController();
-            index.init();
-            this.setHash('index');
-          },
-          home: function() {
-            var home = new HomeController();
-            home.init();
-            this.setHash('home');
-          },
-          articles: function() {
-            var articles = new ArticlesController();
-            articles.init();
-            this.setHash('articles');
-          }
-        });
-    //}
+  function Routes() {
+    /**
+     * App's DOM Container Element.
+     * @type {Object}
+     */
+    var appContainerEl = Doc.getElementById('demo-web-app-content');
+    /**
+     * Routes Manager.
+     * @type {Object}
+     */
+    var Routes = {};
+    /**
+     * Script initialiser.
+     * Module's single point entry.
+     */
+    function init() {
+      App.Routes.extend(Routes);
+      parseUrl();
+      setRoutes();
+    }
+    /**
+     * Set App Routes
+     */
+    function parseUrl() {
+      switch (window.location.hash) {
+        case '#/home':
+          home();
+          break;
+        case '#/articles':
+          articles();
+          break;
+        default:
+          index();
+          break;
+      }
+    }
+    /**
+     * Set App Routes.
+     * String pattern or Regular Expression
+     * should be used to match against requests.
+     */
+    function setRoutes() {
+      // Homepage
+      var homeRoute = Routes.Route.addRoute('home');
+      homeRoute.matched.add(function(){
+        home();
+      });
+      // Articles listing page
+      var articlesRoute = Routes.Route.addRoute('articles');
+      articlesRoute.matched.add(function(){
+        articles();
+      });
+      Routes.parseHash();
+    }
 
-  //}
-  //}
-  //console.log(Routes);
-  //return Routes;
+    function index(){
+      var index = new HomeController();
+      index.init();
+      Routes.setHash('index');
+    }
+
+    function home(){
+      var home = new HomeController();
+      home.init();
+      Routes.setHash('home');
+    }
+
+    function articles(){
+      var articles = new ArticlesController();
+      articles.init();
+      Routes.setHash('articles');
+    }
+
+    var publicMethods = {
+      init: init
+    };
+
+    return publicMethods;
+  }
+
+  return Routes();
 });

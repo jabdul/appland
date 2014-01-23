@@ -272,21 +272,8 @@ function (JSON, AppConfig, Util, Router, BaseModel,  BaseController,
        * @type {Object}
        */
       Routes: {
-        extend: function (prop, proto){
-          var Routes = function () {
-                Router.call(this, prop);
-                for (var i in prop) {
-                  this[i] = prop[i];
-                }
-              };
-          // Inherit parent prototype
-          Routes = Util.extend(Routes, Router);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            Routes.prototype[j] = proto[j];
-          }
-
-          return Routes;
+        extend: function (subType){
+          extendMixin(subType, Router);
         }
       },
       /**

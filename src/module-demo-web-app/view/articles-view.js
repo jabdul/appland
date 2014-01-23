@@ -12,13 +12,22 @@ function (App, $, ArticleCollection, ArticlesTmpl) {
   return App.View.extend({
     /* Default constructor properties */
     tmpl: ArticlesTmpl,
-    el: 'body'
+    el: 'body',
+    collection: new ArticleCollection()
   },
   { /* Prototype properties and methods */
     show: function (appEl) {
-      appEl.innerHTML = this.tmpl({
+      appEl.html(this.tmpl({
         labels: App.getModuleConfig('module-demo-web-app').labels
-      });
+      }));
+    },
+    findArticles: function() {
+      this.collection
+        .findAll()
+        .listenOn('fetched', this.whenFetched(event));
+    },
+    whenFetched: function (event) {
+      console.log('items', event);
     }
   });
 });

@@ -12,19 +12,18 @@ function (App, $, ArticleCollection, HomeTmpl) {
   return App.View.extend({
     /* Default constructor properties */
     tmpl: HomeTmpl,
-    el: 'body'
+    el: 'body',
+    collection: new ArticleCollection()
   },
   { /* Prototype properties and methods */
     show: function (appEl) {
       this.el = appEl;
-      appEl.innerHTML = this.tmpl({
+      appEl.html(this.tmpl({
         labels: App.getModuleConfig('module-demo-web-app').labels
-      });
+      }));
     },
     findArticles: function() {
-      var articleCollection = new ArticleCollection();
-
-      articleCollection
+      this.collection
         .findAll()
         .listenOn('fetched', this.whenFetched(event));
     },

@@ -1,22 +1,22 @@
 define([
   'module-demo-web-app/app',
-  'lib/requirejs/domReady!',
+  'jquery',
   'module-demo-web-app/view/articles-view'
 ],
-function (App, Doc, ArticlesView) {
+function (App, $, ArticlesView) {
   /**
    * ArticlesController Manager.
    * @type {Object}
    */
   return App.Controller.extend({
     /* Default constructor properties */
+    view: new ArticlesView()
   },
   { /* Prototype properties and methods */
     init: function() {
-      var articles = new ArticlesView();
       //console.log(articles);
-      articles.show(Doc.getElementById('demo-web-app-content'));
-      console.log(articles.findArticles());
+      this.view.show($('#demo-web-app-content'));
+      console.log(this.view.findArticles());
     }
   });
 });
