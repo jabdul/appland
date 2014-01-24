@@ -1,16 +1,15 @@
 define([
   'module-appland/app',
   'lib/requirejs/domReady!',
-  'jquery',
   'hbs!module-appland/view/tmpl/simple-sidebar'
 ],
-function (App, Doc, $, SimpleSidebarTmpl) {
+function (App, Doc, SimpleSidebarTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element. 
      * @type {Object}
      */
-    var appContainerEl = $('#apl-content');
+    var appContainerEl = App.$('#apl-content');
     /**
      * Script initialiser.
      * Executes a set of actions at start.
@@ -21,14 +20,28 @@ function (App, Doc, $, SimpleSidebarTmpl) {
       delegateEvents();
     }
     function setRoutes() {
-      // String pattern or Regular Expression that
+      return App.Routes.extend({
+        /* Default constructor properties */
+      },{
+        /* Prototype properties and methods */
+        init: function() {
+          this.setRoutes();
+        },
+        setRoutes: function(){
+          var route = this.Route.addRoute('{/}');
+          route.matched.add(function(){
+          });
+          this.parseHash();
+        }
+      });
+      /*// String pattern or Regular Expression that
       // should be used to match against requests.
       App.Route.addRoute('{/}', function(section){
         // For each route that matches, execute as follows:
         //console.log(section);
       });
       // Updates location.hash of the current page.
-      App.Hash.setHash('dashboard');
+      App.Hash.setHash('dashboard');*/
     }
     /**
      * Renders the view templates.
@@ -39,7 +52,9 @@ function (App, Doc, $, SimpleSidebarTmpl) {
         SimpleSidebarTmpl(null)
       ];
       appContainerEl.html(templates.join('\n'));
-      callBack();
+
+      var routes = new (callBack())();
+      routes.init();
     }
     /**
      * Event delegation.

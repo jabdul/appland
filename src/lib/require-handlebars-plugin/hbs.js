@@ -437,7 +437,7 @@ define([
             }
           }
 
-          depStr = deps.join("', 'hbs!");
+          depStr = deps.join("', '");
 
           helps = helps.concat((metaObj && metaObj.helpers) ? metaObj.helpers : []);
           helpDepStr = disableHelpers ?

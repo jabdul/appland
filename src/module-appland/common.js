@@ -22,7 +22,7 @@ requirejs.config({
       exports: 'crossroads'
     },
     'underscore': {
-        exports: '_'
+      exports: '_'
     },
     'Log4javascript' :  {
       exports :  'log4javascript'

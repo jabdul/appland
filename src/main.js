@@ -1,10 +1,18 @@
 define([
+  'lib/json2/json2',
   'lib/requirejs/i18n!nls/conf',
+  'jquery',
   'core/util',
   'core/router',
+  'core/model',
+  'core/controller',
+  'core/view',
+  'core/collection',
+  'core/event-target',
   'log4javascript'
 ],
-function (AppConfig, Util, Router, Log4j) {
+function (JSON, AppConfig, $, Util, Router, BaseModel,  BaseController,
+          BaseView, BaseCollection, EventTarget, Log4j) {
 
   function App() {
     /**
@@ -20,12 +28,6 @@ function (AppConfig, Util, Router, Log4j) {
      * @private
      */
     var ENV = '';
-    /**
-     * Crossroads library.
-     * @type {object}
-     * @private
-     */
-    var router = new Router();
     /**
      * Log4javascript console appender.
      * @type {Object}
@@ -116,7 +118,7 @@ function (AppConfig, Util, Router, Log4j) {
       // logger and all its descendants 
       // (including "Apl.Modules.Module1" and
       // "Apl.Modules.Module2" ...)
-      Log4j.getLogger("Wgsn.Modules").setLevel(Log4j.Level.ALL);
+      Log4j.getLogger("Apl.Modules").setLevel(Log4j.Level.ALL);
       
       // Enable or disable logging.
       Log4j.setEnabled( isLoggingEnabled );
@@ -139,6 +141,25 @@ function (AppConfig, Util, Router, Log4j) {
           break;
       }
     }
+    /**
+     * Extend class.
+     * This is a combination of constructor function inheriting from another
+     * constructor function (YUI extend) and a use of mixin approach to copy
+     * the properties of the superType to the subType.
+     * @param subType is the destination pseudo-sublass
+     * @param Source  is the class to inherit from.
+     */
+    function extendMixin (subType, Source){
+      if (typeof subType == 'object') {
+        var F = function(){};
+        var superType = new Source();
+        F.prototype = superType.prototype;
+        subType.prototype = new F();
+        Util.mixin(subType, superType);
+      } else {
+        throw new Error('A data type "object" is expected.');
+      }
+    }
 
     // Start the App.
     init();
@@ -151,29 +172,140 @@ function (AppConfig, Util, Router, Log4j) {
        */
       Util: Util,
       /**
-       * Crossroads library.
+       * jQuery.
        * @type {object}
        * @export
        */
-      Route: router.get('crossroads'),
+      $: $,
       /**
-       * Hasher library.
-       * @type {object}
+       * Model creator.
+       * @type {Object}
        * @export
        */
-      Hash: router.get('hasher'),
+      Model: {
+        extend: function (prop, proto){
+          var Model = function () {
+                BaseModel.call(this, prop);
+                for (var i in prop) {
+                  this[i] = prop[i];
+                }
+              };
+          // Inherit parent prototype
+          Model = Util.extend(Model, BaseModel);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Model.prototype[j] = proto[j];
+          }
+
+          return Model;
+        }
+      },
+      /**
+       * Controller creator.
+       * @type {Object}
+       * @export
+       */
+      Controller: {
+        extend: function (prop, proto){
+          var Controller = function () {
+            BaseController.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          Controller = Util.extend(Controller, BaseController);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Controller.prototype[j] = proto[j];
+          }
+
+          return Controller;
+        }
+      },
+      /**
+       * Collection creator.
+       * @type {Object}
+       */
+      Collection: {
+        extend: function (prop, proto){
+          var privs = ['_handlers'];
+          var Collection = function () {
+                BaseCollection.call(this, prop);
+                for (var i in prop) {
+                  this[i] = prop[i];
+                }
+              };
+          // Inherit parent prototype
+          Collection = Util.extend(Collection, BaseCollection);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Collection.prototype[j] = proto[j];
+          }
+          // Inherit EvenTarget prototypes.
+          var EvT = new EventTarget();
+          for (var k in EvT) {
+            if (privs.indexOf(k) > -1) continue;
+            Collection.prototype[k] = EvT[k];
+          }
+
+          return Collection;
+        }
+      },
+      /**
+       * View creator.
+       * @type {Object}
+       */
+      View: {
+        extend: function (prop, proto){
+          var View = function () {
+            BaseView.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          View = Util.extend(View, BaseView);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            View.prototype[j] = proto[j];
+          }
+
+          return View;
+        }
+      },
+      /**
+       * Routes creator.
+       * @type {Object}
+       */
+      Routes: {
+        extend: function (prop, proto){
+          var Routes = function () {
+            Router.call(this, prop);
+            for (var i in prop) {
+              this[i] = prop[i];
+            }
+          };
+          // Inherit parent prototype
+          Routes = Util.extend(Routes, Router);
+          // Override prototype where applicable.
+          for (var j in proto) {
+            Routes.prototype[j] = proto[j];
+          }
+
+          return Routes;
+        }
+      },
       /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-          prop_ = '',
-          prop;
+        var prop_,
+            prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
@@ -193,12 +325,10 @@ function (AppConfig, Util, Router, Log4j) {
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setModuleConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-            prop_ = '',
+        var prop_,
             prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
@@ -211,7 +341,6 @@ function (AppConfig, Util, Router, Log4j) {
       /**
        * Set up AJAX connection.
        * @param {Object.<string>} o The AJAX handler.
-       * @returns {null}
        */
       setConnection: function (o) {
         connection = o;
@@ -232,9 +361,7 @@ function (AppConfig, Util, Router, Log4j) {
        * @returns {undefined}
        */
       setLogging: function (o) {
-        var me = this;
-
-        if (me.getDataType(o) != "[object Object]") {
+        if (Util.getDataType(o) != "[object Object]") {
           return;
         }
         if (typeof o.setEnabled === 'boolean') {
@@ -284,20 +411,6 @@ function (AppConfig, Util, Router, Log4j) {
           return config.modules_;
         }
         return false;
-      },
-      /**
-       * Get data type.
-       * This check assumes the native Object has not being overwritten by
-       * developer.
-       * @param {*} d Reference data check.
-       * @returns {string} Native constructor name if it's a reference type.
-       *                    [object Object] Native Object.
-       *                    [object Array] Native Array.
-       *                    [object Function] Native function.
-       *                    [object RegExp] Native regular expression.
-       */
-      getDataType: function (d) {
-        return Object.prototype.toString.call(d);
       },
       /**
        * Return enviroment setting.
