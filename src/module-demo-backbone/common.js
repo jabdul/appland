@@ -10,19 +10,16 @@ requirejs.config({
     "signals": "lib/js-signals/dist/signals",
     "crossroads": "lib/crossroads/dist/crossroads",
     "hasher": "lib/hasher/dist/js/hasher",
+    "backbone": "lib/backbone-amd/backbone",
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
-    'crossroads': {
-      //These script dependencies should be loaded before loading
-      //crossroads.js
-      deps: ['hasher','signals'],
-      //Once loaded, use the global 'crossroads' as the
-      //module value.
-      exports: 'crossroads'
-    },
     'underscore': {
         exports: '_'
+    },
+    "backbone": {
+      deps: ["underscore", "jquery"],
+      exports: "Backbone"
     },
     'Log4javascript' :  {
       exports :  'log4javascript'
@@ -55,8 +52,8 @@ requirejs.config({
 });
 
 require([
-  'module-demo-backbone/controller/index-controller'
+  'module-demo-backbone/routes'
 ],
-  function (IndexController) {
-    IndexController.init();
+  function (Routes) {
+    Routes.initialize();
   });
