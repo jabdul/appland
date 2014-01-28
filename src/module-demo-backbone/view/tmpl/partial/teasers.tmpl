@@ -1,23 +1,9 @@
-<div class="row marketing">
-    <div class="col-lg-6">
-        <h4>App object</h4>
-        <p>Learn how to use the singleton object within your projects to leverage useful utilities and functions.</p>
+<div class="col-lg-6">
+  {{#each articles}}
+    {{> partial/teaser}}
+  {{/each}}
+</div>
 
-        <h4>Testing</h4>
-        <p>Jasmine TDD/BDD framework is the choice for managing your test suites.</p>
+<div class="col-lg-6">
 
-        <h4>Vendor library management</h4>
-        <p>Third-party libraries and frameworks are managed with Bower package manager.</p>
-    </div>
-
-    <div class="col-lg-6">
-        <h4>CSS</h4>
-        <p>Stylesheet development is maintained through the SASS/Compass framework.</p>
-
-        <h4>Build and deployment</h4>
-        <p>RequireJS' r.js build optimiser is used to compress and optimise your JavaScript code in preparation for production environment.</p>
-
-        <h4>Templating</h4>
-        <p>For frontend templating; embed handlebars expressions for clean code separation.</p>
-    </div>
 </div>

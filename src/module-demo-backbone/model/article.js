@@ -4,7 +4,13 @@ define([
 ], function(_, Backbone){
   var ArticleModel = Backbone.Model.extend({
     defaults: {
-      name: "Harry Potter"
+      id: -1,
+      isActive: false,
+      title: '',
+      teaser: '',
+      description: '',
+      tags: [],
+      image: ''
     }
   });
 
