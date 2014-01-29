@@ -18,8 +18,9 @@ function($, _, Backbone, HomeView, ArticlesView){
     var router = new AppRouter();
     // Homepage
     router.on('route:home', function(){
-      var homeView = new HomeView();
-      homeView.render();
+      // Simply instantiate the HomeView object.
+      // The constructor will handle the next steps.
+      new HomeView();
     });
     // Articles listing
     router.on('route:articles', function(){
@@ -28,8 +29,7 @@ function($, _, Backbone, HomeView, ArticlesView){
     });
     // We have no matching route, so default to Homepage.
     router.on('route:defaultAction', function(actions){
-      var homeView = new HomeView();
-      homeView.render();
+      new HomeView();
     });
 
     Backbone.history.start();

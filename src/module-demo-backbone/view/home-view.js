@@ -5,43 +5,67 @@ define([
   'backbone',
   '../collection/article-collection',
   './article-item-view',
-  'hbs!module-demo-backbone/view/tmpl/home'
+  'hbs!module-demo-backbone/view/tmpl/home',
+  'hbs!module-demo-backbone/view/tmpl/partial/teasers'
 ],
-function(App, $, _, Backbone, ArticleCollection, ArticleItemView, HomeTmpl){
+function(App, $, _, Backbone, ArticleCollection,
+         ArticleItemView, HomeTmpl, TeasersTmpl){
   var HomeView = Backbone.View.extend({
     el: $("#demo-bb-content"),
 
     initialize: function() {
       this.collection = new ArticleCollection();
       this.collection.fetch({
-        reset: true,
-        data: 'articles'
+        reset: true
       });
       // Display static content.
       this.$el.html(HomeTmpl({
         labels: App.getModuleConfig('module-demo-backbone').labels
       }));
-      // Render fetched articles from REST service
-      this.render();
-      // Apply the listener for REST server response
+      // Subscribe to the 'sync' event on server response and
+      // render fetched articles from REST service.
       this.listenTo( this.collection, 'reset', this.render );
     },
 
     render: function(){
+      var articles = [];
       this.collection.each(function(item) {
-        this.renderArticleTeaser(item);
+        articles.push(this.generateTeaser(item));
       }, this );
-      //return this;
+
+      this.display(articles);
     },
 
-    renderArticleTeaser: function( item ) {
+    generateTeaser: function( item ) {
       var articleItemView = new ArticleItemView({
         model: item
       });
 
-      this.$el.find('.marketing').append(articleItemView.render().el);
+      return articleItemView.toJson();
+    },
+
+    display: function(items) {
+      var cols = this.splitItems(items, 2);
+      this.$el.find('.marketing').append(TeasersTmpl({articles: cols[0]}));
+      this.$el.find('.marketing').append(TeasersTmpl({articles: cols[1]}));
+    },
+
+    splitItems: function(items, n) {
+      var out = [],
+          len = items.length,
+          i = 0,
+          size = 0;
+
+      if (! len) return out;
+
+      while (i < len) {
+        size = Math.ceil((len - i) / n--);
+        out.push(items.slice(i, i += size));
+      }
+
+      return out;
     }
   });
-  // Returning instantiated views can be quite useful for having "state"
+
   return HomeView;
 });
