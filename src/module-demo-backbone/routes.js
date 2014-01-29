@@ -1,11 +1,9 @@
 define([
-  'jquery',
-  'underscore',
   'backbone',
   './view/home-view',
   './view/articles-view'
 ], 
-function($, _, Backbone, HomeView, ArticlesView){
+function(Backbone, HomeView, ArticlesView){
   var AppRouter = Backbone.Router.extend({
     routes: {
       'home': 'home',
@@ -24,8 +22,7 @@ function($, _, Backbone, HomeView, ArticlesView){
     });
     // Articles listing
     router.on('route:articles', function(){
-      var articlesView = new ArticlesView();
-      articlesView.render();
+      new ArticlesView();
     });
     // We have no matching route, so default to Homepage.
     router.on('route:defaultAction', function(actions){
