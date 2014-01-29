@@ -1,12 +1,10 @@
 define([
   '../app',
-  'jquery',
-  'underscore',
   'backbone',
   'hbs!module-demo-backbone/view/tmpl/partial/teaser'
 ],
-function(App, $, _, Backbone, TeaserTmpl){
-  var ArticleItemView = Backbone.View.extend({
+function(App, Backbone, TeaserTmpl){
+  var ArticleTeasersView = Backbone.View.extend({
     tagName: 'div',
     className: 'teaser',
     template: TeaserTmpl,
@@ -22,5 +20,5 @@ function(App, $, _, Backbone, TeaserTmpl){
     }
   });
 
-  return ArticleItemView;
+  return ArticleTeasersView;
 });

@@ -1,17 +1,15 @@
 define([
   '../app',
-  'jquery',
-  'underscore',
   'backbone',
   '../collection/article-collection',
-  './article-item-view',
+  './article-teasers-view',
   'hbs!module-demo-backbone/view/tmpl/home',
   'hbs!module-demo-backbone/view/tmpl/partial/teasers'
 ],
-function(App, $, _, Backbone, ArticleCollection,
-         ArticleItemView, HomeTmpl, TeasersTmpl){
+function(App, Backbone, ArticleCollection,
+         ArticleTeasersView, HomeTmpl, TeasersTmpl){
   var HomeView = Backbone.View.extend({
-    el: $("#demo-bb-content"),
+    el:  "#demo-bb-content",
 
     initialize: function() {
       this.collection = new ArticleCollection();
@@ -37,17 +35,20 @@ function(App, $, _, Backbone, ArticleCollection,
     },
 
     generateTeaser: function( item ) {
-      var articleItemView = new ArticleItemView({
+      var articleTeasersView = new ArticleTeasersView({
         model: item
       });
 
-      return articleItemView.toJson();
+      return articleTeasersView.toJson();
     },
 
     display: function(items) {
       var cols = this.splitItems(items, 2);
-      this.$el.find('.marketing').append(TeasersTmpl({articles: cols[0]}));
-      this.$el.find('.marketing').append(TeasersTmpl({articles: cols[1]}));
+
+      this.$el.find('.marketing').append(
+        TeasersTmpl({articles: cols[0]}) +
+        TeasersTmpl({articles: cols[1]})
+      );
     },
 
     splitItems: function(items, n) {
