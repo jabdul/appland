@@ -13,21 +13,25 @@ function(App, $, _, Backbone, ArticleCollection, ArticleItemView, HomeTmpl){
 
     initialize: function() {
       this.collection = new ArticleCollection();
+      this.collection.fetch({
+        reset: true,
+        data: 'articles'
+      });
+      // Display static content.
+      this.$el.html(HomeTmpl({
+        labels: App.getModuleConfig('module-demo-backbone').labels
+      }));
+      // Render fetched articles from REST service
       this.render();
+      // Apply the listener for REST server response
+      this.listenTo( this.collection, 'reset', this.render );
     },
 
     render: function(){
-      var articles = [];
       this.collection.each(function(item) {
-        articles.push(this.renderArticleTeaser(item));
+        this.renderArticleTeaser(item);
       }, this );
-      console.log(articles);
-      this.$el.html(HomeTmpl({
-        labels: App.getModuleConfig('module-demo-backbone').labels,
-        articles: articles
-      }));
-
-      return this;
+      //return this;
     },
 
     renderArticleTeaser: function( item ) {
@@ -35,7 +39,7 @@ function(App, $, _, Backbone, ArticleCollection, ArticleItemView, HomeTmpl){
         model: item
       });
 
-      return articleItemView.render().el;
+      this.$el.find('.marketing').append(articleItemView.render().el);
     }
   });
   // Returning instantiated views can be quite useful for having "state"

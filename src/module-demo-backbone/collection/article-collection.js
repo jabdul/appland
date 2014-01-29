@@ -5,7 +5,8 @@ define([
 ],
 function(_, Backbone, ArticleModel){
   var ArticleCollection = Backbone.Collection.extend({
-    model: ArticleModel
+    model: ArticleModel,
+    url: '/api/articles'
   });
 
   return ArticleCollection;
