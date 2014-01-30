@@ -11,7 +11,13 @@ define([
       description: '',
       tags: [],
       image: ''
-    }
+    },
+
+    urlRoot: '/api/articles'/*,
+
+    parse: function(response){
+      return response.articles;
+    }*/
   });
 
   return ArticleModel;

@@ -1,14 +1,18 @@
 define([
+  'lib/requirejs/domReady!',
   'backbone',
+  './model/article-model',
   './view/home-view',
-  './view/articles-view'
+  './view/articles-view',
+  './view/article-view'
 ], 
-function(Backbone, HomeView, ArticlesView){
+function(Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
   var AppRouter = Backbone.Router.extend({
     routes: {
+      '': 'index',
       'home': 'home',
       'articles': 'articles',
-      '*actions': 'defaultAction'
+      'articles/:id': 'article'
     }
   });
 
@@ -24,12 +28,19 @@ function(Backbone, HomeView, ArticlesView){
     router.on('route:articles', function(){
       new ArticlesView();
     });
+    // Article
+    router.on('route:article', function(id){
+      var article = new ArticleView({
+        model: new ArticleModel({id: id})
+      });
+    });
     // We have no matching route, so default to Homepage.
-    router.on('route:defaultAction', function(actions){
+    router.on('route:index', function(actions){
       new HomeView();
     });
 
     Backbone.history.start();
+    //Backbone.history.start({pushState: true});
   };
   
   return {
