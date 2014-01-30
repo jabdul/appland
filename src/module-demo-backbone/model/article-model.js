@@ -13,7 +13,7 @@ define([
       image: ''
     },
 
-    urlRoot: '/api/articles'/*,
+    urlRoot: '/api/demo/articles'/*,
 
     parse: function(response){
       return response.articles;
