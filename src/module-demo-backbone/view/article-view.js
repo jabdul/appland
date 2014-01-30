@@ -13,10 +13,19 @@ define([
         this.$el.html(ArticlePageTmpl({
           labels: App.getModuleConfig('module-demo-backbone').labels
         }));
+
         this.model.fetch({
-          reset: true
+          change: true,
+          error: function() {
+            console.log(arguments);
+          }
         });
-        this.listenTo( this.model, 'reset', this.render );
+
+        this.model.parse = function(response){
+          return response;
+        };
+
+        this.listenTo( this.model, 'change', this.render );
       },
 
       render: function(){

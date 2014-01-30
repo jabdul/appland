@@ -16,6 +16,7 @@ define([
     urlRoot: '/api/demo/articles'/*,
 
     parse: function(response){
+      console.log(response);
       return response.articles;
     }*/
   });
