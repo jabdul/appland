@@ -2,8 +2,6 @@
   "articles": [
     {
       "id": 0,
-      "next": 1,
-      "prev": 19,
       "isActive": true,
       "image": "http://placehold.it/80x80",
       "title": "esse aliqua irure",
@@ -13,12 +11,30 @@
         "mollit",
         "esse",
         "aliqua"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 1,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 19,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 1,
-      "next": 2,
-      "prev": 0,
       "isActive": true,
       "image": "http://placehold.it/64x80",
       "title": "cupidatat do pariatur",
@@ -29,12 +45,30 @@
         "veniam",
         "occaecat",
         "fugiat"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 2,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 0,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 2,
-      "next": 3,
-      "prev": 1,
       "isActive": true,
       "image": "http://placehold.it/72x80",
       "title": "reprehenderit ad eiusmod",
@@ -46,7 +80,27 @@
         "ea",
         "aliqua",
         "do"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 3,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 1,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 3,
@@ -61,12 +115,30 @@
         "non",
         "reprehenderit",
         "in"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 4,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 2,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 4,
-      "next": 5,
-      "prev": 3,
       "isActive": true,
       "image": "http://placehold.it/77x80",
       "title": "officia pariatur reprehenderit",
@@ -80,12 +152,30 @@
         "laborum",
         "dolor",
         "est"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 5,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 3,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 5,
-      "next": 6,
-      "prev": 4,
       "isActive": true,
       "image": "http://placehold.it/67x80",
       "title": "occaecat fugiat cupidatat",
@@ -98,12 +188,30 @@
         "non",
         "id",
         "id"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 6,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 4,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 6,
-      "next": 7,
-      "prev": 5,
       "isActive": false,
       "image": "http://placehold.it/79x80",
       "title": "excepteur mollit in",
@@ -113,12 +221,30 @@
         "labore",
         "elit",
         "dolor"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 7,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 5,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 7,
-      "next": 8,
-      "prev": 6,
       "isActive": true,
       "image": "http://placehold.it/61x80",
       "title": "duis esse anim",
@@ -127,12 +253,30 @@
       "tags": [
         "irure",
         "tempor"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 8,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 6,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 8,
-      "next": 9,
-      "prev": 7,
       "isActive": false,
       "image": "http://placehold.it/67x80",
       "title": "ea duis dolor",
@@ -142,12 +286,30 @@
         "duis",
         "consectetur",
         "ea"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 9,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 7,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 9,
-      "next": 10,
-      "prev": 8,
       "isActive": true,
       "image": "http://placehold.it/60x80",
       "title": "quis quis occaecat",
@@ -160,12 +322,30 @@
         "mollit",
         "amet",
         "do"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 10,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 8,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 10,
-      "next": 11,
-      "prev": 9,
       "isActive": false,
       "image": "http://placehold.it/63x80",
       "title": "qui enim ipsum",
@@ -178,12 +358,30 @@
         "aute",
         "dolor",
         "elit"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 11,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 9,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 11,
-      "next": 12,
-      "prev": 10,
       "isActive": false,
       "image": "http://placehold.it/71x80",
       "title": "veniam qui exercitation",
@@ -192,12 +390,30 @@
       "tags": [
         "aute",
         "nisi"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 12,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 10,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 12,
-      "next": 13,
-      "prev": 11,
       "isActive": false,
       "image": "http://placehold.it/75x80",
       "title": "ex voluptate ex",
@@ -207,12 +423,30 @@
         "ullamco",
         "mollit",
         "nulla"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 13,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 11,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 13,
-      "next": 14,
-      "prev": 12,
       "isActive": true,
       "image": "http://placehold.it/73x80",
       "title": "enim anim non",
@@ -224,12 +458,30 @@
         "duis",
         "commodo",
         "aliqua"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 14,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 12,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 14,
-      "next": 15,
-      "prev": 13,
       "isActive": true,
       "image": "http://placehold.it/75x80",
       "title": "non commodo quis",
@@ -241,12 +493,30 @@
         "dolor",
         "ullamco",
         "culpa"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 15,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 13,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 15,
-      "next": 16,
-      "prev": 14,
       "isActive": true,
       "image": "http://placehold.it/68x80",
       "title": "incididunt ea adipisicing",
@@ -257,12 +527,30 @@
         "deserunt",
         "minim",
         "cillum"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 16,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 14,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 16,
-      "next": 17,
-      "prev": 15,
       "isActive": true,
       "image": "http://placehold.it/61x80",
       "title": "sunt sit ad",
@@ -271,12 +559,30 @@
       "tags": [
         "amet",
         "ex"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 17,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 15,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 17,
-      "next": 18,
-      "prev": 16,
       "isActive": false,
       "image": "http://placehold.it/80x80",
       "title": "proident eu sit",
@@ -289,12 +595,30 @@
         "dolor",
         "amet",
         "esse"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 18,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 16,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 18,
-      "next": 19,
-      "prev": 17,
       "isActive": true,
       "image": "http://placehold.it/79x80",
       "title": "cupidatat do deserunt",
@@ -304,12 +628,30 @@
         "laborum",
         "enim",
         "ex"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 19,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 17,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     },
     {
       "id": 19,
-      "next": 0,
-      "prev": 18,
       "isActive": true,
       "image": "http://placehold.it/69x80",
       "title": "labore voluptate consectetur",
@@ -319,7 +661,27 @@
         "sit",
         "proident",
         "veniam"
-      ]
+      ],
+      "meta": {
+        "nav": {
+          "next": {
+            "id": 0,
+            "title": "Augue tincidunt lectus"
+          },
+          "prev": {
+            "id": 18,
+            "title": "Esse excepteur cupidatat duis in esse deserunt anim"
+          }
+        },
+        "related": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.appland.io"
+        },
+        "links": {
+          "title": "Enim commodo voluptate sunt",
+          "url": "http://www.requirejs.org"
+        }
+      }
     }
   ]
 }

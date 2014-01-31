@@ -43,28 +43,9 @@ define([
       },
 
       display: function(items) {
-        var cols = this.splitItems(items, 2);
-
         this.$el.find('.marketing').append(
-          SummariesTmpl({articles: cols[0]}) +
-            SummariesTmpl({articles: cols[1]})
+          SummariesTmpl({articles: items})
         );
-      },
-
-      splitItems: function(items, n) {
-        var out = [],
-          len = items.length,
-          i = 0,
-          size = 0;
-
-        if (! len) return out;
-
-        while (i < len) {
-          size = Math.ceil((len - i) / n--);
-          out.push(items.slice(i, i += size));
-        }
-
-        return out;
       }
     });
 
