@@ -5,6 +5,8 @@ define([
   var ArticleModel = Backbone.Model.extend({
     defaults: {
       id: -1,
+      next: -1,
+      prev: -1,
       isActive: false,
       title: '',
       teaser: '',

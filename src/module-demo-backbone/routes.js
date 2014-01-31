@@ -1,4 +1,5 @@
 define([
+  './app',
   'lib/requirejs/domReady!',
   'backbone',
   './model/article-model',
@@ -6,7 +7,13 @@ define([
   './view/articles-view',
   './view/article-view'
 ], 
-function(Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
+function(App, Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
+  /**
+   * Module's Logger
+   * @type {*}
+   */
+  var LOG = App.getModuleConfig('module-demo-backbone').Log;
+
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'index',
@@ -30,9 +37,13 @@ function(Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
     });
     // Article
     router.on('route:article', function(id){
-      var article = new ArticleView({
-        model: new ArticleModel({id: id})
-      });
+      try {
+        var article = new ArticleView({
+          model: new ArticleModel({id: id})
+        });
+      } catch(e) {
+        LOG.error(arguments, arguments.callee);
+      }
     });
     // We have no matching route, so default to Homepage.
     router.on('route:index', function(actions){

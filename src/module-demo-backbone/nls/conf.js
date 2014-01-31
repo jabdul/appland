@@ -21,7 +21,12 @@ define({
         "LABEL_13": "./#/articles",
         "LABEL_14": "Search articles",
         "LABEL_15": "Craft Turf",
-        "LABEL_16": "2014"
+        "LABEL_16": "2014",
+        "LABEL_17": "Next",
+        "LABEL_18": "Previous",
+        "LABEL_19": "Error!",
+        "LABEL_20": "The article requested is not available.",
+        "LABEL_21": "more"
       }],
       "pathToAssets": "../",
       "services": {

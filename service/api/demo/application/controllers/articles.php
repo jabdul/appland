@@ -14,21 +14,35 @@ class Articles extends REST_Controller
    * Mock Data.
    * @constant
    */
-  const MOCK_DATA = 'http://localhost:9010/module-demo-backbone/data/mock-articles.json';
+  const DATA_ARTICLES = 'http://localhost:9010/module-demo-backbone/data/mock-articles.json';
 
   /**
    * Return all Articles when using GET method.
    * @return mixed
    */
   function index_get() {
-    $this->_findAll();
+    try {
+      $this->_findAll();
+    } catch (Exception $e) {
+      $this->_handleError(
+        null,
+        $e->getMessage()
+      );
+    }
   }
   /**
    * Return all Articles when using POST method.
    * @return mixed
    */
   function index_post() {
-    $this->_findAll();
+    try {
+      $this->_findAll();
+    } catch (Exception $e) {
+      $this->_handleError(
+        null,
+        $e->getMessage()
+      );
+    }
   }
   /**
    * Return Article resource when using GET method.
@@ -36,19 +50,11 @@ class Articles extends REST_Controller
    */
   function article_get() {
     try {
-      $data = $this->_findById($this->get('id'));
-
-      if (is_object($data) && !empty($data)) {
-        $this->response($data, 200);
-      }
-      $this->_handleError(
-        $this->get('id'),
-        'Article not found.'
-      );
+      $this->_findById($this->get('id'));
     } catch(Exception $e) {
       $this->_handleError(
         $this->get('id'),
-        'Article not found.'
+        $e->getMessage()
       );
     }
   }
@@ -57,35 +63,38 @@ class Articles extends REST_Controller
    * Return all Articles.
    *
    * @access private
+   * @throws Exception if articles does not exist.
    * @return mixed
    */
   function _findAll() {
     $data = json_decode(
-      file_get_contents(self::MOCK_DATA)
+      file_get_contents(self::DATA_ARTICLES)
     );
 
-    if (is_object($data) && !empty($data)) {
-      $this->response($data, 200);
+    if (! isset($data->articles)) {
+      throw new Exception('Articles not found.');
     }
 
-    $data = array(
-      'Error' => 'Articles not found.'
-    );
-    $this->response($data, 400);
+    $this->response($data, 200);
   }
   /**
    * Returns Article
    *
    * @param int $id of article.
    * @access private
+   * @throws Exception if item does not exist.
    * @return mixed
    */
   function _findById($id) {
     $data = json_decode(
-      file_get_contents(self::MOCK_DATA)
+      file_get_contents(self::DATA_ARTICLES)
     );
 
-    return $data->articles[$id];
+    if (!isset($data->articles) || !isset($data->articles[$id])) {
+      throw new Exception('Article not found.');
+    }
+
+    $this->response($data->articles[$id], 200);
   }
   /**
    * Handle Error

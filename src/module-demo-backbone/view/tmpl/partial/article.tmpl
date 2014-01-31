@@ -1,4 +1,16 @@
+<ol class="breadcrumb">
+  <li><a href="#/home">{{LABELS.LABEL_2}}</a></li>
+  <li><a href="#/articles">{{LABELS.LABEL_3}}</a></li>
+  <li class="active">{{title}}</li>
+</ol>
+
 <div class="article">
-  <h4>{{title}}</h4>
-  <p>{{description}}</p>
+  <h1>{{title}}</h1>
+  <p class="lead">{{{description}}}</p>
+  <p>{{> partial/tag}}</p>
 </div>
+
+<ul class="pager">
+  <li class="previous"><a href="#/articles/{{prev}}">&larr; {{LABELS.LABEL_18}}</a></li>
+  <li class="next"><a href="#/articles/{{next}}">{{LABELS.LABEL_17}} &rarr;</a></li>
+</ul>
