@@ -27,6 +27,9 @@ function(App, Backbone, ArticleCollection,
 
     render: function(){
       var articles = [];
+
+      this.changeStartLink(this.collection.first().attributes.id);
+
       this.collection.each(function(item) {
         articles.push(this.generateTeaser(item));
       }, this );
@@ -49,6 +52,12 @@ function(App, Backbone, ArticleCollection,
         TeasersTmpl({articles: cols[0]}) +
         TeasersTmpl({articles: cols[1]})
       );
+    },
+
+    changeStartLink: function(id) {
+      var el = this.$el.find('#js-cta'),
+          _href = el.attr('href');
+      el.attr('href', _href + '/' + id);
     },
 
     splitItems: function(items, n) {
