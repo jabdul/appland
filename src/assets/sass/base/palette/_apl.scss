@@ -1,0 +1,77 @@
+/**
+ * Appland's Color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-color($color, $opacity:1, $prop:'color') {
+  @if $color == 'gray-light' {
+    #{$prop}: rgba(202, 202, 202, $opacity);
+  }
+  @if $color == 'gray-dark' {
+    #{$prop}: rgba(88, 87, 92, $opacity);
+  }
+  @if $color == 'turquoise-dark' {
+    #{$prop}: rgba(105, 145, 153, $opacity);
+  }
+  @if $color == 'red-dark' {
+    #{$prop}: rgba(152, 27, 31, $opacity);
+  }
+  @if $color == 'navy' {
+    #{$prop}: rgba(44, 79, 98, $opacity);
+  }
+}
+/**
+ * Appland's background-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-bg($color, $opacity:1, $prop:'background-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}
+/**
+ * Appland's border-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-border($color, $opacity:1, $prop:'border-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}
+/**
+ * Appland's border-top-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-border-top($color, $opacity:1, $prop:'border-top-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}
+/**
+ * Appland's border-right-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-border-right($color, $opacity:1, $prop:'border-right-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}
+/**
+ * Appland's border-bottom-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-border-bottom($color, $opacity:1, $prop:'border-bottom-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}
+/**
+ * Appland's border-left-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+@mixin apl-brand-border-left($color, $opacity:1, $prop:'border-left-color') {
+  @include apl-brand-color($color, $opacity, $prop);
+}

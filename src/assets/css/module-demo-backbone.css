@@ -25,6 +25,48 @@
  * Success alert
  */
 /**
+ * Appland's Color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's background-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-top-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-right-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-bottom-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-left-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
  * Third-party libraries.
  */
 /*
@@ -8742,6 +8784,137 @@ body {
  * No media query needed. This is the default
  * starting point for mobile-first development.
  */
+/* line 7, ../sass/module-demo-backbone/mobile/_mobile.scss */
+body {
+  background-color: rgba(202, 202, 202, 0.3);
+}
+
+/* line 11, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content {
+  /**
+   * Branding
+   */
+}
+/* line 15, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content h4 {
+  font: normal 16px/20px Arial, Helvetica, sans-serif;
+  color: #2c4f62;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+/* line 21, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content a {
+  color: #2c4f62;
+}
+/* line 24, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .nav-pills > li > a {
+  color: #58575c;
+}
+/* line 26, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .nav-pills > li > a:hover, #demo-bb-content .nav-pills > li > a:focus {
+  color: #981b1f;
+  background-color: transparent;
+  border: 0;
+}
+/* line 32, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .nav-pills > li.active > a {
+  background-color: #699199;
+  color: white;
+}
+/* line 36, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .nav .caret {
+  border-top-color: #58575c;
+  border-bottom-color: #58575c;
+}
+/* line 39, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .nav .caret:hover, #demo-bb-content .nav .caret:focus {
+  border-top-color: #981b1f;
+  border-bottom-color: #981b1f;
+}
+/* line 44, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .header {
+  border-bottom-color: #699199;
+}
+/* line 47, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .breadcrumb {
+  background-color: transparent;
+  padding-left: 0;
+}
+/* line 51, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .jumbotron {
+  background-color: transparent;
+  border: 0;
+  margin-bottom: 0;
+}
+/* line 55, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .jumbotron .btn-success {
+  background-color: rgba(152, 27, 31, 0.8);
+  border-color: rgba(152, 27, 31, 0.5);
+}
+/* line 58, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .jumbotron .btn-success:hover, #demo-bb-content .jumbotron .btn-success:focus {
+  background-color: #981b1f;
+  border-color: rgba(152, 27, 31, 0.8);
+}
+/* line 63, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .jumbotron a {
+  color: white;
+}
+/* line 67, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .teaser, #demo-bb-content .summary {
+  font: normal 12px/18px Arial, Helvetica, sans-serif;
+  color: #58575c;
+}
+/* line 70, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .teaser a, #demo-bb-content .summary a {
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+/* line 73, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .teaser a:hover, #demo-bb-content .teaser a:focus, #demo-bb-content .summary a:hover, #demo-bb-content .summary a:focus {
+  text-decoration: none;
+}
+/* line 78, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .summaries {
+  margin-top: 10px;
+}
+/* line 81, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .article {
+  font-family: Helvetica,Arial,sans-serif;
+}
+/* line 83, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .article h1 {
+  font-size: 24px;
+  color: #2c4f62;
+  margin-bottom: 20px;
+}
+/* line 88, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .article h2 {
+  font-size: 16px;
+  color: #2c4f62;
+  margin-bottom: 12px;
+}
+/* line 93, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .article .lead {
+  font-size: 16px;
+  line-height: 20px;
+  color: #58575c;
+  margin-bottom: 30px;
+}
+/* line 99, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .article p {
+  font-size: 12px;
+  line-height: 18px;
+  color: #58575c;
+  margin-bottom: 20px;
+}
+/* line 106, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .footer {
+  font: normal 12px/18px Arial, Helvetica, sans-serif;
+  border-top-color: #699199;
+  color: #58575c;
+}
+
 /**
  * @768px and up
  */

@@ -4,6 +4,108 @@
  * No media query needed. This is the default
  * starting point for mobile-first development.
  */
-#demo-bb-content {
+body {
+  @include apl-brand-bg('gray-light', 0.3);
+}
 
+#demo-bb-content {
+  /**
+   * Branding
+   */
+  h4 {
+    font: normal 16px/20px Arial,Helvetica,sans-serif;
+    @include apl-brand-color('navy');
+    margin-bottom: 10px;
+    margin-top: 30px;
+  }
+  a {
+    @include apl-brand-color('navy');
+  }
+  .nav-pills > li > a {
+    @include apl-brand-color('gray-dark');
+    &:hover, &:focus {
+      @include apl-brand-color('red-dark');
+      background-color: transparent;
+      border: 0;
+    }
+  }
+  .nav-pills > li.active > a {
+    @include apl-brand-bg('turquoise-dark');
+    color: white;
+  }
+  .nav .caret {
+    @include apl-brand-border-top('gray-dark');
+    @include apl-brand-border-bottom('gray-dark');
+    &:hover, &:focus {
+      @include apl-brand-border-top('red-dark');
+      @include apl-brand-border-bottom('red-dark');
+    }
+  }
+  .header {
+    @include apl-brand-border-bottom('turquoise-dark');
+  }
+  .breadcrumb {
+    background-color: transparent;
+    padding-left: 0;
+  }
+  .jumbotron {
+    background-color: transparent;
+    border: 0;
+    margin-bottom: 0;
+    .btn-success {
+      @include apl-brand-bg('red-dark', 0.8);
+      @include apl-brand-border('red-dark', 0.5);
+      &:hover, &:focus {
+        @include apl-brand-bg('red-dark');
+        @include apl-brand-border('red-dark', 0.8);
+      }
+    }
+    a {
+      color: white;
+    }
+  }
+  .teaser, .summary {
+    font: normal 12px/18px Arial,Helvetica,sans-serif;
+    @include apl-brand-color('gray-dark');
+    a {
+      text-decoration: underline;
+      text-transform:capitalize;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  .summaries {
+    margin-top: 10px;
+  }
+  .article {
+    font-family: Helvetica,Arial,sans-serif;
+    h1 {
+      font-size: 24px;
+      @include apl-brand-color('navy');
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 16px;
+      @include apl-brand-color('navy');
+      margin-bottom: 12px;
+    }
+    .lead {
+      font-size: 16px;
+      line-height: 20px;
+      @include apl-brand-color('gray-dark');
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 12px;
+      line-height: 18px;
+      @include apl-brand-color('gray-dark');
+      margin-bottom: 20px;
+    }
+  }
+  .footer {
+    font: normal 12px/18px Arial,Helvetica,sans-serif;
+    @include apl-brand-border-top('turquoise-dark');
+    @include apl-brand-color('gray-dark');
+  }
 }
