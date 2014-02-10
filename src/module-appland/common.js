@@ -5,14 +5,9 @@ requirejs.config({
     'jquery': 'core/jquery-loader', /* See file for version. */
     'bootstrap': 'lib/bootstrap/bootstrap',
     'hbs': 'lib/require-handlebars-plugin/hbs',
-    'json': 'lib/requirejs/json',
-    'underscore': 'lib/underscore-amd/underscore',
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
-    'underscore': {
-      exports: '_'
-    },
     'Log4javascript' :  {
       exports :  'log4javascript'
     }
