@@ -90,11 +90,19 @@ class Articles extends REST_Controller
       file_get_contents(self::DATA_ARTICLES)
     );
 
-    if (!isset($data->articles) || !isset($data->articles[$id])) {
+    if (! isset($data->articles) || ! is_numeric($id)) {
       throw new Exception('Article not found.');
     }
 
-    $this->response($data->articles[$id], 200);
+    $articlesArr = $data->articles;
+    //die(var_dump($articlesArr, $id));
+    foreach ($articlesArr as $k => $article) {
+      if (isset($article->id) && $article->id === (int) $id) {
+        $this->response($article, 200);
+      }
+    }
+
+    throw new Exception('Article not found.');
   }
   /**
    * Handle Error
