@@ -3,16 +3,9 @@ define([
   'lib/requirejs/i18n!nls/conf',
   'jquery',
   'core/util',
-  'core/router',
-  'core/model',
-  'core/controller',
-  'core/view',
-  'core/collection',
-  'core/event-target',
   'log4javascript'
 ],
-function (JSON, AppConfig, $, Util, Router, BaseModel,  BaseController,
-          BaseView, BaseCollection, EventTarget, Log4j) {
+function (JSON, AppConfig, $, Util, Log4j) {
 
   function App() {
     /**
@@ -141,25 +134,6 @@ function (JSON, AppConfig, $, Util, Router, BaseModel,  BaseController,
           break;
       }
     }
-    /**
-     * Extend class.
-     * This is a combination of constructor function inheriting from another
-     * constructor function (YUI extend) and a use of mixin approach to copy
-     * the properties of the superType to the subType.
-     * @param subType is the destination pseudo-sublass
-     * @param Source  is the class to inherit from.
-     */
-    function extendMixin (subType, Source){
-      if (typeof subType == 'object') {
-        var F = function(){};
-        var superType = new Source();
-        F.prototype = superType.prototype;
-        subType.prototype = new F();
-        Util.mixin(subType, superType);
-      } else {
-        throw new Error('A data type "object" is expected.');
-      }
-    }
 
     // Start the App.
     init();
@@ -177,125 +151,6 @@ function (JSON, AppConfig, $, Util, Router, BaseModel,  BaseController,
        * @export
        */
       $: $,
-      /**
-       * Model creator.
-       * @type {Object}
-       * @export
-       */
-      Model: {
-        extend: function (prop, proto){
-          var Model = function () {
-                BaseModel.call(this, prop);
-                for (var i in prop) {
-                  this[i] = prop[i];
-                }
-              };
-          // Inherit parent prototype
-          Model = Util.extend(Model, BaseModel);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            Model.prototype[j] = proto[j];
-          }
-
-          return Model;
-        }
-      },
-      /**
-       * Controller creator.
-       * @type {Object}
-       * @export
-       */
-      Controller: {
-        extend: function (prop, proto){
-          var Controller = function () {
-            BaseController.call(this, prop);
-            for (var i in prop) {
-              this[i] = prop[i];
-            }
-          };
-          // Inherit parent prototype
-          Controller = Util.extend(Controller, BaseController);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            Controller.prototype[j] = proto[j];
-          }
-
-          return Controller;
-        }
-      },
-      /**
-       * Collection creator.
-       * @type {Object}
-       */
-      Collection: {
-        extend: function (prop, proto){
-          var privs = ['_handlers'];
-          var Collection = function () {
-                BaseCollection.call(this, prop);
-                for (var i in prop) {
-                  this[i] = prop[i];
-                }
-              };
-          // Inherit parent prototype
-          Collection = Util.extend(Collection, BaseCollection);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            Collection.prototype[j] = proto[j];
-          }
-          // Inherit EvenTarget prototypes.
-          var EvT = new EventTarget();
-          for (var k in EvT) {
-            if (privs.indexOf(k) > -1) continue;
-            Collection.prototype[k] = EvT[k];
-          }
-
-          return Collection;
-        }
-      },
-      /**
-       * View creator.
-       * @type {Object}
-       */
-      View: {
-        extend: function (prop, proto){
-          var View = function () {
-            BaseView.call(this, prop);
-            for (var i in prop) {
-              this[i] = prop[i];
-            }
-          };
-          // Inherit parent prototype
-          View = Util.extend(View, BaseView);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            View.prototype[j] = proto[j];
-          }
-
-          return View;
-        }
-      },
-      /**
-       * Routes creator.
-       * @type {Object}
-       */
-      Routes: {
-        extend: function (prop, proto){
-          var Routes = function () {
-            Router.call(this, prop);
-            for (var i in prop) {
-              this[i] = prop[i];
-            }
-          };
-          // Inherit parent prototype
-          Routes = Util.extend(Routes, Router);
-          // Override prototype where applicable.
-          for (var j in proto) {
-            Routes.prototype[j] = proto[j];
-          }
-
-          return Routes;
-        }
-      },
       /**
        * Modify App's configuration properties.
        * @param {Object.<string>} configObject
