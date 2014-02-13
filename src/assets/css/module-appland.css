@@ -25,6 +25,48 @@
  * Success alert
  */
 /**
+ * Appland's Color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's background-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-top-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-right-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-bottom-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
+ * Appland's border-left-color Palette
+ * @param string $color to use.
+ * @param number $opacity of color.
+ * @param string $prop
+ */
+/**
  * Third-party libraries.
  */
 /*
