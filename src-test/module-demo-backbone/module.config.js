@@ -7,6 +7,7 @@ requirejs.config({
     'hbs': 'lib/require-handlebars-plugin/hbs',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
+    "backbone": "lib/backbone-amd/backbone",
     "log4javascript": "lib/log4javascript-amd/log4javascript_uncompressed"
   },
   shim: {

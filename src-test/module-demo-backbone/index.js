@@ -17,7 +17,7 @@ define([], function () {
     function loadTestCases() {
       var dir = TEST_SUITE + '/';
       return [
-        dir + 'welcome'
+        dir + '/model/article-model'
       ];
     }
 
