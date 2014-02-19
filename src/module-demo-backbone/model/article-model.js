@@ -1,6 +1,14 @@
 define([
+  '../app',
   'backbone'
-], function(Backbone){
+],
+function(App, Backbone){
+  /**
+   * App's main configuration.
+   * @type {*}
+   */
+  var CONF = App.getModuleConfig('module-demo-backbone');
+
   var ArticleModel = Backbone.Model.extend({
     defaults: {
       id: -1,
@@ -26,7 +34,8 @@ define([
       }
     },
 
-    urlRoot: '/api/demo/articles',
+    urlRoot: CONF.services.findArticles.path +
+              CONF.services.findArticles.resource,
 
     validate: function(attr) {
       if (attr.hasOwnProperty('id') && !_.isFinite(attr.id)) {

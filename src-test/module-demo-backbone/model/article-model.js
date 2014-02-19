@@ -7,12 +7,10 @@ function (ArticleModel) {
    */
   describe('ModuleDemoBackbone: article', function () {
 
-    var that = this;
-
-    it("has default values set for its properties", function () {
+    it("has default values set for its properties.", function () {
       var articleModel = new ArticleModel(),
           meta = articleModel.get('meta');
-      console.log(articleModel);
+
       expect(articleModel.get('id')).toEqual(-1);
       expect(articleModel.get('isActive')).toBe(false);
       expect(articleModel.get('title')).toBe('');

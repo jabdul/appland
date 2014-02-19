@@ -31,17 +31,13 @@ define({
       "pathToAssets": "../",
       "services": {
         "findArticles": {
-          "resource": "",
-          "path": "/raw.php?",
+          "resource": "articles",
+          "path": "/api/demo/",
           'isLocal': false,
           "httpRequestMethod": "GET",
-          "params": {
-            "i": "bfUB0TPQ"
-          }
+          "params": {}
         }
-      },
-      "maxDefaultTags": 2,
-      "activeArticles": 6
+      }
     }
   },
   "zh-cn": true

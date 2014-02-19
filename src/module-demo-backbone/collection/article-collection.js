@@ -1,12 +1,19 @@
 define([
-  'underscore',
+  '../app',
   'backbone',
   '../model/article-model'
 ],
-function(_, Backbone, ArticleModel){
+function(App, Backbone, ArticleModel){
+  /**
+   * App's main configuration.
+   * @type {*}
+   */
+  var CONF = App.getModuleConfig('module-demo-backbone');
+
   var ArticleCollection = Backbone.Collection.extend({
     model: ArticleModel,
-    url: '/api/demo/articles',
+    url: CONF.services.findArticles.path +
+          CONF.services.findArticles.resource,
 
     // Parses the 'articles' array of objects in json response.
     parse: function(response){
