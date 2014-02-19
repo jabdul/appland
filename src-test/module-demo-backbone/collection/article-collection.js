@@ -15,7 +15,7 @@ function (App, MockArticlesJson, ArticleCollection) {
    */
   describe('ModuleDemoBackbone: article collection', function () {
 
-    it("has capability to add one or more article.", function () {
+    it("has capability to add one or more articles.", function () {
       var articleCollection = new ArticleCollection();
 
       // Collection should be empty
@@ -38,24 +38,25 @@ function (App, MockArticlesJson, ArticleCollection) {
 
     it('has a defined url property for all contained models.', function() {
       var articleCollection = new ArticleCollection();
+
       expect(articleCollection.url).toBe(
         that.CONF.services.findArticles.path +
         that.CONF.services.findArticles.resource
       );
     });
 
-    it('checks for number of active articles.', function() {
+    it('checks for number of active and inactive articles.', function() {
       var articleCollection = new ArticleCollection();
 
       runs(function() {
         setTimeout(function() {
           articleCollection.fetch();
-        },1000);
+        },250);
       });
 
       waitsFor(function() {
         return articleCollection.isActive().length;
-      }, "The number of active items should be greater than zero", 1250);
+      }, 'The number of active items should be greater than zero', 4000);
 
       runs(function() {
         expect(articleCollection.isActive().length).toEqual(14);

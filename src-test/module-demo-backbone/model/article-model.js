@@ -5,7 +5,7 @@ function (ArticleModel) {
   /**
    * Article's test suite.
    */
-  describe('ModuleDemoBackbone: article', function () {
+  describe('ModuleDemoBackbone: article model', function () {
 
     it("has default values set for its properties.", function () {
       var articleModel = new ArticleModel(),
