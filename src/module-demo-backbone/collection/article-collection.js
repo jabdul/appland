@@ -18,6 +18,16 @@ function(App, Backbone, ArticleModel){
     // Parses the 'articles' array of objects in json response.
     parse: function(response){
       return response.articles;
+    },
+
+    isActive: function() {
+      return this.filter(function(articleModel) {
+        return articleModel.get('isActive');
+      });
+    },
+
+    isNotActive: function() {
+      return this.without.apply(this, this.isActive());
     }
   });
 

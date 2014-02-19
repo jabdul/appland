@@ -42,6 +42,25 @@ function (App, MockArticlesJson, ArticleCollection) {
         that.CONF.services.findArticles.path +
         that.CONF.services.findArticles.resource
       );
-  });
+    });
+
+    it('checks for number of active articles.', function() {
+      var articleCollection = new ArticleCollection();
+
+      runs(function() {
+        setTimeout(function() {
+          articleCollection.fetch();
+        },1000);
+      });
+
+      waitsFor(function() {
+        return articleCollection.isActive().length;
+      }, "The number of active items should be greater than zero", 1250);
+
+      runs(function() {
+        expect(articleCollection.isActive().length).toEqual(14);
+        expect(articleCollection.isNotActive().length).toEqual(6);
+      });
+    });
   });
 });
