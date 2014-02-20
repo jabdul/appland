@@ -1,15 +1,22 @@
 define([
   '../app',
-  'backbone',
   '../model/article-model'
 ],
-function(App, Backbone, ArticleModel){
+function(App, ArticleModel){
   /**
    * App's main configuration.
    * @type {*}
    */
   var CONF = App.getModuleConfig('module-demo-backbone');
-
+  /**
+   * Backbone
+   * @type {Backbone}
+   */
+  var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+  /**
+   * Article collection
+   * @type {Backbone.Collection}
+   */
   var ArticleCollection = Backbone.Collection.extend({
     model: ArticleModel,
     url: CONF.services.findArticles.path +

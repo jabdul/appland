@@ -1,13 +1,20 @@
 define([
   '../app',
-  'backbone',
   '../collection/article-collection',
   './article-teasers-view',
   'hbs!module-demo-backbone/view/tmpl/home',
   'hbs!module-demo-backbone/view/tmpl/partial/teasers'
 ],
-function(App, Backbone, ArticleCollection,
-         ArticleTeasersView, HomeTmpl, TeasersTmpl){
+function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
+  /**
+   * Backbone
+   * @type {Backbone}
+   */
+  var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+  /**
+   * HomeView page
+   * @type {Backbone.View}
+   */
   var HomeView = Backbone.View.extend({
     el:  "#demo-bb-content",
 
@@ -35,6 +42,8 @@ function(App, Backbone, ArticleCollection,
       }, this );
 
       this.display(articles);
+
+      return this;
     },
 
     generateTeaser: function( item ) {

@@ -1,11 +1,10 @@
 define([
   '../app',
-  'backbone',
   'hbs!module-demo-backbone/view/tmpl/article',
   'hbs!module-demo-backbone/view/tmpl/partial/article',
   'hbs!module-demo-backbone/view/tmpl/partial/error'
 ],
-  function(App, Backbone, ArticlePageTmpl, ArticleTmpl, ErrorTmpl){
+  function(App, ArticlePageTmpl, ArticleTmpl, ErrorTmpl){
     /**
      * Module's Labels
      * @type {*}
@@ -16,7 +15,15 @@ define([
      * @type {*}
      */
     var LOG = App.getModuleConfig('module-demo-backbone').Log;
-
+    /**
+     * Backbone
+     * @type {Backbone}
+     */
+    var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+    /**
+     * Article page
+     * @type {Backbone.View}
+     */
     var ArticleView = Backbone.View.extend({
       el:  "#demo-bb-content",
 

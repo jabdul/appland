@@ -1,25 +1,33 @@
 define([
   './app',
   'lib/requirejs/domReady!',
-  'backbone',
-  './model/article-model',
-  './view/home-view',
-  './view/articles-view',
-  './view/article-view'
+  './view/view-manager'
 ], 
-function(App, Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
+function(App, Doc, ViewManager){
   /**
    * Module's Logger
    * @type {*}
    */
   var LOG = App.getModuleConfig('module-demo-backbone').Log;
-
+  /**
+   * Backbone
+   * @type {Backbone}
+   */
+  var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+  /**
+   * Application Routing
+   * @type {Backbone.Router}
+   */
   var AppRouter = Backbone.Router.extend({
     routes: {
       '': 'index',
       'home': 'home',
       'articles': 'articles',
       'articles/:id': 'article'
+    },
+
+    initialize: function(options){
+      this.viewManager = new ViewManager();
     }
   });
 
@@ -29,25 +37,35 @@ function(App, Doc, Backbone, ArticleModel, HomeView, ArticlesView, ArticleView){
     router.on('route:home', function(){
       // Simply instantiate the HomeView object.
       // The constructor will handle the next steps.
-      new HomeView();
+      try {
+        this.viewManager.setCurrentView( 'home' );
+      } catch(e) {
+        LOG.error(arguments, arguments.callee);
+      }
     });
     // Articles listing
     router.on('route:articles', function(){
-      new ArticlesView();
+      try {
+        this.viewManager.setCurrentView( 'articles' );
+      } catch(e) {
+        LOG.error(arguments, arguments.callee);
+      }
     });
     // Article
     router.on('route:article', function(id){
       try {
-        var article = new ArticleView({
-          model: new ArticleModel({id: id})
-        });
+        this.viewManager.setCurrentView( 'article', {id: id} );
       } catch(e) {
         LOG.error(arguments, arguments.callee);
       }
     });
     // We have no matching route, so default to Homepage.
     router.on('route:index', function(actions){
-      new HomeView();
+      try {
+        this.viewManager.setCurrentView( 'home' );
+      } catch(e) {
+        LOG.error(arguments, arguments.callee);
+      }
     });
 
     Backbone.history.start();

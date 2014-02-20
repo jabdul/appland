@@ -1,14 +1,21 @@
 define([
-  '../app',
-  'backbone'
+  '../app'
 ],
-function(App, Backbone){
+function(App){
   /**
    * App's main configuration.
    * @type {*}
    */
   var CONF = App.getModuleConfig('module-demo-backbone');
-
+  /**
+   * Backbone
+   * @type {Backbone}
+   */
+  var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+  /**
+   * Article model
+   * @type {Backbone.Model}
+   */
   var ArticleModel = Backbone.Model.extend({
     defaults: {
       id: -1,
@@ -45,12 +52,6 @@ function(App, Backbone){
         return 'Property isActive must be a boolean value.';
       }
     }
-
-    /*
-    parse: function(response){
-      console.log(response);
-      return response.articles;
-    }*/
   });
 
   return ArticleModel;

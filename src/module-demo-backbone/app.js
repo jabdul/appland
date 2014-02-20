@@ -4,8 +4,9 @@ define([
   'lib/requirejs/i18n!nls/conf',
   'lib/requirejs/i18n!module-demo-backbone/nls/conf',
   'core/connect',
-  'log4javascript'],
-function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j) {
+  'log4javascript',
+  'backbone'],
+function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j, Backbone) {
 
   // Setup configuration for the App object.
   App.setConfig({
@@ -20,6 +21,20 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j) {
   App.setLogging({
       'setEnabled': AppConfig.App.Logging.setEnabled
   });
+
+  // Extend BackBone framework with the addition of
+  // a method to ease view event unbinding and DOM removal.
+  // @see http://goo.gl/zIjvbT
+  ModuleConfig['module-demo-backbone'].Backbone = Backbone;
+  ModuleConfig['module-demo-backbone'].Backbone
+    .View.prototype.close = function(){
+      //this.remove();
+      this.$el.empty();
+      this.unbind();
+      if (this.onClose){
+        this.onClose();
+      }
+    };
 
   // Initialise this module's config.
 	App.setModuleConfig({

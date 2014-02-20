@@ -1,9 +1,17 @@
 define([
   '../app',
-  'backbone',
   'hbs!module-demo-backbone/view/tmpl/partial/summaries'
 ],
-function(App, Backbone, SummaryTmpl){
+function(App, SummaryTmpl){
+  /**
+   * Backbone
+   * @type {Backbone}
+   */
+  var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+  /**
+   * Article's summary
+   * @type {Backbone.View}
+   */
   var ArticleSummariesView = Backbone.View.extend({
     tagName: 'div',
     className: 'summary',

@@ -1,13 +1,21 @@
 define([
   '../app',
-  'backbone',
   '../collection/article-collection',
   './article-summaries-view',
   'hbs!module-demo-backbone/view/tmpl/articles',
   'hbs!module-demo-backbone/view/tmpl/partial/summaries'
 ],
-  function(App, Backbone, ArticleCollection,
-           ArticleSummariesView, ArticlesTmpl, SummariesTmpl){
+  function(App, ArticleCollection, ArticleSummariesView,
+           ArticlesTmpl, SummariesTmpl){
+    /**
+     * Backbone
+     * @type {Backbone}
+     */
+    var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+    /**
+     * Article's listing
+     * @type {Backbone.View}
+     */
     var ArticlesView = Backbone.View.extend({
       el:  "#demo-bb-content",
 
@@ -32,6 +40,8 @@ define([
         }, this );
 
         this.display(articles);
+
+        return this;
       },
 
       generateSummary: function( item ) {
