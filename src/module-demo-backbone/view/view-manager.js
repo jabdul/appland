@@ -13,11 +13,6 @@ define([
      */
     function ViewManager() {
       /**
-       * App's DOM Container Element.
-       * @type {Node}
-       */
-      this.appContainerEl = Doc.getElementById('demo-bb-content');
-      /**
        * Module's configuration.
        * @type {*}
        */

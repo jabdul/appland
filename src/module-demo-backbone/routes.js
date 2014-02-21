@@ -26,7 +26,7 @@ function(App, Doc, ViewManager){
       'articles/:id': 'article'
     },
 
-    initialize: function(options){
+    initialize: function(){
       this.viewManager = new ViewManager();
     }
   });
