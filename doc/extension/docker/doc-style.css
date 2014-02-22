@@ -1,0 +1,25 @@
+/**
+ * Appland Branding
+ */
+body {
+  font-size: 13px;
+  line-height: 19px;
+}
+#container .docs.markdown h1, h2, h3, h4, h5, h6, a {
+  color: #2c4f62;
+}
+#container .docs.markdown h5, h6 {
+  font-size: 14px;
+}
+#container .docs.markdown p {
+  color: #58575c;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#container .docs.markdown a:hover, .docs.markdown a:focus  {
+  text-decoration: none;
+}
+
+#container .docs.markdown {
+  background-color: rgba(202, 202, 202, 0.3);
+}
