@@ -28,7 +28,12 @@ body {
 /**
  * Sidebar
  */
-#sidebar_switch .tree.selected {
+#sidebar_switch .selected {
   border-bottom: 3px solid;
   line-height: 26px;
+}
+#container td.docs {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right:10px solid #dededc;
 }
