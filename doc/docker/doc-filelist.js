@@ -1,1 +1,1 @@
-var tree={"files":["README.md","main.js"],"dirs":{"core":{"files":["connect.js","jquery-loader.js","util.js"]}}};
+var tree={"dirs":{"core":{"files":["connect.js","jquery-loader.js","util.js"]},"manual":{"files":["Admin.md","Build.md","Installation.md","Introduction.md","OOCSS.md","RESTful.md","Requirements.md","Scaffold.md","Testing.md","Vendors.md"]}},"files":["main.js"]};

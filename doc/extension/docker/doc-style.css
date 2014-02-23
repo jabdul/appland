@@ -1,9 +1,13 @@
+
 /**
  * Appland Branding
  */
 body {
   font-size: 13px;
   line-height: 19px;
+}
+#container .docs.markdown {
+  height: 100%;
 }
 #container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;

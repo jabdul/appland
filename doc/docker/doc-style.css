@@ -373,8 +373,7 @@ body .highlight .vg { color: #19177C } /* Name.Variable.Global */
 body .highlight .vi { color: #19177C } /* Name.Variable.Instance */
 body .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
 
-
-
+  
 /**
  * Appland Branding
  */
@@ -382,7 +381,10 @@ body {
   font-size: 13px;
   line-height: 19px;
 }
-#container .docs.markdown h1, h2, h3, h4, h5, h6 {
+#container .docs.markdown {
+  height: 100%;
+}
+#container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;
 }
 #container .docs.markdown h5, h6 {
@@ -392,9 +394,7 @@ body {
   color: #58575c;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#container .docs.markdown a {
-  color: #2c4f62;
-}
+
 #container .docs.markdown a:hover, .docs.markdown a:focus  {
   text-decoration: none;
 }
@@ -402,4 +402,3 @@ body {
 #container .docs.markdown {
   background-color: rgba(202, 202, 202, 0.3);
 }
-
