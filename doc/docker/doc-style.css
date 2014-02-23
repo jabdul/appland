@@ -394,11 +394,16 @@ body {
   color: #58575c;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
 #container .docs.markdown a:hover, .docs.markdown a:focus  {
   text-decoration: none;
 }
-
 #container .docs.markdown {
   background-color: rgba(202, 202, 202, 0.3);
+}
+/**
+ * Sidebar
+ */
+#sidebar_switch .tree.selected {
+  border-bottom: 3px solid;
+  line-height: 26px;
 }
