@@ -2,12 +2,18 @@
 /**
  * Appland Branding
  */
+body, html {
+  height: 100%;
+}
 body {
   font-size: 13px;
   line-height: 19px;
 }
 #container .docs.markdown {
-  height: 100%;
+  min-height: 100%;
+  background-color: rgba(202, 202, 202, 0.3);
+  padding-left: 12%;
+  padding-right: 12%;
 }
 #container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;
@@ -15,25 +21,85 @@ body {
 #container .docs.markdown h5, h6 {
   font-size: 14px;
 }
-#container .docs.markdown p {
+#container .docs.markdown p, #sidebar_switch span, #tree, #headings {
   color: #58575c;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #container .docs.markdown a:hover, .docs.markdown a:focus  {
   text-decoration: none;
 }
-#container .docs.markdown {
-  background-color: rgba(202, 202, 202, 0.3);
-}
 /**
- * Sidebar
+ * Sidebar: Top-Level
  */
+#sidebar_switch span {
+  color: #59595a;
+  line-height: 26px;
+}
+#sidebar_switch, #sidebar_switch span:hover {
+  background-color: #fafafa;
+}
+#sidebar_switch span:hover {
+  color: #971b20;
+  border-bottom: 3px solid;
+}
 #sidebar_switch .selected {
   border-bottom: 3px solid;
-  line-height: 26px;
 }
 #container td.docs {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-right:10px solid #dededc;
+}
+/**
+ * Sidebar: Tree
+ */
+#tree {
+  line-height: 22px;
+}
+#tree .dir {
+  width: 93%;
+}
+#tree > .dir > .children > .dir {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+}
+#tree .file {
+  line-height: 26px;
+}
+#tree .file:hover {
+  color: #971b20;
+}
+/**
+ * Sidebar: Headings
+ */
+#headings {
+  line-height: 20px;
+}
+#headings .heading a:hover {
+  color: #971b20;
+}
+#headings .h4 {
+  font-size: 0.95em
+}
+#headings .h5 {
+  font-size: 0.90em
+}
+
+/**
+ * Code blocks
+ */
+#container .docs.markdown pre {
+  background-color: #39393A;
+}
+#container .docs.markdown pre code, #container .docs.markdown pre code .o {
+  color: #ffffff;
+}
+#container .docs.markdown pre code .err {
+  color: #888;
+  border:0 none;
+}
+#container .docs.markdown pre code a,
+#container .docs.markdown pre code a:visited {
+  color: #fff;
 }
