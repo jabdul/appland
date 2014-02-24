@@ -18,6 +18,10 @@ body {
 #container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;
 }
+#container .docs.markdown h1 {
+  font-size: 46px;
+  line-height: 46px;
+}
 #container .docs.markdown h5, h6 {
   font-size: 14px;
 }
@@ -34,6 +38,7 @@ body {
 #sidebar_switch span {
   color: #59595a;
   line-height: 26px;
+  transition: color  500ms ease-in;
 }
 #sidebar_switch, #sidebar_switch span:hover {
   background-color: #fafafa;
@@ -41,6 +46,7 @@ body {
 #sidebar_switch span:hover {
   color: #971b20;
   border-bottom: 3px solid;
+  transition: color  750ms linear;
 }
 #sidebar_switch .selected {
   border-bottom: 3px solid;
