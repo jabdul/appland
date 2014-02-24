@@ -22,6 +22,22 @@ body {
   font-size: 46px;
   line-height: 46px;
 }
+#container .docs.markdown h1 a.pilcrow {
+  top: 45px;
+}
+#container .docs.markdown h2 {
+  font-size: 24px;
+  padding: 20px 0 0 0;
+}
+#container .docs.markdown h2 a.pilcrow,
+#container .docs.markdown h3 a.pilcrow {
+  top: 20px;
+}
+#container .docs.markdown h3 {
+  font-size: 16px;
+  padding: 20px 0 0 0;
+  margin-bottom:12px;
+}
 #container .docs.markdown h5, h6 {
   font-size: 14px;
 }
