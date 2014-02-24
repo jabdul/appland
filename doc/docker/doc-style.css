@@ -393,6 +393,10 @@ body {
 #container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;
 }
+#container .docs.markdown h1 {
+  font-size: 46px;
+  line-height: 46px;
+}
 #container .docs.markdown h5, h6 {
   font-size: 14px;
 }
