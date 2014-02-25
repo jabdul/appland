@@ -402,7 +402,7 @@ body {
 }
 #container .docs.markdown h2 {
   font-size: 24px;
-  padding: 20px 0 0 0;
+  margin: 20px 0;
 }
 #container .docs.markdown h2 a.pilcrow,
 #container .docs.markdown h3 a.pilcrow {
@@ -410,18 +410,29 @@ body {
 }
 #container .docs.markdown h3 {
   font-size: 16px;
-  padding: 20px 0 0 0;
-  margin-bottom:12px;
+  margin: 12px 0 12px 0;
 }
-#container .docs.markdown h5, h6 {
+#container .docs.markdown h4, h5, h6 {
   font-size: 14px;
 }
-#container .docs.markdown p, #sidebar_switch span, #tree, #headings {
+#container .docs.markdown p, #sidebar_switch span, #tree, #headings,
+#container .docs.markdown li {
   color: #58575c;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 #container .docs.markdown a:hover, .docs.markdown a:focus  {
   text-decoration: none;
+}
+#container .docs.markdown ul {
+  margin: 8px 0;
+  padding-left: 5px;
+}
+#container .docs.markdown ul li {
+  padding-left: 10px;
+  line-height: 1em;
+  display: block;
+  margin-bottom: 10px;
+  background: url('http://static02.craftturf.com/images/arrow_right.gif') 0 .25em no-repeat;
 }
 /**
  * Sidebar: Top-Level
