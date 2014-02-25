@@ -8673,142 +8673,116 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 1, ../sass/lib/bootstrap/_simple-sidebar.scss */
-#wrapper {
-  padding-left: 250px;
-  transition: all 0.4s ease 0s;
+/*
+ * Base structure
+ */
+/* Move down content because we have a fixed navbar that is 50px tall */
+/* line 6, ../sass/lib/bootstrap/_dashboard.scss */
+body {
+  padding-top: 50px;
 }
 
-/* line 6, ../sass/lib/bootstrap/_simple-sidebar.scss */
-#sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #000;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
+/*
+ * Global add-ons
+ */
+/* line 15, ../sass/lib/bootstrap/_dashboard.scss */
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 }
 
-/* line 18, ../sass/lib/bootstrap/_simple-sidebar.scss */
-#page-content-wrapper {
-  width: 100%;
-}
-
-/* line 22, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* line 31, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav li {
-  line-height: 40px;
-  text-indent: 20px;
-}
-
-/* line 36, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav li a {
-  color: #999999;
-  display: block;
-  text-decoration: none;
-}
-
-/* line 42, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav li a:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  text-decoration: none;
-}
-
-/* line 49, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav li a:active,
-.sidebar-nav li a:focus {
-  text-decoration: none;
-}
-
-/* line 53, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav > .sidebar-brand {
-  height: 65px;
-  line-height: 60px;
-  font-size: 18px;
-}
-
-/* line 59, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav > .sidebar-brand a {
-  color: #999999;
-}
-
-/* line 63, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.sidebar-nav > .sidebar-brand a:hover {
-  color: #fff;
-  background: none;
-}
-
-/* line 68, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.content-header {
-  height: 65px;
-  line-height: 65px;
-}
-
-/* line 73, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.content-header h1 {
-  margin: 0;
-  margin-left: 20px;
-  line-height: 65px;
-  display: inline-block;
-}
-
-/* line 80, ../sass/lib/bootstrap/_simple-sidebar.scss */
-#menu-toggle {
+/*
+ * Sidebar
+ */
+/* Hide for mobile, show later */
+/* line 26, ../sass/lib/bootstrap/_dashboard.scss */
+.sidebar {
   display: none;
 }
 
-/* line 84, ../sass/lib/bootstrap/_simple-sidebar.scss */
-.inset {
+@media (min-width: 768px) {
+  /* line 30, ../sass/lib/bootstrap/_dashboard.scss */
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+/* Sidebar navigation */
+/* line 46, ../sass/lib/bootstrap/_dashboard.scss */
+.nav-sidebar {
+  margin-right: -21px;
+  /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+
+/* line 51, ../sass/lib/bootstrap/_dashboard.scss */
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+/* line 55, ../sass/lib/bootstrap/_dashboard.scss */
+.nav-sidebar > .active > a {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/*
+ * Main content
+ */
+/* line 65, ../sass/lib/bootstrap/_dashboard.scss */
+.main {
   padding: 20px;
 }
 
-@media (max-width: 767px) {
-  /* line 90, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  #wrapper {
-    padding-left: 0;
-  }
-
-  /* line 94, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  #sidebar-wrapper {
-    left: 0;
-  }
-
-  /* line 98, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  #wrapper.active {
-    position: relative;
-    left: 250px;
-  }
-
-  /* line 103, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  #wrapper.active #sidebar-wrapper {
-    left: 250px;
-    width: 250px;
-    transition: all 0.4s ease 0s;
-  }
-
-  /* line 109, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  #menu-toggle {
-    display: inline-block;
-  }
-
-  /* line 113, ../sass/lib/bootstrap/_simple-sidebar.scss */
-  .inset {
-    padding: 15px;
+@media (min-width: 768px) {
+  /* line 69, ../sass/lib/bootstrap/_dashboard.scss */
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
   }
 }
+/* line 74, ../sass/lib/bootstrap/_dashboard.scss */
+.main .page-header {
+  margin-top: 0;
+}
+
+/*
+ * Placeholder dashboard ideas
+ */
+/* line 83, ../sass/lib/bootstrap/_dashboard.scss */
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* line 87, ../sass/lib/bootstrap/_dashboard.scss */
+.placeholders h4 {
+  margin-bottom: 0;
+}
+
+/* line 90, ../sass/lib/bootstrap/_dashboard.scss */
+.placeholder {
+  margin-bottom: 20px;
+}
+
+/* line 93, ../sass/lib/bootstrap/_dashboard.scss */
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
 /**
  * Module specific style.
  */

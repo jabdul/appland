@@ -1,9 +1,9 @@
 define([
   'module-appland/app',
   'lib/requirejs/domReady!',
-  'hbs!module-appland/view/tmpl/simple-sidebar'
+  'hbs!module-appland/view/tmpl/dashboard'
 ],
-function (App, Doc, SimpleSidebarTmpl) {
+function (App, Doc, DashboardTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element.
@@ -24,10 +24,9 @@ function (App, Doc, SimpleSidebarTmpl) {
      * @returns {undefined}
      */
     function renderView() {
-      var templates = [
-        SimpleSidebarTmpl(null)
-      ];
-      appContainerEl.html(templates.join('\n'));
+      appContainerEl.html(DashboardTmpl({
+        labels: App.getModuleConfig('module-appland').labels
+      }));
     }
     /**
      * Event delegation.
