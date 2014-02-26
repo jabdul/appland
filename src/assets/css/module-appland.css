@@ -10947,6 +10947,24 @@ body {
  * No media query needed. This is the default
  * starting point for mobile-first development.
  */
+/* line 8, ../sass/module-appland/mobile/_mobile.scss */
+#apl-content .apl-navbar {
+  background-color: #58575c;
+  border-color: #699199;
+}
+/* line 12, ../sass/module-appland/mobile/_mobile.scss */
+#apl-content .apl-sidebar {
+  background-color: rgba(202, 202, 202, 0.08);
+}
+/* line 14, ../sass/module-appland/mobile/_mobile.scss */
+#apl-content .apl-sidebar .active a {
+  background-color: #58575c;
+}
+/* line 16, ../sass/module-appland/mobile/_mobile.scss */
+#apl-content .apl-sidebar .active a:hover {
+  background-color: #981b1f;
+}
+
 /**
  * @768px and up
  */
