@@ -33,7 +33,6 @@
         'lib/requirejs/json',
         'lib/requirejs/i18n',
         'hbs',
-        'bootstrap',
         'log4javascript',
         'core/connect',
         'core/util',

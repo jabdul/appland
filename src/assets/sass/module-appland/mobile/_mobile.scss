@@ -5,5 +5,20 @@
  * starting point for mobile-first development.
  */
 #apl-content {
-
+  h1, h2, p, table th, table td {
+    @include apl-brand-color('gray-dark');
+  }
+  .apl-navbar {
+    @include apl-brand-bg('gray-dark');
+    @include apl-brand-border('turquoise-dark');
+  }
+  .apl-sidebar {
+    @include apl-brand-bg('gray-light', 0.08);
+    .active a {
+      @include apl-brand-bg('gray-dark');
+      &:hover {
+        @include apl-brand-bg('red-dark');
+      }
+    }
+  }
 }
