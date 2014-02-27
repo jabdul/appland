@@ -3,7 +3,7 @@ requirejs.config({
   waitSeconds: 14,
   paths: {
     'jquery': 'core/jquery-loader', /* See file for version. */
-    'bootstrap': 'lib/bootstrap/bootstrap',
+    'bootstrap': 'lib/bootstrap',
     'hbs': 'lib/require-handlebars-plugin/hbs',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
@@ -17,6 +17,9 @@ requirejs.config({
     "backbone": {
       deps: ["underscore", "jquery"],
       exports: "Backbone"
+    },
+    'bootstrap' :  {
+      deps: ["jquery"]
     },
     'Log4javascript' :  {
       exports :  'log4javascript'
