@@ -14,7 +14,8 @@ define({
         "LABEL_7": "Failed",
         "LABEL_8": "Builds",
         "LABEL_9": "Active",
-        "LABEL_10": "Module ID"
+        "LABEL_10": "Module ID",
+        "LABEL_11": "This is the monitoring console for all your modules. Future versions of this admin area will contain features to help you manage your modules."
       }],
       "pathToAssets": "../"
     }
