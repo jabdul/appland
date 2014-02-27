@@ -1,0 +1,2 @@
+## Handlebars helpers directory ##
+

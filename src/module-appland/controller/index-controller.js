@@ -1,19 +1,19 @@
 define([
   'module-appland/app',
   'lib/requirejs/domReady!',
-  'hbs!module-appland/view/tmpl/simple-sidebar'
+  'bootstrap/alert',
+  'hbs!module-appland/view/tmpl/dashboard'
 ],
-function (App, Doc, SimpleSidebarTmpl) {
+function (App, Doc, BootstrapAlert, DashboardTmpl) {
   function IndexController() {
     /**
      * App's DOM Container Element.
      * @type {Object}
      */
-    var appContainerEl = App.$('#apl-content');
+    var $appContainerEl = App.$('#apl-content');
     /**
      * Script initialiser.
      * Executes a set of actions at start.
-     * @returns {undefined}
      */
     function init() {
       renderView();
@@ -21,19 +21,20 @@ function (App, Doc, SimpleSidebarTmpl) {
     }
     /**
      * Renders the view templates.
-     * @returns {undefined}
      */
     function renderView() {
-      var templates = [
-        SimpleSidebarTmpl(null)
-      ];
-      appContainerEl.html(templates.join('\n'));
+      $appContainerEl.html(DashboardTmpl({
+        labels: App.getModuleConfig('module-appland').labels
+      }));
     }
     /**
      * Event delegation.
-     * @returns {undefined}
      */
     function delegateEvents() {
+      $appContainerEl
+        .on("click.apl", '.alert', function (e) {
+            App.$(this).alert('close');
+        });
     }
 
     var publicMethods = {
