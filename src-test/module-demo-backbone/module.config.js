@@ -3,7 +3,7 @@ requirejs.config({
   waitSeconds: 14,
   paths: {
     'jquery': 'lib/jquery-1-9-1/jquery', /* jQuery Version 1.9.1 */
-    'bootstrap': 'lib/bootstrap/bootstrap',
+    'bootstrap': 'lib/bootstrap',
     'hbs': 'lib/require-handlebars-plugin/hbs',
     'json': 'lib/requirejs/json',
     'underscore': 'lib/underscore-amd/underscore',
@@ -13,6 +13,13 @@ requirejs.config({
   shim: {
     'underscore': {
         exports: '_'
+    },
+    "backbone": {
+      deps: ["underscore", "jquery"],
+      exports: "Backbone"
+    },
+    'bootstrap' :  {
+      deps: ["jquery"]
     },
     'Log4javascript' :  {
       exports :  'log4javascript'
