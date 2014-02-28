@@ -3,11 +3,14 @@ requirejs.config({
   waitSeconds: 14,
   paths: {
     'jquery': 'lib/jquery-1-9-1/jquery', /* jQuery Version 1.9.1 */
-    'bootstrap': 'lib/bootstrap/bootstrap',
+    'bootstrap': 'lib/bootstrap',
     'hbs': 'lib/require-handlebars-plugin/hbs',
     'log4javascript': 'lib/log4javascript-amd/log4javascript_uncompressed'
   },
   shim: {
+    'bootstrap' :  {
+      deps: ["jquery"]
+    },
     'Log4javascript' :  {
       exports :  'log4javascript'
     }
