@@ -21,7 +21,12 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
     initialize: function() {
       this.collection = new ArticleCollection();
       this.collection.fetch({
-        reset: true
+        reset: true,
+        data: {
+          page: 1,
+          limit: 2
+        },
+        processData: true
       });
       // Display static content.
       this.$el.html(HomeTmpl({

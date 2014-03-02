@@ -15,6 +15,16 @@ class Articles extends REST_Controller
    * @constant
    */
   const DATA_ARTICLES = 'http://localhost:9010/module-demo-backbone/data/mock-articles.json';
+  /**
+   * Page number
+   * @int
+   */
+  private $page = -1;
+  /**
+   * Max number of items per page.
+   * @int
+   */
+  private $limit = 10;
 
   /**
    * Return all Articles when using GET method.
@@ -22,6 +32,7 @@ class Articles extends REST_Controller
    */
   function index_get() {
     try {
+      $this->_setParams();
       $this->_findAll();
     } catch (Exception $e) {
       $this->_handleError(
@@ -36,6 +47,7 @@ class Articles extends REST_Controller
    */
   function index_post() {
     try {
+      $this->_setParams();
       $this->_findAll();
     } catch (Exception $e) {
       $this->_handleError(
@@ -70,9 +82,15 @@ class Articles extends REST_Controller
     $data = json_decode(
       file_get_contents(self::DATA_ARTICLES)
     );
+    $pages = array();
 
     if (! isset($data->articles)) {
       throw new Exception('Articles not found.');
+    }
+    // Pagination
+    if ($this->page > 0) {
+      $pages = array_chunk($data->articles, $this->limit);
+      $data->articles = $pages[$this->page -1];
     }
 
     $this->response($data, 200);
@@ -95,7 +113,7 @@ class Articles extends REST_Controller
     }
 
     $articlesArr = $data->articles;
-    //die(var_dump($articlesArr, $id));
+
     foreach ($articlesArr as $k => $article) {
       if (isset($article->id) && $article->id === (int) $id) {
         $this->response($article, 200);
@@ -103,6 +121,17 @@ class Articles extends REST_Controller
     }
 
     throw new Exception('Article not found.');
+  }
+  /**
+   * Set parameters
+   */
+  function _setParams() {
+    if (is_numeric($this->get('page'))) {
+      $this->page = (int) $this->get('page');
+    }
+    if (is_numeric($this->get('limit'))) {
+      $this->limit = (int) $this->get('limit');
+    }
   }
   /**
    * Handle Error
