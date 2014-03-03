@@ -82,7 +82,6 @@ class Articles extends REST_Controller
     $data = json_decode(
       file_get_contents(self::DATA_ARTICLES)
     );
-    $pages = array();
 
     if (! isset($data->articles)) {
       throw new Exception('Articles not found.');
@@ -90,7 +89,7 @@ class Articles extends REST_Controller
     // Pagination
     if ($this->page > 0) {
       $pages = array_chunk($data->articles, $this->limit);
-      $data->articles = $pages[$this->page -1];
+      $data->articles = $pages[$this->page - 1];
     }
 
     $this->response($data, 200);
