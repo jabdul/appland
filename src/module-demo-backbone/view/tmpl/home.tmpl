@@ -1,9 +1,16 @@
-<div class="main-content">
-  {{#labels}}
+{{#labels}}
   {{> partial/jumbotron}}
-  <div class="row marketing teasers">
-    {{! partial/teasers}}
+{{/labels}}
+<div class="row marketing teasers">
+  <div class="col-lg-6">
+    {{#each articlesColumnOne}}
+      {{> partial/teaser}}
+    {{/each}}
   </div>
-  {{/labels}}
+  <div class="col-lg-6">
+    {{#each articlesColumnTwo}}
+      {{> partial/teaser}}
+    {{/each}}
+  </div>
 </div>
 

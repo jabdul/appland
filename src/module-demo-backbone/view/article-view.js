@@ -6,6 +6,16 @@ define([
 ],
   function(App, ArticlePageTmpl, ArticleTmpl, ErrorTmpl){
     /**
+     * Backbone
+     * @type {Backbone}
+     */
+    var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
+    /**
+     * Module's Event Manager
+     * @type {Backbone.Events}
+     */
+    var Events = App.getModuleConfig('module-demo-backbone').Events;
+    /**
      * Module's Labels
      * @type {*}
      */
@@ -16,49 +26,43 @@ define([
      */
     var LOG = App.getModuleConfig('module-demo-backbone').Log;
     /**
-     * Backbone
-     * @type {Backbone}
-     */
-    var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
-    /**
      * Article page
      * @type {Backbone.View}
      */
     var ArticleView = Backbone.View.extend({
-      el:  "#demo-bb-content",
+      tagName: 'div',
 
       initialize: function() {
-        var self = this;
-        // Display static content.
-        this.$el.html(ArticlePageTmpl({
-          labels: LABELS
-        }));
-
         this.model.fetch({
           change: true,
           error: function() {
             LOG.error(arguments, arguments.callee);
-            self.renderError();
-            throw Error('Article not found.');
+            Events.trigger('content:error');
           }
         });
 
-        this.listenTo( this.model, 'change', this.render );
+        this.listenTo( this.model, 'change', function() {
+          Events.trigger('content:ready');
+        });
       },
 
       render: function(){
         var data = this.model.toJSON();
         data.LABELS = LABELS[0];
 
-        this.$el.find('.marketing').append(
-          ArticleTmpl(data)
-        );
+        this.$el.addClass('main-content').html(ArticleTmpl(data));
+
+        return this;
       },
 
       renderError: function() {
-        this.$el.find('.marketing').append(
-          ErrorTmpl({LABELS: LABELS[0]})
-        );
+        this.$el.addClass('main-content')
+          .html(ErrorTmpl({
+            LABELS: LABELS[0],
+            ERROR_MSG: LABELS[0].LABEL_20
+          }));
+
+        return this;
       }
     });
 

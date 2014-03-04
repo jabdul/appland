@@ -36,9 +36,16 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
     },
 
     render: function(){
-      //this.el.find('.header').append( this.currentView.render().el );
-      $( this.currentView.render().$el ).insertAfter( this.$el.find('.header') );
-      console.log(this.currentView.render().$el);
+      $( this.currentView.render().$el )
+        .insertAfter( this.$el.find('.header') );
+
+      return this;
+    },
+
+    renderError: function(){
+      $( this.currentView.renderError().$el )
+        .insertAfter( this.$el.find('.header') );
+
       return this;
     },
     /**
@@ -47,20 +54,18 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
      * @param {*=} options
      */
     setCurrentView: function (view, options) {
-      var self = this;
-
       if (this.currentView){
         this.currentView.close();
       }
 
       this[view + 'View'](options);
 
-      /*this.listenTo(this.currentView, 'content:ready', function(){
-        this.render();
-      });*/
-
       Events.on('content:ready', function(){
         this.render();
+      }, this);
+
+      Events.on('content:error', function(){
+        this.renderError();
       }, this);
     },
     /**

@@ -3,34 +3,50 @@ define([
   '../collection/article-collection',
   './article-summaries-view',
   'hbs!module-demo-backbone/view/tmpl/articles',
-  'hbs!module-demo-backbone/view/tmpl/partial/summaries'
+  'hbs!module-demo-backbone/view/tmpl/partial/error'
 ],
   function(App, ArticleCollection, ArticleSummariesView,
-           ArticlesTmpl, SummariesTmpl){
+           ArticlesTmpl, ErrorTmpl){
     /**
      * Backbone
      * @type {Backbone}
      */
     var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
     /**
+     * Module's Event Manager
+     * @type {Backbone.Events}
+     */
+    var Events = App.getModuleConfig('module-demo-backbone').Events;
+    /**
+     * Module's Labels
+     * @type {*}
+     */
+    var LABELS = App.getModuleConfig('module-demo-backbone').labels;
+    /**
+     * Module's Logger
+     * @type {*}
+     */
+    var LOG = App.getModuleConfig('module-demo-backbone').Log;
+    /**
      * Article's listing
      * @type {Backbone.View}
      */
     var ArticlesView = Backbone.View.extend({
-      el:  "#demo-bb-content",
+        tagName: 'div',
 
       initialize: function() {
         this.collection = new ArticleCollection();
         this.collection.fetch({
-          reset: true
+          reset: true,
+          error: function() {
+            LOG.error(arguments, arguments.callee);
+            Events.trigger('content:error');
+          }
         });
-        // Display static content.
-        this.$el.html(ArticlesTmpl({
-          labels: App.getModuleConfig('module-demo-backbone').labels
-        }));
-        // Subscribe to the 'sync' event on server response and
-        // render fetched articles from REST service.
-        this.listenTo( this.collection, 'reset', this.render );
+
+        this.listenTo( this.collection, 'reset', function() {
+          Events.trigger('content:ready');
+        });
       },
 
       render: function(){
@@ -39,7 +55,20 @@ define([
           articles.push(this.generateSummary(item));
         }, this );
 
-        this.display(articles);
+        this.$el.addClass('main-content').html(ArticlesTmpl({
+          labels: LABELS[0],
+          articles: articles
+        }));
+
+        return this;
+      },
+
+      renderError: function() {
+        this.$el.addClass('main-content')
+          .html(ErrorTmpl({
+            LABELS: LABELS[0],
+            ERROR_MSG: LABELS[0].LABEL_22
+          }));
 
         return this;
       },
@@ -50,12 +79,6 @@ define([
         });
 
         return summariesView.toJson();
-      },
-
-      display: function(items) {
-        this.$el.find('.marketing').append(
-          SummariesTmpl({articles: items})
-        );
       }
     });
 
