@@ -5,7 +5,7 @@ define({
       "nameSpaces":['demo-bb-'],
       "labels": [{
         "LABEL_0": "Submit",
-        "LABEL_1": "demo-web-app",
+        "LABEL_1": "demo-backbone",
         "LABEL_2": "Home",
         "LABEL_3": "Articles",
         "LABEL_4": "Links",
@@ -15,8 +15,8 @@ define({
         "LABEL_8": "http://localhost:9011/src-test/module-demo-web-app/TestRunner.html",
         "LABEL_9": "Module: ",
         "LABEL_10": "A single page WebApp.",
-        "LABEL_11": "Develop a WebApp" +
-          " using Appland; an end-to-end modular development platform.",
+        "LABEL_11": "Develop a Backbone.js WebApp" +
+          " on Appland; the end-to-end UI development platform.",
         "LABEL_12": "Start your journey",
         "LABEL_13": "./#/articles",
         "LABEL_14": "Search articles",

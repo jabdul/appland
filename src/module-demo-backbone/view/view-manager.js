@@ -35,6 +35,10 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
       }));
     },
 
+    events: {
+      'click ul.nav > li': 'updateMenuItem'
+    },
+
     render: function(){
       $( this.currentView.render().$el )
         .insertAfter( this.$el.find('.header') );
@@ -47,6 +51,15 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
         .insertAfter( this.$el.find('.header') );
 
       return this;
+    },
+
+    updateMenuItem: function(event){
+      $(event.currentTarget).siblings().removeClass('active');
+      $(event.currentTarget).not('.dropdown').addClass('active');
+    },
+
+    setMenuItemsInactive: function(){
+      this.$el.find('ul.nav li.active').removeClass('active');
     },
     /**
      * Renders the view templates.
@@ -84,6 +97,7 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
      * Article page.
      */
     articleView: function (options) {
+      this.setMenuItemsInactive();
       this.currentView = new ArticleView({
         model: new ArticleModel({id: options.id})
       });
