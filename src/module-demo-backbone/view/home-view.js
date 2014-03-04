@@ -12,11 +12,16 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
    */
   var Backbone = App.getModuleConfig('module-demo-backbone').Backbone;
   /**
+   * Module's Event Manager
+   * @type {Backbone}
+   */
+  var Events = App.getModuleConfig('module-demo-backbone').Events;
+  /**
    * HomeView page
    * @type {Backbone.View}
    */
   var HomeView = Backbone.View.extend({
-    el:  "#demo-bb-content",
+    el:  ".main-content",
 
     initialize: function() {
       this.collection = new ArticleCollection();
@@ -29,16 +34,19 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
         processData: true
       });
       // Display static content.
-      this.$el.html(HomeTmpl({
+      /*this.$el.html(HomeTmpl({
         labels: App.getModuleConfig('module-demo-backbone').labels
-      }));
+      }));*/
       // Subscribe to the 'sync' event on server response and
-      // render fetched articles from REST service.
-      this.listenTo( this.collection, 'reset', this.render );
+      // trigger content:ready event for fetched articles from REST service.
+      this.listenTo( this.collection, 'reset', function() {
+        Events.trigger('content:ready');
+      });
     },
 
     render: function(){
-      var articles = [];
+      var articles = [],
+          cols;
 
       this.changeStartLink(this.collection.first().attributes.id);
 
@@ -46,7 +54,12 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
         articles.push(this.generateTeaser(item));
       }, this );
 
-      this.display(articles);
+      cols = this.splitItems(articles, 2);
+
+      this.$el.html(
+        TeasersTmpl({articles: cols[0]}) +
+          TeasersTmpl({articles: cols[1]})
+      );
 
       return this;
     },
@@ -57,15 +70,6 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, TeasersTmpl){
       });
 
       return articleTeasersView.toJson();
-    },
-
-    display: function(items) {
-      var cols = this.splitItems(items, 2);
-
-      this.$el.find('.marketing').append(
-        TeasersTmpl({articles: cols[0]}) +
-        TeasersTmpl({articles: cols[1]})
-      );
     },
 
     changeStartLink: function(id) {

@@ -28,13 +28,19 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j, Backbone) {
   ModuleConfig['module-demo-backbone'].Backbone = Backbone;
   ModuleConfig['module-demo-backbone'].Backbone
     .View.prototype.close = function(){
-      //this.remove();
-      this.$el.empty();
+      this.remove();
+    //this.$el.empty();
       this.unbind();
       if (this.onClose){
         this.onClose();
       }
     };
+
+  ModuleConfig['module-demo-backbone'].Events = {};
+  _.extend(
+    ModuleConfig['module-demo-backbone'].Events,
+    ModuleConfig['module-demo-backbone'].Backbone.Events
+  );
 
   // Initialise this module's config.
 	App.setModuleConfig({
