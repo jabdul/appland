@@ -29,7 +29,7 @@ define({
         "LABEL_21": "more",
         "LABEL_22": "The tutorial is currently not available."
       }],
-      "pathToAssets": "../",
+      "pathToAssets": "/assets/",
       "services": {
         "findArticles": {
           "resource": "articles",

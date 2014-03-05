@@ -6,10 +6,11 @@ define([
   './home-view',
   './articles-view',
   './article-view',
+  './preloader-view',
   'jquery'
 ],
 function (App, Doc, HeaderFooterTmpl, ArticleModel,
-          HomeView, ArticlesView, ArticleView, $) {
+          HomeView, ArticlesView, ArticleView, PreloaderView, $) {
   /**
    * Backbone
    * @type {Backbone}
@@ -33,6 +34,7 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
       this.$el.html(HeaderFooterTmpl({
         labels: App.getModuleConfig('module-demo-backbone').labels
       }));
+      this.preloader = new PreloaderView();
     },
 
     events: {
@@ -61,6 +63,15 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
     setMenuItemsInactive: function(){
       this.$el.find('ul.nav li.active').removeClass('active');
     },
+
+    showPreloader: function(){
+      $( this.preloader.render().$el )
+        .insertAfter( this.$el.find('.header') );
+    },
+
+    closePreloader: function(){
+      this.preloader.close();
+    },
     /**
      * Renders the view templates.
      * @param {string} view to render
@@ -71,13 +82,17 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
         this.currentView.close();
       }
 
+      this.showPreloader();
+      debugger;
       this[view + 'View'](options);
 
       Events.on('content:ready', function(){
+        this.closePreloader();
         this.render();
       }, this);
 
       Events.on('content:error', function(){
+        this.closePreloader();
         this.renderError();
       }, this);
     },

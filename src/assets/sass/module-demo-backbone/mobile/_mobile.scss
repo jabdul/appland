@@ -103,6 +103,14 @@ body {
       margin-bottom: 20px;
     }
   }
+  .preloader {
+    height: 500px;
+    img {
+      position: relative;
+      left: 50%;
+      top: 50%;
+    }
+  }
   .footer {
     font: normal 12px/18px Arial,Helvetica,sans-serif;
     @include apl-brand-border-top('turquoise-dark');
