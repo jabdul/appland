@@ -8918,7 +8918,15 @@ body {
   left: 50%;
   top: 50%;
 }
-/* line 114, ../sass/module-demo-backbone/mobile/_mobile.scss */
+/* line 116, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .apl-pager li a {
+  background-color: rgba(202, 202, 202, 0.3);
+}
+/* line 118, ../sass/module-demo-backbone/mobile/_mobile.scss */
+#demo-bb-content .apl-pager li a:hover {
+  background-color: rgba(202, 202, 202, 0.1);
+}
+/* line 124, ../sass/module-demo-backbone/mobile/_mobile.scss */
 #demo-bb-content .footer {
   font: normal 12px/18px Arial, Helvetica, sans-serif;
   border-top-color: #699199;

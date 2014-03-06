@@ -111,6 +111,16 @@ body {
       top: 50%;
     }
   }
+  .apl-pager {
+     li {
+       a {
+         @include apl-brand-bg('gray-light', 0.3);
+         &:hover {
+           @include apl-brand-bg('gray-light', 0.1);
+         }
+       }
+     }
+  }
   .footer {
     font: normal 12px/18px Arial,Helvetica,sans-serif;
     @include apl-brand-border-top('turquoise-dark');

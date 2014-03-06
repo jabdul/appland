@@ -83,7 +83,6 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
       }
 
       this.showPreloader();
-      debugger;
       this[view + 'View'](options);
 
       Events.on('content:ready', function(){
