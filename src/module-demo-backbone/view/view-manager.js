@@ -1,16 +1,17 @@
 define([
   '../app',
   'lib/requirejs/domReady!',
+  'jquery',
+  'bootstrap/dropdown',
   'hbs!module-demo-backbone/view/tmpl/header-footer',
   '../model/article-model',
   './home-view',
   './articles-view',
   './article-view',
-  './preloader-view',
-  'jquery'
+  './preloader-view'
 ],
-function (App, Doc, HeaderFooterTmpl, ArticleModel,
-          HomeView, ArticlesView, ArticleView, PreloaderView, $) {
+function (App, Doc, $, BootstrapDropdown, HeaderFooterTmpl, ArticleModel,
+          HomeView, ArticlesView, ArticleView, PreloaderView) {
   /**
    * Backbone
    * @type {Backbone}
@@ -56,8 +57,10 @@ function (App, Doc, HeaderFooterTmpl, ArticleModel,
     },
 
     updateMenuItem: function(event){
-      $(event.currentTarget).siblings().removeClass('active');
-      $(event.currentTarget).not('.dropdown').addClass('active');
+      $(event.currentTarget).not('.dropdown').siblings()
+        .removeClass('active');
+      $(event.currentTarget)
+        .not('.dropdown').addClass('active');
     },
 
     setMenuItemsInactive: function(){

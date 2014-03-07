@@ -41,8 +41,23 @@ body {
       @include apl-brand-border-bottom('red-dark');
     }
   }
+  .apl-dropdown-menu {
+    @include apl-brand-border('gray-light', 0.7);
+    @include apl-brand-bg('gray-dark', .9);
+    @include border-radius(4px, 4px);
+    a {
+      color: white;
+      &:hover, &:focus {
+        @include apl-brand-bg('gray-dark', 1);
+      }
+    }
+  }
   .header {
     @include apl-brand-border-bottom('turquoise-dark');
+  }
+  .apl-header-1 {
+    margin-bottom: 0;
+    @include apl-brand-color('navy');
   }
   .breadcrumb {
     background-color: transparent;
