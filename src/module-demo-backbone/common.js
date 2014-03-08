@@ -45,7 +45,7 @@ requirejs.config({
     templateExtension: "tmpl",  // Set the extension automatically appended to templates
     // ('hbs' by default)
 
-    partialsUrl: 'module-demo-backbone/view/tmpl', // base url for loading partials.
+    partialsUrl: 'module-demo-backbone/view/tmpl/', // base url for loading partials.
 
     compileOptions: {}        // options object which is passed to Handlebars compiler
   }

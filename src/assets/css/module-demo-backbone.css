@@ -8833,11 +8833,11 @@ body {
 }
 /* line 44, ../sass/module-demo-backbone/mobile/_mobile.scss */
 #demo-bb-content .apl-dropdown-menu {
-  border-color: rgba(202, 202, 202, 0.7);
-  background-color: rgba(88, 87, 92, 0.9);
-  -webkit-border-radius: 4px 4px;
-  -moz-border-radius: 4px / 4px;
-  border-radius: 4px / 4px;
+  border-color: #699199;
+  background-color: rgba(105, 145, 153, 0.9);
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
 }
 /* line 48, ../sass/module-demo-backbone/mobile/_mobile.scss */
 #demo-bb-content .apl-dropdown-menu a {
@@ -8845,7 +8845,7 @@ body {
 }
 /* line 50, ../sass/module-demo-backbone/mobile/_mobile.scss */
 #demo-bb-content .apl-dropdown-menu a:hover, #demo-bb-content .apl-dropdown-menu a:focus {
-  background-color: #58575c;
+  background-color: #699199;
 }
 /* line 55, ../sass/module-demo-backbone/mobile/_mobile.scss */
 #demo-bb-content .header {
