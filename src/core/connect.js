@@ -1,11 +1,50 @@
+// **connect.js** is the facade object for accessing [jQuery's HTTP Ajax request] (https://api.jquery.com/jQuery.ajax/) API.
+//
+// ## Usage
+//
+// `connect.js` is commonly setup in the `app.js` bootstrap file. To use, simply define in AMD fashion as follows:
+//
+// ```js
+// define([ 'main', ...], function (App, ...) {
+//    var connect = new Connect(AppConfig.Server);
+//    App.setConnection(connect);
+// });
+// ```
+// See an example here in the demo [demo-backbone](https://github.com/jabdul/appland/blob/demo/backbone/src/module-demo-backbone/app.js)
+//
+// From here on you can access jQuery's Ajax via the `app` instance in the files of your module.
+//
+// ```js
+// define([ 'app', ...], function (App, ...) {
+//    App.connect('json', {
+//      path: '/url/to/file.json',
+//      type: 'GET',
+//      done: function (data, textStatus) {
+//        ...
+//      },
+//      fail: function (jqXHR, textStatus, errorThrown) {
+//        throw new Error("Service ERROR: Could not fetch item.");
+//      }
+//    });
+// });
+// ```
+//
+// ## Key features
+// `connect.js` provides these features:
+//
+//  - **Settings mappings**: a one-to-one mapping with the latest release of jQuery's Ajax API.
+//
+//
+// And now the API!
 define(['jquery'],
   function ($) {
     /**
+     * ## Connect Constructor
+     *
      * Bind to a server for AJAX requests.
      * @param {Object.<string>} o Connect's properties i.e. server's scheme,
      * port, and hostname.
      * @constructor
-     * @return {undefined}
      */
     function Connect(o) {
       /**
@@ -13,13 +52,13 @@ define(['jquery'],
        * @type {string}
        * @private
        */
-      this.protocol = o.protocol || null,
+      this.protocol = o.protocol || '';
       /**
        * Server's hostname or IP address.
        * @type {string}
        * @private
        */
-        this.hostname = o.hostname || null;
+        this.hostname = o.hostname || '';
       /**
        * Server's Port Number.
        * @type {number}
@@ -28,8 +67,7 @@ define(['jquery'],
       this.port = o.port || null;
       /**
        * The AJAX configuration and setup.
-       * @type {{data: string, path: string, success: function(Object, string),
-       *        dataType: string, async: boolean, type: string, isLocal: string}}
+       * @type {{}}
        * @private
        */
       this.requestConfig = null;
@@ -38,11 +76,19 @@ define(['jquery'],
     Connect.prototype = {
       constructor: Connect,
       /**
+       * ## Connect.prototype.request
+       *
        * Server Connection Adapter.
        * Handles the connection method requests.
        * @param {String} dataType Event's type
-       * @param {function} o The Subscriber / Observer.
-       * @return {undefined}
+       * @param {{data: string, path: string, success: function(Object, string),
+       *        dataType: string, async: boolean, type: string, isLocal: string,
+       *        cache: boolean, error: function(Object, string, *),
+       *        complete: function(Object, string),
+       *        statusCode: {}, done: function(Object, string, *),
+       *        fail: function(Object, string, *),
+       *        always: function(Object, string, *),
+       *        then: function(Object, string, *)}} o options and configuration.
        */
       request: function (dataType, o) {
         this.requestConfig = {
@@ -59,9 +105,7 @@ define(['jquery'],
             function (jqXHR, textStatus, errorThrown) {},
           complete: o.complete ||
             function (jqXHR, textStatus) {},
-          statusCode: o.statusCode || {
-            200: function () {}
-          },
+          statusCode: o.statusCode || {},
           done: o.done ||
             function (data, textStatus, jqXHR) {},
           fail: o.fail ||
@@ -72,13 +116,15 @@ define(['jquery'],
             function (dataOrjqXHR, textStatus, jqXHROrErrorThrown) {}
         };
 
+        // Apply polymorphic operation
         if (this.requestConfig.dataType) {
           this[dataType + 'Connect']();
         }
       },
       /**
+       * ## Connect.prototype.jsonConnect
+       *
        * JSON type request.
-       * @return {undefined}
        */
       jsonConnect: function () {
         $.ajax({
@@ -95,14 +141,15 @@ define(['jquery'],
           complete: this.requestConfig.complete,
           statusCode: this.requestConfig.statusCode
         })
-        .done(this.requestConfig.done)
-        .fail(this.requestConfig.fail)
-        .always(this.requestConfig.always)
-        .then(this.requestConfig.then);
+          .done(this.requestConfig.done)
+          .fail(this.requestConfig.fail)
+          .always(this.requestConfig.always)
+          .then(this.requestConfig.then);
       },
       /**
+       * ## Connect.prototype.htmlConnect
+       *
        * HTML type request.
-       * @return {undefined}
        */
       htmlConnect: function () {
         $.ajax({
@@ -118,9 +165,15 @@ define(['jquery'],
           error: this.requestConfig.error,
           complete: this.requestConfig.complete,
           statusCode: this.requestConfig.statusCode
-        });
+        })
+          .done(this.requestConfig.done)
+          .fail(this.requestConfig.fail)
+          .always(this.requestConfig.always)
+          .then(this.requestConfig.then);
       },
       /**
+       * ## Connect.prototype.getUrl
+       *
        * Create the URL from discreet segments.
        * @return {?string} The URL.
        */
