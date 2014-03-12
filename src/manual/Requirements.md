@@ -13,7 +13,7 @@ Download and install these items on your system before installing Appland. Non-e
 
 
 
-### Setup Apache Web Server configuration ###
+## Setup Apache Web Server configuration ##
 In your Apache server configuration `httpd.conf` file, make sure the modules specified in `appland/service/conf/httpd.modules.1.txt` are uncommented. 
 
 For example, from...
@@ -30,7 +30,7 @@ For example, from...
 	Include conf/extra/httpd-vhosts.conf
 
 
-#### Setup Apache virtual host configuration ####
+### Setup Apache virtual host configuration ###
 In your Apache vhost configuration `httpd-vhosts.conf` file, add the configuration defined in `appland/service/conf/httpd.vhosts.1.txt`.
 
 Find and replace this text...
@@ -43,16 +43,7 @@ Find and replace this text...
 ### Congratulations!!! ###
 You are now ready to fire up your server. Start or restart your Apache server and go to `http://localhost:9010/` in your browser. There you will find your administrative area for managing and monitoring your modules.
 
-##### Next steps #####
+### Next steps ###
 
-* Follow the instruction in [Module Scaffolding][1] to create your first module. 
-* Get an overview of Appland's [Modular MVC Development Architecture][2].
+* Now [install Appland](/Installation.md.html) and associated node modules.
 
-	
-[1]: https://github.com/jabdul/appland/tree/master/src/module-appland "Scaffold"
-[2]: https://github.com/jabdul/appland/tree/master/src "MVC"
-[3]: https://github.com/jabdul/appland/tree/master/src-test "UnitTesting"
-[4]: https://github.com/jabdul/appland/tree/master/_build "Build"
-[5]: https://github.com/jabdul/appland/tree/master/service "REST"
-[6]: https://github.com/jabdul/appland/tree/master/src/lib "Library"
-[7]: https://github.com/jabdul/appland/tree/master/src/assets/sass "SASS"
