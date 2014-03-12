@@ -30,7 +30,7 @@ JavaScripts and CSS into a distribution directory:
     $ apln build my-app
 
 ### Next steps ###
-To get started, go through the step-by-step [installation guide](/Installation.md.html).
+To get started, go through the step-by-step [installation guide](/manual/installation.md.html).
 
 [1]: /Scaffold.md.html "Module Scaffolding"
 [2]: https://github.com/jabdul/appland/tree/master/src "MVC"

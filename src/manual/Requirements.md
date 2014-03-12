@@ -45,5 +45,5 @@ You are now ready to fire up your server. Start or restart your Apache server an
 
 ### Next steps ###
 
-* Now [install Appland](/Installation.md.html) and associated node modules.
+* Now [install Appland](/manual/installation.md.html) and associated node modules.
 
