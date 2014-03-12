@@ -94,7 +94,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
       /**
        * Global configuration data.
        * The configuration setup is in /src/nls/ according to locale. Changes 
-       * in the configuration file will affect all module instances.
+       * in the configuration file will affect module instance.
        * @type {Object.<string>}
        */
       mainConfig_: AppConfig,
