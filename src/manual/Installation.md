@@ -1,4 +1,4 @@
-# Installation #
+# **Installation** #
 
 Once the [system requirements](/requirements.js.html) have been met, clone the `Appland` project to a local directory of choice.
 

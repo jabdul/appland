@@ -1,3 +1,4 @@
+// # **main.js**
 // **main.js** is the central object in the Appland development framework and is sometimes
 // referred to as **App** (when extended). It is the object that is used to abstract access to common
 // and popular libraries. By default, it currently requires jQuery, Log4JavaScript, and Douglas Crockford's
@@ -76,6 +77,8 @@ function (JSON, AppConfig, $, Util, Log4j) {
      */
     var isLoggingEnabled = true;
     /**
+     * ## config
+     *
      * Module or project' configuration.
      * @type {*}
      * @private
@@ -135,7 +138,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
      *  Log.warn('Hello World');
      *  Log.fatal('Hello World');
      * ```
-     * @see stackoverflow.com/questions/4872505/how-to-use-logging-mechanizm-efficiently
+     * @see http://goo.gl/ypPRVl
      * @private
      */
     function setLogAppender() {
@@ -170,9 +173,8 @@ function (JSON, AppConfig, $, Util, Log4j) {
     /**
      * ## setEnv
      *
-     * Detect current environment.
-     * Appland's dev environment uses ports 9010-9013.
-     * @returns {undefined}
+     * Detect current environment. Appland's dev environment uses
+     * ports 9010-9013.
      * @private
      */
     function setEnv() {
@@ -194,18 +196,16 @@ function (JSON, AppConfig, $, Util, Log4j) {
     init();
 
     /**
-     * # Public API
-     *
-     * @type {Object}
+     * # **Public API**
      */
     var publicMethods = {
       /**
-       * ## Util API
+       * ## Util
        *
        * Function Helpers.
        * @type {object}
        * @export
-       * @see [core/util.js] (/core/util.js.html)
+       * @see /core/util.js
        */
       Util: Util,
       /**
@@ -277,7 +277,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
        * Handles AJAX connection requests.
        * @param {string} connectionType The AJAX connection method i.e. JSON, JSONP.
        * @param {Object.<string>} o Connection properties including data, path etc.
-       * @see [core/connect.js] (/core/connect.js.html)
+       * @see core/connect.js
        */
       connect: function (connectionType, o) {
         connection.request(connectionType, o);
@@ -354,7 +354,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
         return ENV;
       },
       /**
-       * ## initGtm
+       * ## initGoogleTagManager
        *
        * Initialise Google Tag Manager (GTM).
        * @param {Object} w Window object.
@@ -364,7 +364,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
        * @param {string} i GTM ID.
        * @returns {undefined}
        */
-      initGtm: function (w,d,s,l,i) {
+      initGoogleTagManager: function (w,d,s,l,i) {
         // Create data layer if not exist
         w[l]=w[l]||[];
         w[l].push({
@@ -390,13 +390,15 @@ function (JSON, AppConfig, $, Util, Log4j) {
        * @param {boolean} trackPageView
        * @returns {undefined}
        */
-      initGoogleAnalytics: function (accountId, customVars, trackPageView) {
+      initGoogleAnalytics: function (accountId,
+                                      customVars,
+                                      trackPageView) {
         window._gaq = window._gaq || [];
         var ga,
             s;
         _gaq.push(['_setAccount', accountId]);
 
-        for (var i = 0, len = customVars.length; i < len; i++) {
+        for (var i = 0, len = customVars.length; i < len; i +=1) {
           _gaq.push([
             '_setCustomVar',
             customVars[i].slot,
@@ -413,7 +415,8 @@ function (JSON, AppConfig, $, Util, Log4j) {
         ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        ga.src = ('https:' == document.location.protocol
+                  ? 'https://ssl'
                   : 'http://www') + '.google-analytics.com/ga.js';
         s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);

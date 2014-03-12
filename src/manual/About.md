@@ -1,4 +1,4 @@
-# Appland #
+# **Appland** #
 
 
 Appland's goal is to provide an end-to-end UI development framework and work-flow for developing modern and traditional style web applications. Great emphasis has been placed on assisting the developer to create **reusable** and **maintainable** modules adhering to industry standards along the way.
@@ -18,15 +18,16 @@ Appland helps you to incorporate popular frameworks and libraries into your proj
 * Admin Area for Monitoring and Managing Modules
 
 ### Basic workflow ###
-Once Appland and its command-line (apln) interface have installed, you can manage your projects (or modules) as easily as the following:
+Once Appland and its command-line interface (apln) have been installed, you can manage your projects (or modules) as easily as the following:
 
-	  # Create a basic scaffold for your module...
-	  $ apln create my-app
+Create a basic scaffold for your module...
+
+    $ apln create my-app
 	
-	
-	  # ...and when you're ready for production, this will concatenate, optimise, and minify your
-	  # JavaScripts and CSS into a distribution directory:
-	  $ apln build my-app
+...and when you're ready for production, this will concatenate, optimise, minify your
+JavaScripts and CSS into a distribution directory:
+
+    $ apln build my-app
 
 ### Next steps ###
 To get started, go through the step-by-step [installation guide](/Installation.md.html).

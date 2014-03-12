@@ -18,6 +18,15 @@
     </div>
     <div id="tree"></div>
     <div id="headings">
+      <div class="heading h1">
+        <a href="#jquery-loader.js">jquery-loader.js</a>
+      </div>
+      <div class="heading h2">
+        <a href="#usage">Usage</a>
+      </div>
+      <div class="heading h2">
+        <a href="#requires">Requires</a>
+      </div>
     </div>
   </div>
   <div id="sidebar-toggle"></div>
@@ -26,26 +35,67 @@
   <tbody>
       <tr>
         <td class="docs">
-          <h1>jquery-loader.js</h1>
+<div class="pilwrap" id="jquery-loader.js">
+  <h1>
+    <a href="#jquery-loader.js" name="jquery-loader.js" class="pilcrow">&#182;</a>
+    <strong>jquery-loader.js</strong>
+  </h1>
+</div>
+
+
+<p><strong>jquery-loader.js</strong> is a simple wrapper to solve the problem of having multiple jQuery on the same site.
+This solution prevents the 'clobbering' of existing global jQuery using AMD to encapsulate your preferred
+version of jQuery library. This could be useful in some projects whereby removing the existing jQuery is
+not an option.</p>
+
+
+<div class="pilwrap" id="usage">
+  <h2>
+    <a href="#usage" name="usage" class="pilcrow">&#182;</a>
+    Usage
+  </h2>
+</div>
+
+
+<p><code>jquer-loader.js</code> is normally requested in your module's <code>common.js</code> configuration file:</p>
+
+
+<div class="highlight"><pre><code><span class="nx">requirejs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+   <span class="nx">baseUrl</span><span class="o">:</span> <span class="s1">&#39;../../&#39;</span><span class="p">,</span>
+   <span class="nx">waitSeconds</span><span class="o">:</span> <span class="mi">14</span><span class="p">,</span>
+   <span class="nx">paths</span><span class="o">:</span> <span class="p">{</span>
+     <span class="s1">&#39;jquery&#39;</span><span class="o">:</span> <span class="s1">&#39;core/jquery-loader&#39;</span><span class="p">,</span>
+       <span class="p">...</span>
+   <span class="p">}</span>
+   <span class="p">...</span>
+ <span class="p">})</span>
+</code></pre></div>
+
+
+
+<p>See an example here in the demo <a href="https://github.com/jabdul/appland/blob/demo/backbone/src/module-demo-backbone/common.js">demo-backbone</a>
+and <a href="http://goo.gl/FhRZZW">stackoverflow</a> for more on this issue.</p>
         </td>
-        <td class="code highlight"></td>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-26" id="line-26">26</a>  </pre></div>
+        </td>
       </tr>
       <tr>
         <td class="docs">
-<div class="pilwrap">
-  <a class="pilcrow" href="#section-1" id="section-1">&#182;</a>
+<div class="pilwrap" id="requires">
+  <h2>
+    <a href="#requires" name="requires" class="pilcrow">&#182;</a>
+    Requires
+  </h2>
 </div>
-<div class="dox">
-  <div class="summary"><p>see <a href='http://stackoverflow.com/questions/4858431/use-requirejs-and-jquery-without-clobbering-global-jquery'>http://stackoverflow.com/questions/4858431/use-requirejs-and-jquery-without-clobbering-global-jquery</a></p>
-  </div>
-  <div class="body">
-  </div>
-</div>
+
+
+<p>Include the preferred jQuery library.</p>
         </td>
-        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-4" id="line-4">4</a>  <span class="nx">define</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;lib/jquery-1-9-1/jquery&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-<a class="line-num" href="#line-5" id="line-5">5</a>    <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
-<a class="line-num" href="#line-6" id="line-6">6</a>  <span class="p">});</span>
-<a class="line-num" href="#line-7" id="line-7">7</a>  </pre></div>
+        <td class="code highlight"><div class="highlight"><pre><a class="line-num" href="#line-29" id="line-29">29</a>  
+<a class="line-num" href="#line-30" id="line-30">30</a>  <span class="nx">define</span><span class="p">(</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;lib/jquery-1-9-1/jquery&#39;</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<a class="line-num" href="#line-31" id="line-31">31</a>    <span class="k">return</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a class="line-num" href="#line-32" id="line-32">32</a>  <span class="p">});</span>
+<a class="line-num" href="#line-33" id="line-33">33</a>  </pre></div>
         </td>
       </tr>
   </tbody>

@@ -1,4 +1,5 @@
-// **connect.js** is the facade object for accessing [jQuery's HTTP Ajax request] (https://api.jquery.com/jQuery.ajax/) API.
+// # **connect.js**
+// **connect.js** is the facade object for accessing [jQuery's HTTP Ajax](https://api.jquery.com/jQuery.ajax/) API request.
 //
 // ## Usage
 //
@@ -23,7 +24,7 @@
 //        ...
 //      },
 //      fail: function (jqXHR, textStatus, errorThrown) {
-//        throw new Error("Service ERROR: Could not fetch item.");
+//        throw new Error("Service ERROR: Could not fetch.");
 //      }
 //    });
 // });
@@ -36,6 +37,9 @@
 //
 //
 // And now the API!
+
+// ## Requires
+// Include all the necessary files.
 define(['jquery'],
   function ($) {
     /**
@@ -67,7 +71,7 @@ define(['jquery'],
       this.port = o.port || null;
       /**
        * The AJAX configuration and setup.
-       * @type {{}}
+       * @type {object.<string>}
        * @private
        */
       this.requestConfig = null;
@@ -178,9 +182,11 @@ define(['jquery'],
        * @return {?string} The URL.
        */
       getUrl: function () {
-        var protocol = (this.protocol) ? this.protocol + '//' : 'http://',
-          hostname = this.hostname || '',
-          port = (this.port) ? ':' + this.port : '';
+        var protocol = (this.protocol) ?
+            this.protocol + '//' : 'http://',
+            hostname = this.hostname || '',
+            port = (this.port) ? ':' + this.port : '';
+
         if (hostname) {
           return (protocol + hostname + port);
         } else {

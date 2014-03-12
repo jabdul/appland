@@ -1,3 +1,4 @@
+
 /**
  * Appland Branding
  */
@@ -17,11 +18,11 @@ body {
 #container .docs.markdown h1, h2, h3, h4, h5, h6, a {
   color: #2c4f62;
 }
-#container .docs.markdown h1 {
+#container .docs h1 {
   font-size: 46px;
   line-height: 46px;
 }
-#container .docs.markdown h1 a.pilcrow {
+#container .docs h1 a.pilcrow {
   top: 45px;
 }
 #container .docs.markdown h2 {
@@ -111,11 +112,20 @@ body {
 #headings .heading a:hover {
   color: #971b20;
 }
+#headings .h1 {
+  font-size: 1.15em
+}
+#headings .h2 {
+  font-size: 1em
+}
 #headings .h4 {
   font-size: 0.95em
 }
+#headings .h4 {
+  font-size: 0.9em
+}
 #headings .h5 {
-  font-size: 0.90em
+  font-size: 0.85em
 }
 
 /**

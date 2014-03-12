@@ -1,3 +1,4 @@
+// # **util.js**
 // **util.js** is a collection of commonly used functions.
 //
 // ## Usage
@@ -23,10 +24,13 @@
 // ```
 //
 // And now the API!
+
+// ## Requires
+// Include all the necessary files (if any).
 define(function () {
   function Util() {
     /**
-     * # Public API
+     * # **Public API**
      *
      * @type {Object}
      */
@@ -124,7 +128,9 @@ define(function () {
        */
       getQueryStringArgs: function () {
         //get query string without the initial ?
-        var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+        var qs = (location.search.length > 0
+            ? location.search.substring(1)
+            : ""),
           args = {},
         //get individual items
           items = qs.length ? qs.split("&") : [],
@@ -173,9 +179,12 @@ define(function () {
        */
       formatFloat: function (value, precision) {
         var power = Math.pow(10, precision || 0);
-        return String((Math.round(value * power) / power).toFixed(precision));
+        return String((Math.round(value * power) / power)
+          .toFixed(precision));
       },
       /**
+       * ## trim
+       *
        * Trim a string
        * @param {string} s
        * @return string

@@ -1,4 +1,4 @@
-# System Requirements #
+# **System Requirements** #
 
 Download and install these items on your system before installing Appland. Non-essentials are indicated by (NE) although **highly recommended**.
 
