@@ -29,7 +29,7 @@ requirejs.config({
 
     helperPathCallback:       // Callback to determine the path to look for helpers
       function (name) {       // ('/template/helpers/'+name by default)
-        return 'core/helpers/' + name;
+        return 'module-appland/view/helpers/' + name;
       },
 
     templateExtension: "tmpl",  // Set the extension automatically appended to templates
