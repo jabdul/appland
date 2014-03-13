@@ -1,6 +1,6 @@
 # **Installation** #
 
-Once the [system requirements](/manual/requirements.js.html) have been met, clone the `Appland` project to a local directory of choice.
+Once the [system requirements](/manual/requirements.md.html) have been met, clone the `Appland` project to a local directory of choice.
 
 	# Install Appland...
 	$ cd /path/to/appland
