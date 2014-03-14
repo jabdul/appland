@@ -35,8 +35,6 @@ function(App, Doc, ViewManager){
     var router = new AppRouter();
     // Homepage
     router.on('route:home', function(){
-      // Simply instantiate the HomeView object.
-      // The constructor will handle the next steps.
       try {
         this.viewManager.setCurrentView( 'home' );
       } catch(e) {

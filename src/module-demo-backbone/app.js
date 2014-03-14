@@ -29,13 +29,14 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j, Backbone) {
   ModuleConfig['module-demo-backbone'].Backbone
     .View.prototype.close = function(){
       this.remove();
-    //this.$el.empty();
       this.unbind();
       if (this.onClose){
         this.onClose();
       }
     };
 
+  // Module-wide events observer object.
+  // Manages the publication and subscription to custom events.
   ModuleConfig['module-demo-backbone'].Events = {};
   _.extend(
     ModuleConfig['module-demo-backbone'].Events,
@@ -43,14 +44,14 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j, Backbone) {
   );
 
   // Initialise this module's config.
-	App.setModuleConfig({
-		'module-demo-backbone': ModuleConfig['module-demo-backbone']
-	});
+  App.setModuleConfig({
+    'module-demo-backbone': ModuleConfig['module-demo-backbone']
+  });
 
   // Setup default connection to server.
   // This can also be dynamically changed during runtime.
-	var connect = new Connect(AppConfig.Server);
-	App.setConnection(connect);
+  var connect = new Connect(AppConfig.Server);
+  App.setConnection(connect);
 
 	return App;
 });

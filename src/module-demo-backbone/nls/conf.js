@@ -26,7 +26,7 @@ define({
         "LABEL_18": "Previous",
         "LABEL_19": "Error!",
         "LABEL_20": "The article requested is not available.",
-        "LABEL_21": "more",
+        "LABEL_21": "Read More",
         "LABEL_22": "The tutorial is currently not available."
       }],
       "pathToAssets": "/assets/",

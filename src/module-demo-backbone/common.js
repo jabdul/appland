@@ -51,9 +51,6 @@ requirejs.config({
   }
 });
 
-require([
-  'module-demo-backbone/routes'
-],
-  function (Routes) {
-    Routes.initialize();
-  });
+require(['module-demo-backbone/routes'], function (Routes) {
+  Routes.initialize();
+});

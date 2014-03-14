@@ -100,10 +100,13 @@ body {
       @include apl-brand-color('navy');
       margin-bottom: 20px;
     }
-    h2 {
+    h2, h3 {
       font-size: 16px;
       @include apl-brand-color('navy');
       margin-bottom: 12px;
+    }
+    h3 {
+      font-size: 14px;
     }
     .lead {
       font-size: 16px;
@@ -111,10 +114,30 @@ body {
       @include apl-brand-color('gray-dark');
       margin-bottom: 30px;
     }
-    p {
+    p, li {
       font-size: 12px;
       line-height: 18px;
       @include apl-brand-color('gray-dark');
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    blockquote {
+      @include apl-brand-border-left('red-dark');
+      width: 90%;
+      position: relative;
+      left: 5%;
+      margin-top: 20px;
+      display: inline-block;
+      p {
+        @include apl-brand-color('red-dark');
+        font-style: italic;
+        font-size: 30px;
+        line-height: 32px;
+      }
+    }
+    .content {
       margin-bottom: 20px;
     }
   }

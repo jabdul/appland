@@ -1,10 +1,11 @@
 define([
   '../app',
+  'jquery',
   'hbs!module-demo-backbone/view/tmpl/article',
   'hbs!module-demo-backbone/view/tmpl/partial/article',
   'hbs!module-demo-backbone/view/tmpl/partial/error'
 ],
-  function(App, ArticlePageTmpl, ArticleTmpl, ErrorTmpl){
+  function(App, $, ArticlePageTmpl, ArticleTmpl, ErrorTmpl){
     /**
      * Backbone
      * @type {Backbone}
@@ -49,6 +50,8 @@ define([
       render: function(){
         var data = this.model.toJSON();
         data.LABELS = LABELS[0];
+        // Decode html entities
+        data.content = $('<textarea/>').html(data.content).text();
 
         this.$el.addClass('main-content').html(ArticleTmpl(data));
 

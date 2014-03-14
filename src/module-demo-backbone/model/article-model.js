@@ -23,6 +23,7 @@ function(App){
       title: '',
       teaser: '',
       description: '',
+      content: '',
       image: '',
       tags: [],
       meta: {

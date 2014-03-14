@@ -7,7 +7,21 @@ function (ArticleModel) {
    */
   describe('ModuleDemoBackbone: article model', function () {
 
-    it("has default values set for its properties.", function () {
+    it("has known set properties.", function () {
+      var articleModel = new ArticleModel();
+
+      expect(articleModel.get('id')).toBeDefined();
+      expect(articleModel.get('isActive')).toBeDefined();
+      expect(articleModel.get('title')).toBeDefined();
+      expect(articleModel.get('teaser')).toBeDefined();
+      expect(articleModel.get('description')).toBeDefined();
+      expect(articleModel.get('content')).toBeDefined();
+      expect(articleModel.get('image')).toBeDefined();
+      expect(articleModel.get('tags')).toBeDefined();
+      expect(articleModel.get('meta')).toBeDefined();
+    });
+
+    it("has default values set for known properties.", function () {
       var articleModel = new ArticleModel(),
           meta = articleModel.get('meta');
 
@@ -16,6 +30,7 @@ function (ArticleModel) {
       expect(articleModel.get('title')).toBe('');
       expect(articleModel.get('teaser')).toBe('');
       expect(articleModel.get('description')).toBe('');
+      expect(articleModel.get('content')).toBe('');
       expect(articleModel.get('image')).toBe('');
       expect(articleModel.get('tags').length).toEqual(0);
       expect(meta.nav.next.id).toEqual(-1);
