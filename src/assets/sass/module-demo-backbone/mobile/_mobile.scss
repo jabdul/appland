@@ -139,6 +139,12 @@ body {
     }
     .content {
       margin-bottom: 20px;
+      a {
+        text-decoration: underline;
+        &:hover, &:focus {
+          text-decoration: none;
+        }
+      }
     }
   }
   .preloader {
