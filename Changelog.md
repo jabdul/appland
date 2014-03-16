@@ -1,5 +1,8 @@
 ## Changelog ##
 
+### appland-0.4.0-beta ###
+* 
+
 ### appland-0.3.0-alpha ###
 * Added module-specific test harness. Jasmine tests can now run on a per module basis.
 

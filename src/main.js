@@ -90,11 +90,6 @@ function (JSON, AppConfig, $, Util, Log4j) {
        */
       projectName_: '',
       /**
-       * Libraries required by project.
-       * @type {Object.<string>}
-       */
-      libs_: {},
-      /**
        * Global configuration data.
        * The configuration setup is in /src/nls/ according to locale. Changes 
        * in the configuration file will affect module instance.
@@ -220,21 +215,21 @@ function (JSON, AppConfig, $, Util, Log4j) {
        * ## setConfig
        *
        * Application-wide configuration properties.
+       * Use this method to test configuration in src/nls/conf.js is as
+       * expected.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setConfig: function (configObject) {
-        var prop_,
-            prop;
+        var prop;
 
         if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
         for (prop in configObject) {
-          prop_ = prop + '_';
-          if (prop_ in config) {
-            config[prop_] = configObject[prop];
+          if (prop in config.mainConfig_) {
+            config.mainConfig_[prop] = configObject[prop];
           } else {
             return false;
           }
@@ -287,14 +282,18 @@ function (JSON, AppConfig, $, Util, Log4j) {
        *
        * Logging configuration.
        * @param {{setEnabled: boolean}} o Logging configuration properties.
+       * @returns {boolean} True if successfully updated, False otherwise.
        */
       setLogging: function (o) {
         if (Util.getDataType(o) != "[object Object]") {
-          return;
+          return false;
         }
         if (typeof o.setEnabled === 'boolean') {
           isLoggingEnabled = o.setEnabled;
+          return true;
         }
+
+        return false;
       },
       /**
        * ## getConfig

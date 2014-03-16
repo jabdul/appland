@@ -32,10 +32,10 @@ requirejs.config({
         return 'module-appland/view/helpers/' + name;
       },
 
-    templateExtension: "tmpl",  // Set the extension automatically appended to templates
+    templateExtension: "module-appland/view/tmpl",  // Set the extension automatically appended to templates
     // ('hbs' by default)
 
-    partialsUrl: 'module-appland/view/tmpl', // base url for loading partials.
+    //partialsUrl: '', // base url for loading partials.
 
     compileOptions: {}        // options object which is passed to Handlebars compiler
   }
