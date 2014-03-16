@@ -1,7 +1,14 @@
 ## Changelog ##
 
 ### appland-0.4.0-beta ###
-* 
+* Upgraded require-handlebars-plugin to v.0.8.0
+* Upgraded normalize.css to v.3.0.0
+* New Modules Admin UI. `localhost:9010`.
+* Added Douglas Crockford's JSON2 polyfill.
+* Added font-awesome.
+* Cleaned up `core` directory and removed redundant plugins and libraries.
+* Added more test coverage to `main.js`.
+* `main.js` - Dropped unused config property `config.libs_`.
 
 ### appland-0.3.0-alpha ###
 * Added module-specific test harness. Jasmine tests can now run on a per module basis.
