@@ -37,7 +37,6 @@ module.exports = function(grunt) {
   // Load the plugins
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-copy');
   // Tasks...
   grunt.registerTask('default', ['watch']);
   grunt.registerTask('hint', ['jshint']);

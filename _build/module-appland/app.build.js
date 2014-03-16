@@ -9,6 +9,15 @@
     'module-appland/common': '../dist/module-appland/common',
     'module-appland/controller/index-controller': '../dist/module-appland/controller/index-controller'
   },
+  pragmasOnSave: {
+    //removes Handlebars.Parser code (used to compile template strings) set
+    //it to `false` if you need to parse template strings even after build
+    excludeHbsParser : true,
+    // kills the entire plugin set once it's built.
+    excludeHbs: true,
+    // removes i18n precompiler, handlebars and json2
+    excludeAfterBuild: true
+  },
   modules: [
     //First set up the common build layer.
     {
@@ -21,13 +30,10 @@
         'jquery',
         'lib/requirejs/domReady',
         'lib/requirejs/text',
-        'lib/requirejs/hbs',
+        'lib/requirejs/json',
         'lib/requirejs/i18n',
-        'bootstrap',
+        'hbs',
         'log4javascript',
-        'handlebars',
-        'underscore',
-        'json',
         'core/connect',
         'core/util',
         'main'

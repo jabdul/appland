@@ -1,21 +1,19 @@
 define([
   'module-appland/app',
   'lib/requirejs/domReady!',
-  'lib/requirejs/hbs!module-appland/view/tmpl/navbar',
-  'lib/requirejs/hbs!module-appland/view/tmpl/jumbotron',
-  'lib/requirejs/hbs!module-appland/view/tmpl/content'
+  'bootstrap/alert',
+  'hbs!module-appland/view/tmpl/dashboard'
 ],
-function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
+function (App, Doc, BootstrapAlert, DashboardTmpl) {
   function IndexController() {
     /**
-     * App's DOM Container Element. 
+     * App's DOM Container Element.
      * @type {Object}
      */
-    var appContainerEl = Doc.getElementById('apl-content');
+    var $appContainerEl = App.$('#apl-content');
     /**
      * Script initialiser.
      * Executes a set of actions at start.
-     * @returns {undefined}
      */
     function init() {
       renderView();
@@ -23,29 +21,20 @@ function (App, Doc, NavBarTmpl, JumboTronTmpl, ContentTmpl) {
     }
     /**
      * Renders the view templates.
-     * @returns {undefined}
      */
     function renderView() {
-      var templates = [
-          NavBarTmpl(null),
-          JumboTronTmpl(null),
-          ContentTmpl(null)
-      ];
-      appContainerEl.innerHTML = templates.join('\n');
+      $appContainerEl.html(DashboardTmpl({
+        labels: App.getModuleConfig('module-appland').labels
+      }));
     }
     /**
      * Event delegation.
-     * @returns {undefined}
      */
     function delegateEvents() {
-      /*$(Doc)
-        .on("click.apl.job",
-          '#wgsn-promo-intro-close', function (e) {
-          e.preventDefault();
-        })
-        .on("change.apl.job",
-          '#wgsn-promo-never-show-intro', function (e) {
-        });*/
+      $appContainerEl
+        .on("click.apl", '.alert', function (e) {
+            App.$(this).alert('close');
+        });
     }
 
     var publicMethods = {

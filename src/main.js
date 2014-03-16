@@ -1,9 +1,54 @@
+// # **main.js**
+// **main.js** is the central object in the Appland development framework and is sometimes
+// referred to as **App** (when extended). It is the object that is used to abstract access to common
+// and popular libraries. By default, it currently requires jQuery, Log4JavaScript, and Douglas Crockford's
+// JSON-js libraries. You can of course extend it in your bootstrap file `app.js` to configure your module
+// and extend other libraries for your particular application.
+// It is also the layer that facilitates communication between modules; thereby reducing potential for tight
+// coupling and strong dependency.
+//
+// ## Usage
+//
+// `main.js` is commonly extended in the `app.js` bootstrap file. To use, simply define in AMD fashion as follows:
+//
+// ```js
+// define([ 'main', ...], function (App, ...) {
+//   ...
+// });
+// ```
+//
+// From here on you can reference `app` in your defines for the files in your module to access its features.
+//
+// See an example here in the demo [demo-backbone](https://github.com/jabdul/appland/blob/demo/backbone/src/module-demo-backbone/app.js)
+//
+// ## Key features
+// `main.js` provides these features:
+//
+//  - **Utility functions**: a small set of functions for use in your projects.
+//
+//  - **Logger**: a facade multi-purpose logging framework based on [log4javascript](http://log4javascript.org/)
+//
+//  - **Module configuration**: holds configuration for your instantiated modules.
+//
+//  - **AJAX**: sets up connection for jQuery's AJAX communications.
+//
+//  - **ENV**: detects and sets your development environment.
+//
+//  - **GTM and GA**: for your Google Analytics needs.
+//
+//
+// And now the API!
+
+// ## Requires
+// Include all the necessary files.
 define([
+  'lib/json2/json2',
   'lib/requirejs/i18n!nls/conf',
+  'jquery',
   'core/util',
   'log4javascript'
 ],
-function (AppConfig, Util, Log4j) {
+function (JSON, AppConfig, $, Util, Log4j) {
 
   function App() {
     /**
@@ -12,12 +57,6 @@ function (AppConfig, Util, Log4j) {
      * @private
      */
     var connection = null;
-    /**
-     * Function Helpers.
-     * @type {object}
-     * @private
-     */
-    var util = Util;
     /**
      * Environment.
      * DEVELOPMENT | TESTING | PRODUCTION
@@ -38,6 +77,8 @@ function (AppConfig, Util, Log4j) {
      */
     var isLoggingEnabled = true;
     /**
+     * ## config
+     *
      * Module or project' configuration.
      * @type {*}
      * @private
@@ -49,14 +90,9 @@ function (AppConfig, Util, Log4j) {
        */
       projectName_: '',
       /**
-       * Libraries required by project.
-       * @type {Object.<string>}
-       */
-      libs_: {},
-      /**
        * Global configuration data.
        * The configuration setup is in /src/nls/ according to locale. Changes 
-       * in the configuration file will affect all module instances.
+       * in the configuration file will affect module instance.
        * @type {Object.<string>}
        */
       mainConfig_: AppConfig,
@@ -69,27 +105,36 @@ function (AppConfig, Util, Log4j) {
     };
 
     /**
+     * ## init
+     *
      * App's Bootstrapping.
-     * These actions are performed before DOM Ready.
+     * Need only be called once (via the public API below) in your bootstrap
+     * file and ideally before DOM Ready.
+     * @private
      */
     function init() {
       setEnv();
       setLogAppender();
     }
     /**
+     * ## setLogAppender
+     *
      * Console logger.
      * Create a console appender that is inherited by all loggers (modules).
      * Once the logger is setup in the module during App bootstrapping. You can
      * initiate the logging by the following example:
-     * @example var Log = App.getModuleConfig('module-image-viewer').Log;
-     *              Log.trace('Hello World');
-     *              Log.debug('Hello World');
-     *              Log.info('Hello World');
-     *              Log.error('Hello World');
-     *              Log.warn('Hello World');
-     *              Log.fatal('Hello World');
-     * @see stackoverflow.com/questions/4872505/how-to-use-logging-mechanizm-efficiently
-     * @returns {undefined}
+     * ```js
+     *  var Log = App.getModuleConfig('module-my-app').Log;
+     *
+     *  Log.trace('Hello World');
+     *  Log.debug('Hello World');
+     *  Log.info('Hello World');
+     *  Log.error('Hello World');
+     *  Log.warn('Hello World');
+     *  Log.fatal('Hello World');
+     * ```
+     * @see http://goo.gl/ypPRVl
+     * @private
      */
     function setLogAppender() {
       // To prevent multiple popup windows appearing,
@@ -115,14 +160,17 @@ function (AppConfig, Util, Log4j) {
       // logger and all its descendants 
       // (including "Apl.Modules.Module1" and
       // "Apl.Modules.Module2" ...)
-      Log4j.getLogger("Wgsn.Modules").setLevel(Log4j.Level.ALL);
+      Log4j.getLogger("Apl.Modules").setLevel(Log4j.Level.ALL);
       
       // Enable or disable logging.
       Log4j.setEnabled( isLoggingEnabled );
     }
     /**
-     * Detect current environment.
-     * @returns {undefined}
+     * ## setEnv
+     *
+     * Detect current environment. Appland's dev environment uses
+     * ports 9010-9013.
+     * @private
      */
     function setEnv() {
       var host = document.location.host;
@@ -142,27 +190,46 @@ function (AppConfig, Util, Log4j) {
     // Start the App.
     init();
 
+    /**
+     * # **Public API**
+     */
     var publicMethods = {
-      Util: util,
       /**
-       * Modify App's configuration properties.
+       * ## Util
+       *
+       * Function Helpers.
+       * @type {object}
+       * @export
+       * @see /core/util.js
+       */
+      Util: Util,
+      /**
+       * ## $
+       *
+       * jQuery API.
+       * @type {object}
+       * @export
+       */
+      $: $,
+      /**
+       * ## setConfig
+       *
+       * Application-wide configuration properties.
+       * Use this method to test configuration in src/nls/conf.js is as
+       * expected.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-          prop_ = '',
-          prop;
+        var prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
         for (prop in configObject) {
-          prop_ = prop + '_';
-          if (prop_ in config) {
-            config[prop_] = configObject[prop];
+          if (prop in config.mainConfig_) {
+            config.mainConfig_[prop] = configObject[prop];
           } else {
             return false;
           }
@@ -170,17 +237,17 @@ function (AppConfig, Util, Log4j) {
         return true;
       },
       /**
-       * Modules's configuration properties.
+       * ## setModuleConfig
+       *
+       * Module-specific configuration properties.
        * @param {Object.<string>} configObject
        * @returns {boolean} True if successfully updated, False otherwise.
        */
       setModuleConfig: function (configObject) {
-        // Capture this object's public variables.
-        var me = this,
-            prop_ = '',
+        var prop_,
             prop;
 
-        if (me.getDataType(configObject) != "[object Object]") {
+        if (Util.getDataType(configObject) != "[object Object]") {
           return false;
         }
 
@@ -191,39 +258,46 @@ function (AppConfig, Util, Log4j) {
         return true;
       },
       /**
+       * ## setConnection
+       *
        * Set up AJAX connection.
        * @param {Object.<string>} o The AJAX handler.
-       * @returns {null}
        */
       setConnection: function (o) {
         connection = o;
-        setLogAppender();
       },
       /**
-       * Handle AJAX connection requests.
+       * ## connect
+       *
+       * Handles AJAX connection requests.
        * @param {string} connectionType The AJAX connection method i.e. JSON, JSONP.
        * @param {Object.<string>} o Connection properties including data, path etc.
-       * @returns {undefined}
+       * @see core/connect.js
        */
       connect: function (connectionType, o) {
         connection.request(connectionType, o);
       },
       /**
+       * ## setLogging
+       *
        * Logging configuration.
        * @param {{setEnabled: boolean}} o Logging configuration properties.
-       * @returns {undefined}
+       * @returns {boolean} True if successfully updated, False otherwise.
        */
       setLogging: function (o) {
-        var me = this;
-
-        if (me.getDataType(o) != "[object Object]") {
-          return;
+        if (Util.getDataType(o) != "[object Object]") {
+          return false;
         }
         if (typeof o.setEnabled === 'boolean') {
           isLoggingEnabled = o.setEnabled;
+          return true;
         }
+
+        return false;
       },
       /**
+       * ## getConfig
+       *
        * Get config property/properties.
        * @param {string} p Specify configuration property to retrieve.
        * @param {boolean=} all opt_argument Retrieve all configuration settings.
@@ -248,6 +322,8 @@ function (AppConfig, Util, Log4j) {
         return false;
       },
       /**
+       * ## getModuleConfig
+       *
        * Get Module-specific configuration properties.
        * @param {string} prop Specify configuration property to retrieve.
        * @param {boolean=} all opt_argument Retrieve all modules' configurations.
@@ -268,27 +344,17 @@ function (AppConfig, Util, Log4j) {
         return false;
       },
       /**
-       * Get data type.
-       * This check assumes the native Object has not being overwritten by
-       * developer.
-       * @param {*} d Reference data check.
-       * @returns {string} Native constructor name if it's a reference type.
-       *                    [object Object] Native Object.
-       *                    [object Array] Native Array.
-       *                    [object Function] Native function.
-       *                    [object RegExp] Native regular expression.
-       */
-      getDataType: function (d) {
-        return Object.prototype.toString.call(d);
-      },
-      /**
-       * Return enviroment setting.
+       * ## getEnv
+       *
+       * Return environment setting.
        * @returns {string}
        */
       getEnv: function () {
         return ENV;
       },
       /**
+       * ## initGoogleTagManager
+       *
        * Initialise Google Tag Manager (GTM).
        * @param {Object} w Window object.
        * @param {Object} d Document object.
@@ -297,7 +363,7 @@ function (AppConfig, Util, Log4j) {
        * @param {string} i GTM ID.
        * @returns {undefined}
        */
-      initGtm: function (w,d,s,l,i) {
+      initGoogleTagManager: function (w,d,s,l,i) {
         // Create data layer if not exist
         w[l]=w[l]||[];
         w[l].push({
@@ -314,6 +380,8 @@ function (AppConfig, Util, Log4j) {
         f.parentNode.insertBefore(j,f);
       },
       /**
+       * ## initGoogleAnalytics
+       *
        * Initialise Google Analytics.
        * @param {string} accountId GA account ID.
        * @param {Array.<{slot:number,varKey:string,
@@ -321,13 +389,15 @@ function (AppConfig, Util, Log4j) {
        * @param {boolean} trackPageView
        * @returns {undefined}
        */
-      initGoogleAnalytics: function (accountId, customVars, trackPageView) {
+      initGoogleAnalytics: function (accountId,
+                                      customVars,
+                                      trackPageView) {
         window._gaq = window._gaq || [];
         var ga,
             s;
         _gaq.push(['_setAccount', accountId]);
 
-        for (var i = 0, len = customVars.length; i < len; i++) {
+        for (var i = 0, len = customVars.length; i < len; i +=1) {
           _gaq.push([
             '_setCustomVar',
             customVars[i].slot,
@@ -344,7 +414,8 @@ function (AppConfig, Util, Log4j) {
         ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+        ga.src = ('https:' == document.location.protocol
+                  ? 'https://ssl'
                   : 'http://www') + '.google-analytics.com/ga.js';
         s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(ga, s);

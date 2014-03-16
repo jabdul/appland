@@ -1,4 +1,4 @@
-require(['module.config.js'], function () {
+require(['modules.config.js'], function () {
   require([
     'jquery',
     '../src-test/module-appland/index'
