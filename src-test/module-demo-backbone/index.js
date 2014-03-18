@@ -18,7 +18,8 @@ define([], function () {
       var dir = TEST_SUITE + '/';
       return [
         dir + '/model/article-model',
-        dir + '/collection/article-collection'
+        dir + '/collection/article-collection',
+        dir + '/view/home-view'
       ];
     }
 
