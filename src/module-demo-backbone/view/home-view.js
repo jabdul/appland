@@ -95,8 +95,10 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, ErrorTmpl){
 
     changeStartLink: function(id) {
       var el = this.$el.find('#js-cta'),
-          _href = el.attr('href');
-      el.attr('href', _href + '/' + id);
+          articlePath = el.attr('href'),
+          _href = location.href;
+
+      el.attr('href', _href + articlePath + '/' + id);
     },
 
     splitItems: function(items, n) {
