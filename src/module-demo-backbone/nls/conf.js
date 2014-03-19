@@ -18,7 +18,7 @@ define({
         "LABEL_11": "Develop a Backbone.js WebApp" +
           " on Appland; the end-to-end UI development platform.",
         "LABEL_12": "Start your journey",
-        "LABEL_13": "./#/articles",
+        "LABEL_13": "#/articles",
         "LABEL_14": "Search articles",
         "LABEL_15": "Craft Turf",
         "LABEL_16": "2014",
