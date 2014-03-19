@@ -96,7 +96,7 @@ function(App, ArticleCollection, ArticleTeasersView, HomeTmpl, ErrorTmpl){
     changeStartLink: function(id) {
       var el = this.$el.find('#js-cta'),
           articlePath = el.attr('href'),
-          _href = location.href;
+          _href = location.href.split('#')[0];
 
       el.attr('href', _href + articlePath + '/' + id);
     },
