@@ -35,8 +35,8 @@ function (App, Doc, AppConfig, ModuleConfig, Connect, Log4j, Backbone) {
       }
     };
 
-  // Module-wide events observer object.
-  // Manages the publication and subscription to custom events.
+  // Module-wide events aggregator object.
+  // Aggregates the publication and subscription of custom events.
   ModuleConfig['module-demo-backbone'].Events = {};
   _.extend(
     ModuleConfig['module-demo-backbone'].Events,
