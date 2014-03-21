@@ -58,7 +58,7 @@ function (App, AppConfig,  ModuleConfig) {
     });
 
     it("recognises the current environment", function () {
-      expect(App.getEnv()).toEqual('DEVELOPMENT');
+      expect(App.getEnv()).toMatch('DEVELOPMENT|TESTING');
     });
 
   });
