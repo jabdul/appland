@@ -7,9 +7,10 @@ define([], function () {
      */
     var TEST_SUITE = 'module-demo-backbone';
     /**
-     * Path to fixtures for this test suite.
+     * Override default 'jasmine-fixtures' for this module's
+     * own container.
      */
-
+    jasmine.getFixtures().containerId = 'demo-bb-content';
     /**
      * Load test cases.
      * @returns {Array}

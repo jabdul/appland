@@ -1,22 +1,32 @@
 define([
   'module-demo-backbone/app',
-  'lib/requirejs/text!module-demo-backbone/data/mock-articles.json',
-  'module-demo-backbone/collection/article-collection'
+  'module-demo-backbone/view/home-view'
 ],
-function (App, MockArticlesJson, ArticleCollection) {
+function (App, HomeView) {
 
   var that = this;
 
-  that.mockArticlesJson = $.parseJSON(MockArticlesJson);
-  that.CONF = App.getModuleConfig('module-demo-backbone');
+  that.tagName = 'div';
+
+  beforeEach(function() {
+    this.homeView = new HomeView();
+  });
+
+  afterEach(function() {
+    this.homeView.close();
+  });
 
   /**
    * Homepage view test suite.
    */
   describe('ModuleDemoBackbone: homepage view', function () {
 
-    it("has page links.", function () {
-      expect('').toBeFalsy();
+    it("Should be tied to a DOM element when created.", function () {
+      expect(this.homeView.el.tagName.toLowerCase()).toBe(that.tagName);
+    });
+
+    it("has a collection of data providers", function () {
+      expect(this.homeView.collection).toBeDefined();
     });
   });
 });
