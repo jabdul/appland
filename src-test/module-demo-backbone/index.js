@@ -10,7 +10,7 @@ define([], function () {
      * Override default 'jasmine-fixtures' for this module's
      * own container.
      */
-    jasmine.getFixtures().containerId = 'demo-bb-content';
+    jasmine.getFixtures().fixturesPath = './fixture';
     /**
      * Load test cases.
      * @returns {Array}
