@@ -12,7 +12,11 @@
  * Apply flexible setting in em.
  * @param number $target value in pixels.
  * @param number $context value in pixels.
+ * @param string $unit to convert to.
  */
-@function apl-flex-target($target, $context) {
-  @return ($target / $context) + em;
+@function apl-flex-target($target, $context, $unit: null) {
+  @if ($unit == null) {
+    @return ($target / $context) + em;
+  }
+  @return ($target / $context) + $unit;
 }
