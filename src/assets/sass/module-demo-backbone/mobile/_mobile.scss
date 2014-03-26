@@ -13,7 +13,10 @@ body {
    * Branding
    */
   h4 {
-    font: normal 16px/20px Arial,Helvetica,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    font-size: apl-flex-font(16, 12);
+    line-height: apl-flex-font(20, 12);
     @include apl-brand-color('navy');
     margin-bottom: 10px;
     margin-top: 30px;
@@ -96,27 +99,29 @@ body {
   .article {
     font-family: Helvetica,Arial,sans-serif;
     h1 {
-      font-size: 24px;
+      font-size: apl-flex-font(24, 14);
       @include apl-brand-color('navy');
       margin-bottom: 20px;
     }
     h2, h3 {
-      font-size: 16px;
+      font-size: apl-flex-font(16, 14);
       @include apl-brand-color('navy');
       margin-bottom: 12px;
     }
     h3 {
-      font-size: 14px;
+      font-size: apl-flex-font(14, 14);
+    }
+    img {
+      max-width: 100%;
     }
     .lead {
-      font-size: 16px;
-      line-height: 20px;
+      font-size: apl-flex-font(16, 14);
+      line-height: apl-flex-font(20, 14);
       @include apl-brand-color('gray-dark');
       margin-bottom: 30px;
     }
     p, li {
-      font-size: 12px;
-      line-height: 18px;
+      font-size: apl-flex-font(12, 14);
       @include apl-brand-color('gray-dark');
       margin-bottom: 20px;
     }
@@ -166,7 +171,10 @@ body {
      }
   }
   .footer {
-    font: normal 12px/18px Arial,Helvetica,sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    font-size: apl-flex-font(12, 12);
+    line-height: apl-flex-font(18, 12);
     @include apl-brand-border-top('turquoise-dark');
     @include apl-brand-color('gray-dark');
   }

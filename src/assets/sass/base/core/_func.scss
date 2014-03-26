@@ -5,6 +5,14 @@
  * @param number $px Value in pixels.
  * @param number $m Multiplier used to for calibration.
  */
-@function apl-func-px-to-em($px, $m) {
-  @return ($px * $apl-var-px-to-em) * $m + em;
+@function apl-px-to-em($px, $m) {
+  @return ($px * $apl-px-to-em) * $m + em;
+}
+/**
+ * Apply flexible font typesetting.
+ * @param number $target value in pixels.
+ * @param number $context value in pixels.
+ */
+@function apl-flex-font($target, $context) {
+  @return ($target / $context) + em;
 }
