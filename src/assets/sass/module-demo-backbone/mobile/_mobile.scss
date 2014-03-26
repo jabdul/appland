@@ -15,8 +15,8 @@ body {
   h4 {
     font-family:Arial,Helvetica,sans-serif;
     font-weight: normal;
-    font-size: apl-flex-font(16, 12);
-    line-height: apl-flex-font(20, 12);
+    font-size: apl-flex-target(16, 12);
+    line-height: apl-flex-target(20, 12);
     @include apl-brand-color('navy');
     margin-bottom: 10px;
     margin-top: 30px;
@@ -99,29 +99,29 @@ body {
   .article {
     font-family: Helvetica,Arial,sans-serif;
     h1 {
-      font-size: apl-flex-font(24, 14);
+      font-size: apl-flex-target(24, 14);
       @include apl-brand-color('navy');
       margin-bottom: 20px;
     }
     h2, h3 {
-      font-size: apl-flex-font(16, 14);
+      font-size: apl-flex-target(16, 14);
       @include apl-brand-color('navy');
       margin-bottom: 12px;
     }
     h3 {
-      font-size: apl-flex-font(14, 14);
+      font-size: apl-flex-target(14, 14);
     }
     img {
       max-width: 100%;
     }
     .lead {
-      font-size: apl-flex-font(16, 14);
-      line-height: apl-flex-font(20, 14);
+      font-size: apl-flex-target(16, 14);
+      line-height: apl-flex-target(20, 14);
       @include apl-brand-color('gray-dark');
       margin-bottom: 30px;
     }
     p, li {
-      font-size: apl-flex-font(12, 14);
+      font-size: apl-flex-target(12, 14);
       @include apl-brand-color('gray-dark');
       margin-bottom: 20px;
     }
@@ -173,8 +173,8 @@ body {
   .footer {
     font-family:Arial,Helvetica,sans-serif;
     font-weight: normal;
-    font-size: apl-flex-font(12, 12);
-    line-height: apl-flex-font(18, 12);
+    font-size: apl-flex-target(12, 12);
+    line-height: apl-flex-target(18, 12);
     @include apl-brand-border-top('turquoise-dark');
     @include apl-brand-color('gray-dark');
   }

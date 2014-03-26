@@ -9,10 +9,10 @@
   @return ($px * $apl-px-to-em) * $m + em;
 }
 /**
- * Apply flexible font typesetting.
+ * Apply flexible setting in em.
  * @param number $target value in pixels.
  * @param number $context value in pixels.
  */
-@function apl-flex-font($target, $context) {
+@function apl-flex-target($target, $context) {
   @return ($target / $context) + em;
 }
