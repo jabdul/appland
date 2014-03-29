@@ -1,20 +1,26 @@
-<ol class="breadcrumb">
-  <li><a href="#/home">{{LABELS.LABEL_2}}</a></li>
-  <li><a href="#/articles">{{LABELS.LABEL_3}}</a></li>
-  <li class="active">{{title}}</li>
-</ol>
-
-<div class="article">
-  <h1>{{title}}</h1>
-  <p class="lead">{{{description}}}</p>
-  <p>{{> ./partial/tag}}</p>
+<div class="row">
+  <ol class="breadcrumb col-xs-12">
+    <li><a href="#/home">{{LABELS.LABEL_2}}</a></li>
+    <li><a href="#/articles">{{LABELS.LABEL_3}}</a></li>
+    <li class="active">{{title}}</li>
+  </ol>
 </div>
 
-<ul class="pager">
-  <li class="previous">
-    <a href="#/articles/{{meta.nav.prev.id}}" title="{{meta.nav.prev.title}}">&larr; {{LABELS.LABEL_18}}</a>
-  </li>
-  <li class="next">
-    <a href="#/articles/{{meta.nav.next.id}}" title="{{meta.nav.next.title}}">{{LABELS.LABEL_17}} &rarr;</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="article col-xs-12">
+    <h1>{{title}}</h1>
+    <p class="lead">{{{description}}}</p>
+    <p>{{> ./partial/tag}}</p>
+  </div>
+</div>
+
+<div class="row">
+  <ul class="pager col-xs-12">
+    <li class="previous">
+      <a href="#/articles/{{meta.nav.prev.id}}" title="{{meta.nav.prev.title}}">&larr; {{LABELS.LABEL_18}}</a>
+    </li>
+    <li class="next">
+      <a href="#/articles/{{meta.nav.next.id}}" title="{{meta.nav.next.title}}">{{LABELS.LABEL_17}} &rarr;</a>
+    </li>
+  </ul>
+</div>

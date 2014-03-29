@@ -5,7 +5,10 @@
  * @param number $px Value in pixels.
  * @param number $m Multiplier used to for calibration.
  */
-@function apl-px-to-em($px, $m) {
+@function apl-px-to-em($px, $m: null) {
+  @if ($m == null) {
+    $m: 1;
+  }
   @return ($px * $apl-px-to-em) * $m + em;
 }
 /**

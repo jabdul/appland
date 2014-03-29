@@ -1,23 +1,37 @@
-<ol class="breadcrumb">
-  <li><a href="#/home">{{LABELS.LABEL_2}}</a></li>
-  <li><a href="#/articles">{{LABELS.LABEL_3}}</a></li>
-  <li class="active">{{title}}</li>
-</ol>
-
-<div class="article">
-  <h1>{{title}}</h1>
-  <p class="lead">{{{description}}}</p>
-
-  <div class="content">{{{content}}}</div>
-
-  <p>{{> partial/tag}}</p>
+<div class="row no-horiz-margin">
+  <div class="col-xs-12">
+    <ol class="breadcrumb">
+      <li><a href="#/home">{{LABELS.LABEL_2}}</a></li>
+      <li><a href="#/articles">{{LABELS.LABEL_3}}</a></li>
+      <li class="active">{{title}}</li>
+    </ol>
+  </div>
 </div>
 
-<ul class="pager apl-pager">
-  <li class="previous">
-    <a href="#/articles/{{meta.nav.prev.id}}" title="{{meta.nav.prev.title}}">&larr; {{LABELS.LABEL_18}}</a>
-  </li>
-  <li class="next">
-    <a href="#/articles/{{meta.nav.next.id}}" title="{{meta.nav.next.title}}">{{LABELS.LABEL_17}} &rarr;</a>
-  </li>
-</ul>
+
+<div class="row no-horiz-margin">
+  <div class="col-xs-12">
+    <div class="article">
+      <h1>{{title}}</h1>
+      <p class="lead">{{{description}}}</p>
+
+      <div class="content">{{{content}}}</div>
+
+      <p>{{> partial/tag}}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="rowno-horiz-margin">
+  <div class="col-xs-12">
+    <ul class="pager apl-pager">
+      <li class="previous">
+        <a href="#/articles/{{meta.nav.prev.id}}" title="{{meta.nav.prev.title}}">&larr; {{LABELS.LABEL_18}}</a>
+      </li>
+      <li class="next">
+        <a href="#/articles/{{meta.nav.next.id}}" title="{{meta.nav.next.title}}">{{LABELS.LABEL_17}} &rarr;</a>
+      </li>
+    </ul>
+  </div>
+</div>
