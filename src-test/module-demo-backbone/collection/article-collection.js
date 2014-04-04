@@ -10,48 +10,52 @@ function (App, MockArticlesJson, ArticleCollection) {
   that.mockArticlesJson = $.parseJSON(MockArticlesJson);
   that.CONF = App.getModuleConfig('module-demo-backbone');
 
+  beforeEach(function() {
+    this.articleCollection = new ArticleCollection();
+  });
+
+  afterEach(function() {
+    this.articleCollection = null;
+  });
+
   /**
    * Articles' collection test suite.
    */
-  describe('ModuleDemoBackbone: article collection', function () {
+  describe('ModuleDemoBackbone: article-collection', function () {
 
     it("has capability to add one or more articles.", function () {
-      var articleCollection = new ArticleCollection();
-
       // Collection should be empty
-      expect(articleCollection.length).toBe(0);
+      expect(this.articleCollection.length).toBe(0);
 
       // Add an article
-      articleCollection.add(that.mockArticlesJson.articles[9]);
+      this.articleCollection.add(that.mockArticlesJson.articles[9]);
 
       // Added one item
-      expect(articleCollection.length).toBe(1);
+      expect(this.articleCollection.length).toBe(1);
 
       // Add three more articles
-      articleCollection.add(that.mockArticlesJson.articles[13]);
-      articleCollection.add(that.mockArticlesJson.articles[2]);
-      articleCollection.add(that.mockArticlesJson.articles[8]);
+      this.articleCollection.add(that.mockArticlesJson.articles[13]);
+      this.articleCollection.add(that.mockArticlesJson.articles[2]);
+      this.articleCollection.add(that.mockArticlesJson.articles[8]);
 
       // Should now be four in total
-      expect(articleCollection.length).toBe(4);
+      expect(this.articleCollection.length).toBe(4);
     });
 
     it('has a defined url property for all contained models.', function() {
-      var articleCollection = new ArticleCollection();
 
-      expect(articleCollection.url).toBe(
+      expect(this.articleCollection.url).toBe(
         that.CONF.services.findArticles.path +
         that.CONF.services.findArticles.resource
       );
     });
 
     it('checks for number of active and inactive articles.', function() {
-      var articleCollection = new ArticleCollection();
-
+      var articleCollection = this.articleCollection;
       runs(function() {
         setTimeout(function() {
           articleCollection.fetch();
-        },250);
+        },10);
       });
 
       waitsFor(function() {
