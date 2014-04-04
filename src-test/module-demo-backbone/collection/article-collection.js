@@ -5,7 +5,7 @@ define([
 ],
 function (App, MockArticlesJson, ArticleCollection) {
 
-  var that = this;
+  var that = {};
 
   that.mockArticlesJson = $.parseJSON(MockArticlesJson);
   that.CONF = App.getModuleConfig('module-demo-backbone');

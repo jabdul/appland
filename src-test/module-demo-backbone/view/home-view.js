@@ -1,15 +1,16 @@
 define([
   'module-demo-backbone/app',
   'module-demo-backbone/view/home-view',
-  'module-demo-backbone/collection/article-collection'
+  'hbs!module-demo-backbone/view/tmpl/home'
 ],
-function (App, HomeView, ArticleCollection) {
+function (App, HomeView, HomeTmpl) {
 
   var that = this;
 
   loadFixtures('index.html');
   that.tagName = 'div';
   that.Events = App.getModuleConfig('module-demo-backbone').Events;
+  that.LABELS = App.getModuleConfig('module-demo-backbone').labels;
 
   beforeEach(function() {
     this.$fixture = $('#demo-bb-content');
@@ -23,7 +24,7 @@ function (App, HomeView, ArticleCollection) {
   /**
    * Homepage view test suite.
    */
-  describe('ModuleDemoBackbone: homepage view', function () {
+  describe('ModuleDemoBackbone: home-view', function () {
 
     it("Should be tied to a DOM element when created.", function () {
       expect(this.homeView.el.tagName.toLowerCase()).toBe(that.tagName);
@@ -36,20 +37,41 @@ function (App, HomeView, ArticleCollection) {
     describe('when rendered', function() {
 
       it('has teasers', function() {
-        var self = this;
+        var homeView = this.homeView,
+            ready = false;
 
         runs(function() {
           setTimeout(function() {
-            //self.$fixture.append(self.homeView.render().$el);
+            spyOn(homeView, 'render');
+            homeView.render();
+            expect(homeView.render).toHaveBeenCalled();
           });
-        },500);
+        },150);
 
         waitsFor(function() {
-          return true;
-        }, 'waits for data to load before appending to view', 4000);
+          if (homeView.collection.length == 2) {
+            ready =  true;
+          }
+          return ready;
+        }, 'waits for data to load before appending to view', 750);
 
         runs(function() {
-          //expect(self.$fixture.find('.teasers')).toHaveLength(2);
+          var articles = [],
+            cols;
+
+          homeView.collection.each(function(item) {
+            articles.push(homeView.generateTeaser(item));
+          }, homeView );
+
+          cols = homeView.splitItems(articles, 2);
+
+          homeView.$el.addClass('main-content').html(HomeTmpl({
+            labels: that.LABELS[0],
+            articlesColumnOne: cols[0],
+            articlesColumnTwo: cols[1]
+          }));
+
+          expect(homeView.$el.find('.teaser')).toHaveLength(2);
         });
       });
     });
