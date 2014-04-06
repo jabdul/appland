@@ -55,7 +55,7 @@ function (App, MockArticlesJson, ArticleCollection) {
       runs(function() {
         setTimeout(function() {
           articleCollection.fetch();
-        },10);
+        },1);
       });
 
       waitsFor(function() {

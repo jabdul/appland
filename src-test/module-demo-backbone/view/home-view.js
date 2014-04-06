@@ -46,7 +46,7 @@ function (App, HomeView, HomeTmpl) {
             homeView.render();
             expect(homeView.render).toHaveBeenCalled();
           });
-        },150);
+        },1);
 
         waitsFor(function() {
           if (homeView.collection.length == 2) {
