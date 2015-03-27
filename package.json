@@ -30,7 +30,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "bootstrap-amd": "~1.0.3",
     "testem": "~0.6.7",
-    "requirejs": "~2.1.4"
+    "requirejs": "~2.1.6"
   },
   "scripts": {},
   "os": [
