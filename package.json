@@ -1,6 +1,6 @@
 {
   "name": "appland",
-  "version": "0.1.0",
+  "version": "0.4.1",
   "description": "A frontend UI workflow framework complete with scaffolding, MVC architecture, logging, test framework, build, and popular libraries.",
   "keywords": [
     "scaffold",
@@ -25,12 +25,13 @@
     "url": "git@github.com:jabdul/appland.git"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "bootstrap-amd": "~1.0.3",
-    "testem": "~0.6.7",
-    "requirejs": "~2.1.4"
+    "grunt": "",
+    "grunt-contrib-jshint": "",
+    "grunt-contrib-watch": "",
+    "bootstrap-amd": "",
+    "testem": "",
+    "requirejs": "2.1.6",
+    "bower": ""
   },
   "scripts": {},
   "os": [

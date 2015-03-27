@@ -104,6 +104,7 @@ Thumbs.db
 /node_modules
 /dist
 !/dist/README.md
-/src/assets/.sass-cache*
+/src/assets/.sass-cache
+/src/assets/.sass-cache/*
 /service/conf/httpd.conf.*
 /service/conf/httpd-vhosts.conf.*
