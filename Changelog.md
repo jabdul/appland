@@ -2,7 +2,8 @@
 
 ### appland-0.4.1-beta ###
 * Forced RequireJS to version 2.1.6  (r.js: 2.1.6, RequireJS: 2.1.6, UglifyJS2: 2.3.2, UglifyJS: 1.3.4). See [apln issue 3](https://github.com/jabdul/apln/issues/3)
-* Upgraded to Grunt v0.4.5, grunt-cli v0.1.6
+* package.json devDependencies now setup to build latest versions with the exception of `requirejs`
+* Environment detection for `development` now set when port is defined in url.
 
 ### appland-0.4.0-beta ###
 * Upgraded require-handlebars-plugin to v.0.8.0
