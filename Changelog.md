@@ -1,5 +1,8 @@
 ## Changelog ##
 
+### appland-0.4.2-beta ###
+* Updated bower's json filename. Now `.bower.json` in `lib` directory.
+
 ### appland-0.4.1-beta ###
 * Forced RequireJS to version 2.1.6  (r.js: 2.1.6, RequireJS: 2.1.6, UglifyJS2: 2.3.2, UglifyJS: 1.3.4). See [apln issue 3](https://github.com/jabdul/apln/issues/3)
 * package.json devDependencies now setup to build latest versions with the exception of `requirejs`

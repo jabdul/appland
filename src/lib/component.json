@@ -1,8 +1,0 @@
-{
-  "name": "Bower Vendor Package Manager",
-  "dependencies": {
-    "jquery": null,
-    "underscore-amd": null,
-    "bootstrap-amd": null
-  }
-}

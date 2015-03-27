@@ -1,6 +1,6 @@
 {
   "name": "appland",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "A frontend UI workflow framework complete with scaffolding, MVC architecture, logging, test framework, build, and popular libraries.",
   "keywords": [
     "scaffold",
