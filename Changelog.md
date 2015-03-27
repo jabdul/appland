@@ -1,5 +1,9 @@
 ## Changelog ##
 
+### appland-0.4.1-beta ###
+* Upgraded to RequireJS: 2.1.6  (r.js: 2.1.6, RequireJS: 2.1.6, UglifyJS2: 2.3.2, UglifyJS: 1.3.4). See [apln issue 3](https://github.com/jabdul/apln/issues/3)
+* Upgraded to Grunt v0.4.5, grunt-cli v0.1.6
+
 ### appland-0.4.0-beta ###
 * Upgraded require-handlebars-plugin to v.0.8.0
 * Upgraded normalize.css to v.3.0.0
