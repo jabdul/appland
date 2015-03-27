@@ -175,7 +175,7 @@ function (JSON, AppConfig, $, Util, Log4j) {
     function setEnv() {
       var host = document.location.host;
       switch (true) {
-        case /(^127\.0\.0\.[0-9]|^localhost):901[0-9]/.test(host):
+        case /(^127\.0\.0\.[0-9]|^localhost):[0-9]{4}/.test(host):
           ENV = 'DEVELOPMENT';
           break;
         case /(^localhost)/.test(host):
